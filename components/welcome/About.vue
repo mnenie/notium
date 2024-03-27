@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { redirect } from '~/helpers/helperBlankRedirect';
+</script>
+
 <template>
   <section
     id="about"
@@ -14,7 +18,7 @@
     </p>
     <div class="flex w-full items-center justify-center space-x-4 py-4 md:pb-10">
       <UiButton>Get Started</UiButton>
-      <UiButton variant="outline">
+      <UiButton @click="redirect('https://github.com/mnenie/Notium')" variant="outline">
         <img src="/icons/github.png" class="mr-2 h-4 w-4" />
         GitHub
       </UiButton>

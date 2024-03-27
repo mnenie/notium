@@ -1,11 +1,11 @@
-interface Card {
+type Card = {
   title: string;
   description: string;
   icon: any;
   id: number;
 }
 
-interface Links {
+type Links = {
   name: string;
   id: number;
   section: string;
