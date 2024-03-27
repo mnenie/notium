@@ -1,44 +1,19 @@
 <script setup lang="ts">
-import type { Container } from '@tsparticles/engine';
-
-const options = {
-  fullScreen: {
-    enable: true,
-    zIndex: -2
-  },
-  particles: {
-    mode: 'full',
-    lazy: true,
-    color: {
-      value: '#000',
-      opacity: 0.4
-    },
-    links: {
-      color: '#000',
-      enable: true,
-      opacity: 0.4
-    },
-    move: {
-      enable: true
-    },
-    number: {
-      value: 100
-    }
-  }
-};
-
-const onLoad = (container: Container) => {
-  container.pause();
-  setTimeout(() => container.play(), 0);
-};
+useSeoMeta({
+  title: 'Notium - cloud app of your notes',
+  description:
+    'Notium is a cloud app allowing users to create and store notes based on their priorities, also using the built-in AI, assistant NotiumAI'
+});
 </script>
 
 <template>
   <div>
-    <!-- <NuxtParticles id="tsparticles" :options="options" @load="onLoad"></NuxtParticles> -->
-    <div class="relative z-10">
-      <LayoutHeader />
-      <WelcomeAbout />
+    <div class="relative z-10 mb-28">
+      <WelcomeAbout v-motion-slide-visible-top />
+      <WelcomeWrite v-motion-slide-visible-left />
+      <WelcomeRead v-motion-slide-visible-right />
+      <WelcomePriorities v-motion-slide-visible-left />
+      <WelcomeAi v-motion-slide-visible-bottom />
     </div>
   </div>
 </template>
