@@ -553,6 +553,11 @@
     "@floating-ui/utils" "^0.2.1"
     vue-demi ">=0.13.0"
 
+"@formkit/auto-animate@^0.8.1":
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@formkit/auto-animate/-/auto-animate-0.8.1.tgz#bcaba2969609ca3a7453eacd42b383a2739dfa35"
+  integrity sha512-0/Z2cuNXWVVIG/l0SpcHAWFhGdvLJ8DRvEfRWvmojtmRWfEy+LWNwgDazbZqY0qQYtkHcoEK3jBLkhiZaB/4Ig==
+
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.14.tgz#d78e481a039f7566ecc9660b4ea7fe6b1fec442b"
@@ -1551,6 +1556,15 @@
     hookable "^5.5.3"
     unhead "1.8.20"
 
+"@vee-validate/zod@^4.12.6":
+  version "4.12.6"
+  resolved "https://registry.yarnpkg.com/@vee-validate/zod/-/zod-4.12.6.tgz#00418a367e5ac8b8f5500beae4daba077b00d666"
+  integrity sha512-LCP/hBWRyOgciwxVYvh4UrowVOJT/v5rJvUKCqEn+4ccx3bNtjVlOI4OvA6T1esg7LvmgseQiNQRxUvE2Pn9ng==
+  dependencies:
+    type-fest "^4.8.3"
+    vee-validate "4.12.6"
+    zod "^3.22.4"
+
 "@vercel/nft@^0.26.4":
   version "0.26.4"
   resolved "https://registry.npmjs.org/@vercel/nft/-/nft-0.26.4.tgz"
@@ -1777,7 +1791,7 @@
 
 "@vueuse/core@10.9.0", "@vueuse/core@^10.1.2", "@vueuse/core@^10.9.0":
   version "10.9.0"
-  resolved "https://registry.npmjs.org/@vueuse/core/-/core-10.9.0.tgz"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-10.9.0.tgz#7d779a95cf0189de176fee63cee4ba44b3c85d64"
   integrity sha512-/1vjTol8SXnx6xewDEKfS0Ra//ncg4Hb0DaZiwKf7drgfMsKFExQ+FnnENcN6efPen+1kIzhLQoGSy0eDUVOMg==
   dependencies:
     "@types/web-bluetooth" "^0.0.20"
@@ -6388,6 +6402,11 @@ type-fest@^3.8.0:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-3.13.1.tgz"
   integrity sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==
 
+type-fest@^4.8.3:
+  version "4.14.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.14.0.tgz#46f9a358e605f0ec5ca99ab83deaa7257a7ae379"
+  integrity sha512-on5/Cw89wwqGZQu+yWO0gGMGu8VNxsaW9SB2HE8yJjllEk7IDTwnSN1dUVldYILhYPN5HzD7WAaw2cc/jBfn0Q==
+
 type-is@^1.6.16:
   version "1.6.18"
   resolved "https://registry.yarnpkg.com/type-is/-/type-is-1.6.18.tgz#4e552cd05df09467dcbc4ef739de89f2cf37c131"
@@ -6631,6 +6650,14 @@ vary@^1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
+vee-validate@4.12.6, vee-validate@^4.12.6:
+  version "4.12.6"
+  resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-4.12.6.tgz#cc1b8ac99ebf00856b40a5118a23787898a70f32"
+  integrity sha512-EKM3YHy8t1miPh30d5X6xOrfG/Ctq0nbN4eMpCK7ezvI6T98/S66vswP+ihL4QqAK/k5KqreWOxof09+JG7N/A==
+  dependencies:
+    "@vue/devtools-api" "^6.5.1"
+    type-fest "^4.8.3"
+
 vite-hot-client@^0.2.3:
   version "0.2.3"
   resolved "https://registry.npmjs.org/vite-hot-client/-/vite-hot-client-0.2.3.tgz"
@@ -6799,6 +6826,11 @@ vue-router@^4.3.0:
   integrity sha512-dqUcs8tUeG+ssgWhcPbjHvazML16Oga5w34uCUmsk7i0BcnskoLGwjpa15fqMr2Fa5JgVBrdL2MEgqz6XZ/6IQ==
   dependencies:
     "@vue/devtools-api" "^6.5.1"
+
+vue-sonner@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/vue-sonner/-/vue-sonner-1.1.2.tgz#996c662d817b150e67770272e1d1d7f8a2d3a0c6"
+  integrity sha512-yg4f5s0a3oiiI7cNvO0Dajux1Y7s04lxww3vnQtnwQawJ3KqaKA9RIRMdI9wGTosRGIOwgYFniFRGl4+IuKPZw==
 
 vue-virtual-scroller@2.0.0-beta.8:
   version "2.0.0-beta.8"
@@ -6970,3 +7002,8 @@ zip-stream@^6.0.1:
     archiver-utils "^5.0.0"
     compress-commons "^6.0.2"
     readable-stream "^4.0.0"
+
+zod@^3.22.4:
+  version "3.22.4"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.22.4.tgz#f31c3a9386f61b1f228af56faa9255e845cf3fff"
+  integrity sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==

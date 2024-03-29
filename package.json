@@ -11,6 +11,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.8.1",
+    "@vee-validate/zod": "^4.12.6",
+    "@vueuse/core": "^10.9.0",
     "@vueuse/motion": "^2.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -20,9 +23,12 @@
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.3",
+    "vee-validate": "^4.12.6",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
-    "vue-writer": "1.2.0"
+    "vue-sonner": "^1.1.2",
+    "vue-writer": "1.2.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@mnenie/prettier": "^1.0.3",

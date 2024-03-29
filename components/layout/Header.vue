@@ -12,7 +12,7 @@ const links = reactive<Links[]>([
     class="sticky top-0 z-50 w-full border-b border-[#e4e4e766]/40 bg-[#fff9]/95 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60"
   >
     <div class="container flex h-14 max-w-screen-2xl items-center justify-between">
-      <div class="flex items-center space-x-3">
+      <div @click="navigateTo(HOME_ROUTE)" class="flex items-center space-x-3 cursor-pointer">
         <img src="/img/logo.png" class="h-7 w-7" />
         <span class="text-[22px] font-bold">Notium</span>
       </div>
@@ -27,8 +27,8 @@ const links = reactive<Links[]>([
         </span>
       </div>
       <div class="flex items-center space-x-3">
-        <UiButton variant="ghost">Log in</UiButton>
-        <UiButton>Get started</UiButton>
+        <UiButton @click="navigateTo(LOGIN_ROUTE)" variant="ghost">Log in</UiButton>
+        <UiButton @click="navigateTo(REGISTRATION_ROUTE)">Get started</UiButton>
       </div>
     </div>
   </header>
