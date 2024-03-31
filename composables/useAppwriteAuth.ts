@@ -1,20 +1,53 @@
-import type { Account } from 'appwrite';
+import {
+  createUserWithEmailAndPassword,
+  signOut,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GithubAuthProvider,
+  onAuthStateChanged
+} from 'firebase/auth';
+import type { Auth } from 'firebase/auth';
 
 export default function useAppwriteAuth() {
-  const { $account } = useNuxtApp();
+  const { $auth } = useNuxtApp();
 
-  const onYandexLogin = async () => {
-    ($account as Account).createOAuth2Session(
-      //@ts-expect-error
-      'yandex',
-      'http://localhost:3000/user/login',
-      'http://localhost:3000/user/registration'
-    );
-    const creds = await ($account as Account).get()
-    return creds
+  const provider = new GithubAuthProvider();
+  const onGithubLogin = async () => {
+    const creds = await signInWithPopup($auth as Auth, provider);
+    return creds;
+  };
+
+  const onLoginEmail = async (userData: { email: string; password: string }) => {
+    const creds = await signInWithEmailAndPassword($auth as Auth, userData.email, userData.password);
+    return creds;
+  };
+
+  const onRegistrationEmail = async (userData: { email: string; password: string }) => {
+    const creds = await createUserWithEmailAndPassword($auth as Auth, userData.email, userData.password);
+    return creds;
+  };
+
+  const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+      onAuthStateChanged($auth as Auth, (user) => {
+        if (user) {
+          resolve(user);
+        } else {
+          reject(null);
+        }
+      });
+    });
+  };
+
+  const onLogout = async () => {
+    await signOut($auth as Auth);
   };
 
   return {
-    onYandexLogin
+    onGithubLogin,
+    onLoginEmail,
+    onRegistrationEmail,
+    getCurrentUser,
+    onLogout
   };
 }

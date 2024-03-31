@@ -22,7 +22,7 @@ useSeoMeta({
         <p class="pb-4 text-sm text-[#72717a]">Enter your info below to sign in your account</p>
         <AuthForm />
         <AuthLine />
-        <AuthYandex />
+        <AuthGithub />
         <AuthPolicy />
       </div>
     </div>
