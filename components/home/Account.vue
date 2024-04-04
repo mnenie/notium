@@ -9,10 +9,11 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-
 import { ChevronsUpDown } from 'lucide-vue-next';
+import { useAuthStore } from '~/store/auth.store';
+
+const authStore = useAuthStore()
 </script>
 
 <template>
@@ -35,7 +36,7 @@ import { ChevronsUpDown } from 'lucide-vue-next';
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
-        <DropdownMenuItem>
+        <DropdownMenuItem @click="authStore.logout">
           <span>Log out</span>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>

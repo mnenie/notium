@@ -18,7 +18,7 @@ export const useAuthStore = defineStore('auth', () => {
       throw new Error(err);
     } finally {
       isLoading.value = false;
-      await navigateTo(NOTES_ROUTE);
+      await navigateTo(ABOUT_ROUTE);
     }
   };
 
@@ -34,7 +34,7 @@ export const useAuthStore = defineStore('auth', () => {
       throw new Error(err);
     } finally {
       isLoading.value = false;
-      await navigateTo(NOTES_ROUTE);
+      await navigateTo(ABOUT_ROUTE);
     }
   };
 
@@ -51,7 +51,7 @@ export const useAuthStore = defineStore('auth', () => {
       throw new Error(err);
     } finally {
       isLoading.value = false;
-      await navigateTo(NOTES_ROUTE);
+      await navigateTo(ABOUT_ROUTE);
     }
   };
 
