@@ -24,23 +24,22 @@ const { handleSubmit, isFieldDirty } = useForm({
   validationSchema: formSchema
 });
 
-const { value: email } = useField<string>("email")
-const { value: password } = useField<string>("password")
+const { value: email } = useField<string>('email');
+const { value: password } = useField<string>('password');
 
-const authStore = useAuthStore()
-const { isLoading } = storeToRefs(authStore)
-const { login, registration } = authStore
+const authStore = useAuthStore();
+const { isLoading } = storeToRefs(authStore);
+const { login, registration } = authStore;
 
-const route = useRoute()
+const route = useRoute();
 
 const onSubmit = handleSubmit(async (values) => {
   if (route.path === LOGIN_ROUTE) {
-    await login({ ...values })
+    await login({ ...values });
+  } else if (route.path === REGISTRATION_ROUTE) {
+    await registration({ ...values });
   }
-  else if (route.path === REGISTRATION_ROUTE) {
-    await registration({ ...values })
-  }
-})
+});
 </script>
 <template>
   <div :class="$attrs.class">
@@ -51,7 +50,14 @@ const onSubmit = handleSubmit(async (values) => {
             <UiFormItem class="grid justify-items-start gap-2" v-auto-animate>
               <Label for="email"> Email </Label>
               <UiFormControl>
-                <UiInput v-model="email" v-bind="componentField" id="email" placeholder="user@example.com" type="email" />
+                <UiInput
+                  v-model="email"
+                  v-bind="componentField"
+                  id="email"
+                  placeholder="user@example.com"
+                  type="email"
+                  :disabled="isLoading"
+                />
               </UiFormControl>
               <UiFormMessage />
             </UiFormItem>
@@ -60,8 +66,14 @@ const onSubmit = handleSubmit(async (values) => {
             <UiFormItem class="grid justify-items-start gap-2" v-auto-animate>
               <Label for="password"> Password </Label>
               <UiFormControl>
-                <UiInput v-model="password" v-bind="componentField" id="password" placeholder="user_password_example"
-                  type="password" />
+                <UiInput
+                  v-model="password"
+                  v-bind="componentField"
+                  id="password"
+                  placeholder="user_password_example"
+                  type="password"
+                  :disabled="isLoading"
+                />
               </UiFormControl>
               <UiFormMessage />
             </UiFormItem>
@@ -74,9 +86,11 @@ const onSubmit = handleSubmit(async (values) => {
           </UiButton>
           <p class="text-sm text-[#72717a]">
             {{ $route.path === LOGIN_ROUTE ? `Don't have an account?` : 'Have an account?' }}
-            <span @click="$route.path === LOGIN_ROUTE ? navigateTo(REGISTRATION_ROUTE) : navigateTo(LOGIN_ROUTE)"
-              class="cursor-pointer underline underline-offset-4 hover:text-zinc-900">{{ $route.path === LOGIN_ROUTE ?
-                `Sign Up Now` : 'Sign In Now' }}</span>
+            <span
+              @click="$route.path === LOGIN_ROUTE ? navigateTo(REGISTRATION_ROUTE) : navigateTo(LOGIN_ROUTE)"
+              class="cursor-pointer underline underline-offset-4 hover:text-zinc-900"
+              >{{ $route.path === LOGIN_ROUTE ? `Sign Up Now` : 'Sign In Now' }}</span
+            >
           </p>
         </div>
       </div>

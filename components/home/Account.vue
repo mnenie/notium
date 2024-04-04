@@ -1,0 +1,45 @@
+<script setup lang="ts">
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
+
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+
+import { ChevronsUpDown } from 'lucide-vue-next';
+</script>
+
+<template>
+  <DropdownMenu>
+    <DropdownMenuTrigger as-child>
+      <UiButton variant="ghost" class="flex h-9 w-48 items-center justify-between">
+        <div class="mr-4 flex items-center">
+          <Avatar class="mr-2 h-5 w-5">
+            <AvatarImage src="https://www.shadcn-vue.com/avatars/02.png" alt="@shadcn" />
+            <AvatarFallback>SC</AvatarFallback>
+          </Avatar>
+          <span class="w-24 overflow-hidden text-ellipsis whitespace-nowrap">alexpehfdfdfdk@gmail.com</span>
+        </div>
+        <ChevronsUpDown class="h-4 w-4 shrink-0 opacity-50" />
+      </UiButton>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent class="w-48">
+      <DropdownMenuLabel class="w-36 overflow-hidden text-ellipsis whitespace-nowrap">
+        alexpegfdgdfgdfgfdghfdfdfdk@gmail.com
+      </DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuGroup>
+        <DropdownMenuItem>
+          <span>Log out</span>
+          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+        </DropdownMenuItem>
+      </DropdownMenuGroup>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</template>
