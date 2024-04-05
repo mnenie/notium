@@ -1866,6 +1866,11 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-code/-/extension-code-2.2.4.tgz#ba77dc56daac75bdf83a2aaecff896e9301c2cdf"
   integrity sha512-JB4SJ2mUU/9qXFUf+K5K9szvovnN9AIcCb0f0UlcVBuddKHSqCl3wO3QJgYt44BfQTLMNuyzr+zVqfFd6BNt/g==
 
+"@tiptap/extension-color@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-color/-/extension-color-2.2.4.tgz#c6de7a471c6021466ea8c2e891a7935562804707"
+  integrity sha512-R3caThbG25gQz5b1+3PoJnVmuMF0lnqxPJ86l2ZWRAuqRSSEOJDYMGY5rlnPkAVW23Ej2FOuDFVxV/18pFHo3w==
+
 "@tiptap/extension-document@^2.2.4":
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-document/-/extension-document-2.2.4.tgz#d46c1fdd1ea5b7191112fae4e9f8a63a46309afc"
@@ -1882,6 +1887,11 @@
   integrity sha512-U25l7PEzOmlAPugNRl8t8lqyhQZS6W/+3f92+FdwW9qXju3i62iX/3OGCC3Gv+vybmQ4fbZmMjvl+VDfenNi3A==
   dependencies:
     tippy.js "^6.3.7"
+
+"@tiptap/extension-focus@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-focus/-/extension-focus-2.2.4.tgz#3094563e93ea511cb341beebc83026912e6ff578"
+  integrity sha512-lnVftEYCIxmbatR9gi2hJp4/R/5kwlRUcClGuQWD0ltS1MGLRYSSipzWb8Je9xrrdU6dCVHUeKJ1XAjMUeggFQ==
 
 "@tiptap/extension-gapcursor@^2.2.4":
   version "2.2.4"
@@ -1918,6 +1928,11 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-list-item/-/extension-list-item-2.2.4.tgz#2412dd92e51c3cbc4f2abc3c38ec2ab8348c1af9"
   integrity sha512-lPLKGKsHpM9ClUa8n7GEUn8pG6HCYU0vFruIy3l2t6jZdHkrgBnYtVGMZ13K8UDnj/hlAlccxku0D0P4mA1Vrg==
 
+"@tiptap/extension-mention@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-mention/-/extension-mention-2.2.4.tgz#f787223facf952691136806839e4e65cbf721aaa"
+  integrity sha512-myUlwpbrQgWfRJwG4UHM2PbiSp+squJv6LPKfKINs5yDxIproaZ0/4TAJt3heeSXZJnboPAQxSP7eLd5pY8lBw==
+
 "@tiptap/extension-ordered-list@^2.2.4":
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-ordered-list/-/extension-ordered-list-2.2.4.tgz#dfa6c6869a3d16fe5b2a10749ffe5b999346efd2"
@@ -1928,10 +1943,30 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-paragraph/-/extension-paragraph-2.2.4.tgz#9126fafbf984e324bfb3fab34deb689def7eb98d"
   integrity sha512-m1KwyvTNJxsq7StbspbcOhxO4Wk4YpElDbqOouWi+H4c8azdpI5Pn96ZqhFeE9bSyjByg6OcB/wqoJsLbeFWdQ==
 
+"@tiptap/extension-placeholder@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-placeholder/-/extension-placeholder-2.2.4.tgz#d75572f6fb0cb3bbbedfa2ced49c55285ae8fdd5"
+  integrity sha512-UL4Fn9T33SoS7vdI3NnSxBJVeGUIgCIutgXZZ5J8CkcRoDIeS78z492z+6J+qGctHwTd0xUL5NzNJI82HfiTdg==
+
 "@tiptap/extension-strike@^2.2.4":
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-strike/-/extension-strike-2.2.4.tgz#f987a6fe7b85e3179b413792ae3f33dd9c086e01"
   integrity sha512-/a2EwQgA+PpG17V2tVRspcrIY0SN3blwcgM7lxdW4aucGkqSKnf7+91dkhQEwCZ//o8kv9mBCyRoCUcGy6S5Xg==
+
+"@tiptap/extension-task-item@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-task-item/-/extension-task-item-2.2.4.tgz#303a561a315c13cc983ab1c4283e256c2cde000d"
+  integrity sha512-Ixzv7bPcgrWelSD0Jy6yAlHxmGWpD5lPt6Ey4POYy7u98duyUFOBMHLcsV24ipQsRacuB+htgmuqOrkiL+hg7w==
+
+"@tiptap/extension-task-list@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-task-list/-/extension-task-list-2.2.4.tgz#138ebeeb8f0bedd58926094d0e0f52ab36dd7548"
+  integrity sha512-URh1Yzj/YZBOMkobK4/U8s1QYwIIqHm4b0YadLPPZx9IzTjyV/2bvIakphCmBtxWxeTXW5TbO9eNod3qatq21w==
+
+"@tiptap/extension-text-style@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-text-style/-/extension-text-style-2.2.4.tgz#078f7fc1712e1b0ac7b6597156b8a9bf12a5eaab"
+  integrity sha512-8Mcxy+HUHPUgK7bOv34m8zhbhzPm6f1/hgbgwz9m+Oel7MNPElsMXtxxygbwtr7Hbj6S4NBoBl/Ir4BkziYRbQ==
 
 "@tiptap/extension-text@^2.2.4":
   version "2.2.4"
@@ -1986,6 +2021,11 @@
     "@tiptap/extension-paragraph" "^2.2.4"
     "@tiptap/extension-strike" "^2.2.4"
     "@tiptap/extension-text" "^2.2.4"
+
+"@tiptap/suggestion@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@tiptap/suggestion/-/suggestion-2.2.4.tgz#746e4659fb4be2f49ad43ee5aa9801cc8154889c"
+  integrity sha512-g6HHsKM6K3asW+ZlwMYyLCRqCRaswoliZOQofY4iZt5ru5HNTSzm3YW4XSyW5RGXJIuc319yyrOFgtJ3Fyu5rQ==
 
 "@tiptap/vue-3@^2.2.4":
   version "2.2.4"

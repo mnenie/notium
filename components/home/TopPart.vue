@@ -7,7 +7,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="sticky top-0 z-50 flex w-full items-center justify-between py-2.5">
+  <div class="sticky top-0 z-50 flex w-full items-center justify-between py-2.5 select-none px-4">
     <h2 class="text-lg font-semibold tracking-tight">{{ props.title }}</h2>
     <div class="flex items-center">
       <Ellipsis color="rgb(82 82 91)" :size="18" />

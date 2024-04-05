@@ -22,7 +22,7 @@ const emit = defineEmits<{
         >
           <component v-if="item.arrow" :is="item.arrow" class="mr-2 h-4 w-4 -rotate-90" :color="item.color" />
           <component :is="item.icon" class="mr-2 h-4 w-4" :color="item.color" />
-          <span class="text-zinc-700">{{ item.title }}</span>
+          <span class="text-zinc-600 text-[13px]">{{ item.title }}</span>
         </UiButton>
       </div>
     </div>

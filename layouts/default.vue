@@ -4,12 +4,13 @@ const { title, changeActiveMenu, menuItems } = useLayout();
 
 <template>
   <div class="relative flex h-screen flex-1">
-    <div class="flex w-56 flex-col justify-between border-r border-zinc-50 bg-zinc-50/80 p-1.5">
-      <LayoutSidebar :menu-items @change-active-menu="changeActiveMenu" />
+    <div class="flex w-[280px] flex-col justify-between bg-zinc-50/80 p-1.5 select-none"
+      style="box-shadow: rgba(0, 0, 0, 0.024) -1px 0px 0px 0px inset">
+      <LayoutSidebar :menu-items="menuItems" @change-active-menu="changeActiveMenu" />
       <HomeAccount />
     </div>
-    <div class="flex w-full flex-col px-4">
-      <HomeTopPart :title />
+    <div class="flex w-full flex-col">
+      <HomeTopPart :title="title" />
       <slot />
     </div>
   </div>

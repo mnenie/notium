@@ -62,7 +62,7 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = {} as UserType;
       const uid = useCookie('uid');
       uid.value = null;
-      await navigateTo(LOGIN_ROUTE);
+      await navigateTo(HOME_ROUTE);
     } catch (e) {
       console.log(e);
     }
