@@ -56,6 +56,7 @@ const onSubmit = handleSubmit(async (values) => {
                   id="email"
                   placeholder="user@example.com"
                   type="email"
+                  :disabled="isLoading"
                 />
               </UiFormControl>
               <UiFormMessage />
@@ -71,6 +72,7 @@ const onSubmit = handleSubmit(async (values) => {
                   id="password"
                   placeholder="user_password_example"
                   type="password"
+                  :disabled="isLoading"
                 />
               </UiFormControl>
               <UiFormMessage />

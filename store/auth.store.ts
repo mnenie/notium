@@ -1,4 +1,5 @@
 import type { User } from 'firebase/auth';
+import { ABOUT_ROUTE } from '~/utils/consts';
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref({} as UserType);
@@ -14,11 +15,11 @@ export const useAuthStore = defineStore('auth', () => {
         email: userInfo.email,
         id: response?.user.uid!
       };
-      console.log(user.value);
     } catch (err: any) {
       throw new Error(err);
     } finally {
       isLoading.value = false;
+      await navigateTo(ABOUT_ROUTE);
     }
   };
 
@@ -30,11 +31,11 @@ export const useAuthStore = defineStore('auth', () => {
         email: userInfo.email,
         id: response?.user.uid!
       };
-      console.log(user.value);
     } catch (err: any) {
       throw new Error(err);
     } finally {
       isLoading.value = false;
+      await navigateTo(ABOUT_ROUTE);
     }
   };
 
@@ -47,11 +48,11 @@ export const useAuthStore = defineStore('auth', () => {
         email: response?.user.email!,
         photoUrl: response?.user.photoURL!
       };
-      console.log(response);
     } catch (err: any) {
       throw new Error(err);
     } finally {
       isLoading.value = false;
+      await navigateTo(ABOUT_ROUTE);
     }
   };
 
