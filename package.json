@@ -13,6 +13,9 @@
   "dependencies": {
     "@formkit/auto-animate": "^0.8.1",
     "@pinia/nuxt": "^0.5.1",
+    "@tiptap/pm": "^2.2.4",
+    "@tiptap/starter-kit": "^2.2.4",
+    "@tiptap/vue-3": "^2.2.4",
     "@vee-validate/zod": "^4.12.6",
     "@vueuse/core": "^10.9.0",
     "@vueuse/motion": "^2.1.0",

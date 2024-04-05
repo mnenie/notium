@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const {title, changeActiveMenu, menuItems} = useLayout()
+const { title, changeActiveMenu, menuItems } = useLayout();
 </script>
 
 <template>
