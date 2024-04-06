@@ -19,9 +19,6 @@ const content = ref(`
           <li>Contributor of <span style="font-weight: 500;font-style: italic;">@vuejs</span> 💚 community.</li>
           <li>Have a lot of projects ranging from standard applications to large-scale endeavors, such as an ecommerce websites, business services, agile system, virtual whiteboard, configs and more.</li>
         </ul>
-        <p>
-          Realize your live as notes in Notium!
-        </p>
         <span style="color: rgb(113 113 122)">👉 Have a question? Telegram - <span>@youngjuicycashrussia</span> 🌐, send me a message.</span>
 `)
 </script>

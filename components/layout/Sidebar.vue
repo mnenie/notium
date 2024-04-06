@@ -11,7 +11,7 @@ const emit = defineEmits<{
 <template>
   <nav class="">
     <div class="py-1">
-      <h2 class="mb-2.5 px-4 text-lg font-semibold tracking-tight">Workspace</h2>
+      <h2 class="mb-2.5 px-4 text-[20px] font-semibold tracking-tight">Workspace</h2>
       <div class="space-y-1">
         <UiButton
           v-for="item in props.menuItems"
@@ -22,7 +22,7 @@ const emit = defineEmits<{
         >
           <component v-if="item.arrow" :is="item.arrow" class="mr-2 h-4 w-4 -rotate-90" :color="item.color" />
           <component :is="item.icon" class="mr-2 h-4 w-4" :color="item.color" />
-          <span class="text-zinc-600 text-[13px]">{{ item.title }}</span>
+          <span class="text-zinc-600 text-sm">{{ item.title }}</span>
         </UiButton>
       </div>
     </div>

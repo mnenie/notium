@@ -19,18 +19,18 @@ const authStore = useAuthStore()
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <UiButton variant="ghost" class="flex h-9 w-[250px] items-center justify-between">
+      <UiButton variant="ghost" class="flex h-9 w-[236px] items-center justify-between">
         <div class="mr-4 flex items-center">
           <Avatar class="mr-2 h-5 w-5">
             <AvatarImage src="https://www.shadcn-vue.com/avatars/02.png" alt="@shadcn" />
             <AvatarFallback>SC</AvatarFallback>
           </Avatar>
-          <span class="w-44 overflow-hidden text-ellipsis whitespace-nowrap">1alexpeshkov@gmail.com</span>
+          <span class="w-32 overflow-hidden text-ellipsis whitespace-nowrap">1alexpeshkov@gmail.com</span>
         </div>
         <ChevronsUpDown class="h-4 w-4 shrink-0 opacity-50" />
       </UiButton>
     </DropdownMenuTrigger>
-    <DropdownMenuContent class="w-[250px]">
+    <DropdownMenuContent class="w-[236px]">
       <DropdownMenuLabel class="w-56 overflow-hidden text-ellipsis whitespace-nowrap">
         1alexpeshkov@gmail.com
       </DropdownMenuLabel>

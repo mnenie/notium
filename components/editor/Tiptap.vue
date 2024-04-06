@@ -1,54 +1,63 @@
 <script setup lang="ts">
-import { useEditor, EditorContent, FloatingMenu, BubbleMenu, type Content } from '@tiptap/vue-3'
-import StarterKit from '@tiptap/starter-kit'
-import Placeholder from '@tiptap/extension-placeholder'
-import { Color } from '@tiptap/extension-color'
-import Text from '@tiptap/extension-text'
-import TextStyle from '@tiptap/extension-text-style'
-import ListItem from '@tiptap/extension-list-item'
-import OrderedList from '@tiptap/extension-ordered-list'
-import HardBreak from '@tiptap/extension-hard-break'
-import Focus from '@tiptap/extension-focus'
+import { useEditor, EditorContent, type Content } from '@tiptap/vue-3';
+import StarterKit from '@tiptap/starter-kit';
+import Placeholder from '@tiptap/extension-placeholder';
+import { Color } from '@tiptap/extension-color';
+import Text from '@tiptap/extension-text';
+import TextStyle from '@tiptap/extension-text-style';
+import ListItem from '@tiptap/extension-list-item';
+import OrderedList from '@tiptap/extension-ordered-list';
+import HardBreak from '@tiptap/extension-hard-break';
+import Focus from '@tiptap/extension-focus';
+import Bold from '@tiptap/extension-bold';
+import Document from '@tiptap/extension-document';
+import Paragraph from '@tiptap/extension-paragraph';
+import Heading from '@tiptap/extension-heading';
 
 const props = defineProps<{
-  modelValue: Content
+  modelValue: Content;
 }>();
 
-const emits = defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:modelValue']);
 
 const editor = useEditor({
   content: props.modelValue,
   onUpdate: ({ editor }) => {
-    emits('update:modelValue', editor.getHTML())
+    emits('update:modelValue', editor.getHTML());
   },
   extensions: [
     StarterKit,
     Placeholder.configure({
       placeholder: () => {
-        return `Write something, or press 'space' for AI, '/' for commands…`
-      },
+        return `Write something, or press 'space' for AI, '/' for commands…`;
+      }
     }),
     Focus.configure({
       className: 'focus-editor',
-      mode: 'deepest',
-
+      mode: 'deepest'
     }),
     Color,
+    Document,
+    Paragraph,
     Text,
+    Bold,
     TextStyle,
     OrderedList,
     ListItem,
     HardBreak,
+    Heading.configure({
+      levels: [1, 2, 3, 4]
+    })
   ],
   editable: true,
   autofocus: useRoute().path === ABOUT_ROUTE ? 75 : 'start',
   editorProps: {
     attributes: {
       class: 'blog',
-      spellcheck: 'false',
+      spellcheck: 'false'
     }
   }
-})
+});
 
 onMounted(() => {
   onMounted(() => {
@@ -59,22 +68,12 @@ onMounted(() => {
       }
     }
   });
-})
+});
 </script>
 <template>
   <div class="overflow-auto">
-    <bubble-menu :editor="editor" :tippy-options="{ duration: 100 }" v-if="editor">
-      <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
-        bold
-      </button>
-      <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
-        italic
-      </button>
-      <button @click="editor.chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
-        strike
-      </button>
-    </bubble-menu>
-    <editor-content :editor="editor" />
+    <EditorBubbleMenu :editor="editor" />
+    <EditorContent :editor="editor" />
   </div>
 </template>
 
