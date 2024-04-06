@@ -2,7 +2,8 @@
 import { ChevronLeft } from 'lucide-vue-next';
 
 definePageMeta({
-  layout: 'auth'
+  layout: 'auth',
+  middleware: 'sign-in'
 });
 
 useSeoMeta({

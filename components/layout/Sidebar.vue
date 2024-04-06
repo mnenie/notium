@@ -11,7 +11,7 @@ const emit = defineEmits<{
 <template>
   <nav class="">
     <div class="py-1">
-      <h2 class="mb-2.5 px-4 text-[20px] font-semibold tracking-tight">Workspace</h2>
+      <h2 class="mb-2.5 px-4 text-lg font-semibold tracking-tight">Workspace</h2>
       <div class="space-y-1">
         <UiButton
           v-for="item in props.menuItems"

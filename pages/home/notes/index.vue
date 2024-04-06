@@ -1,6 +1,9 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Home | Notium'
+  title: 'Notium - cloud app of your notes'
+});
+definePageMeta({
+  middleware: 'auth'
 });
 </script>
 

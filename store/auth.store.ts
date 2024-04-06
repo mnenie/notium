@@ -2,35 +2,45 @@ import type { User } from 'firebase/auth';
 import { ABOUT_ROUTE } from '~/utils/consts';
 
 export const useAuthStore = defineStore('auth', () => {
-  const user = ref({} as UserType);
+  const user = ref<null | UserType>(null);
   const isLoading = ref<boolean>(false);
+  const token = useCookie('token');
 
-  const { onLoginEmail, onRegistrationEmail, onGithubLogin, getCurrentUser, onLogout } = useAppwriteAuth();
+  const { onFirebaseLogin, onFirebaseRegistration, onGithubLogin, getCurrentFirebaseUser, onLogout } = useFirebaseAuth();
 
   const login = async (userInfo: { email: string; password: string }) => {
     isLoading.value = true;
     try {
-      const response = await onLoginEmail(userInfo);
+      const response = await onFirebaseLogin(userInfo);
       user.value = {
         email: userInfo.email,
         id: response?.user.uid!
       };
+      //@ts-ignore
+      token.value = response?.user.accessToken;
+      if (token.value) {
+        navigateTo(ABOUT_ROUTE);
+      }
     } catch (err: any) {
       throw new Error(err);
     } finally {
       isLoading.value = false;
-      await navigateTo(ABOUT_ROUTE);
     }
   };
 
   const registration = async (userInfo: { email: string; password: string }) => {
     isLoading.value = true;
     try {
-      const response = await onRegistrationEmail(userInfo);
+      const response = await onFirebaseRegistration(userInfo);
       user.value = {
         email: userInfo.email,
         id: response?.user.uid!
       };
+      //@ts-ignore
+      token.value = response?.user.accessToken;
+      if (token.value) {
+        navigateTo(ABOUT_ROUTE);
+      }
     } catch (err: any) {
       throw new Error(err);
     } finally {
@@ -48,6 +58,11 @@ export const useAuthStore = defineStore('auth', () => {
         email: response?.user.email!,
         photoUrl: response?.user.photoURL!
       };
+      //@ts-ignore
+      token.value = response?.user.accessToken;
+      if (token.value) {
+        navigateTo(ABOUT_ROUTE);
+      }
     } catch (err: any) {
       throw new Error(err);
     } finally {
@@ -59,7 +74,8 @@ export const useAuthStore = defineStore('auth', () => {
   const logout = async () => {
     try {
       await onLogout();
-      user.value = {} as UserType;
+      user.value = null;
+      token.value = '';
       const uid = useCookie('uid');
       uid.value = null;
       await navigateTo(HOME_ROUTE);
@@ -68,9 +84,9 @@ export const useAuthStore = defineStore('auth', () => {
     }
   };
 
-  const getCurrentSessionUser = async () => {
+  const getCurrentUser = async () => {
     try {
-      const response = (await getCurrentUser()) as User;
+      const response = (await getCurrentFirebaseUser()) as User;
       user.value = {
         id: response.uid,
         email: response.email!,
@@ -88,6 +104,6 @@ export const useAuthStore = defineStore('auth', () => {
     registration,
     oAuth2Github,
     logout,
-    getCurrentSessionUser
+    getCurrentUser
   };
 });

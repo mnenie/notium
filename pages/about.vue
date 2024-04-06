@@ -1,4 +1,11 @@
 <script setup lang="ts">
+useSeoMeta({
+  title: 'Notium - cloud app of your notes'
+});
+definePageMeta({
+  middleware: 'auth'
+});
+
 const content = ref(`
         <h1>👋 Welcome to Notium</h1>
         <p>Cloud app for users that can realize their thoughts</p>
