@@ -34,6 +34,6 @@ onMounted(async () => {
         GitHub
       </UiButton>
     </div>
-    <img class="rounded-[0.5rem] border shadow" src="/img/mac.png" />
+    <img class="rounded-[0.5rem] border shadow" src="/img/about/1.png" />
   </section>
 </template>
