@@ -1,15 +1,20 @@
 <script setup lang="ts">
+import { useAuthStore } from '~/store/auth.store';
+
 const props = defineProps<{
   menuItems: Menu[];
 }>();
 
 const emit = defineEmits<{
-  (e: 'changeActiveMenu', id: number): void
-}>()
+  (e: 'changeActiveMenu', id: number): void;
+}>();
+
+const authstore = useAuthStore();
+const { isSkeleton } = storeToRefs(authstore);
 </script>
 
 <template>
-  <nav class="">
+  <nav v-if="!isSkeleton">
     <div class="py-1">
       <h2 class="mb-2.5 px-4 text-lg font-semibold tracking-tight">Workspace</h2>
       <div class="space-y-1">
@@ -22,9 +27,10 @@ const emit = defineEmits<{
         >
           <component v-if="item.arrow" :is="item.arrow" class="mr-2 h-4 w-4 -rotate-90" :color="item.color" />
           <component :is="item.icon" class="mr-2 h-4 w-4" :color="item.color" />
-          <span class="text-zinc-600 text-sm">{{ item.title }}</span>
+          <span class="text-sm text-zinc-600">{{ item.title }}</span>
         </UiButton>
       </div>
     </div>
   </nav>
+  <LayoutSkeletonSidebar v-else />
 </template>

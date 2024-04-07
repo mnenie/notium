@@ -49,7 +49,19 @@ export default function useLayout() {
         title.value = btn.title;
       }
     });
+    sessionStorage.setItem('activeMenuId', String(id));
   };
+
+  const initializeActiveMenuItem = () => {
+    const activeMenuItemId = sessionStorage.getItem('activeMenuId');
+    if (activeMenuItemId) {
+      changeActiveMenu(parseInt(activeMenuItemId));
+    }
+  };
+
+  onMounted(() => {
+    initializeActiveMenuItem();
+  });
 
   return {
     menuItems,

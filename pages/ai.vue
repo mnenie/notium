@@ -8,5 +8,9 @@ definePageMeta({
 </script>
 
 <template>
-  <div>ai</div>
+  <div class="relative px-72 h-full w-full flex-col flex justify-end">
+    <div class="flex items-center justify-center w-full">
+      <AiMessage />
+    </div>
+  </div>
 </template>

@@ -1,5 +1,17 @@
 <script setup lang="ts">
+import { useAuthStore } from '~/store/auth.store';
+
 const { title, changeActiveMenu, menuItems } = useLayout();
+
+const authstore = useAuthStore();
+
+onMounted(() => {
+  authstore.setSkeleton();
+});
+
+onUnmounted(() => {
+  authstore.setSkeletonOnUnmount();
+})
 </script>
 
 <template>

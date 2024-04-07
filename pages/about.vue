@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useAuthStore } from '~/store/auth.store';
+
 useSeoMeta({
   title: 'Notium - cloud app of your notes'
 });
@@ -16,7 +18,7 @@ const content = ref(`
         <ul>
           <li>Allows users to create and store notes.</li>
           <li>State the priorities.</li>
-          <li>Uses the built-in ai, assistant NotiumAI 🤖.</li>
+          <li>Uses the built-in ai, assistant <code>NotiumAI 🤖</code></li>
         </ul>
         <p>
           Do you want to see more? Ok! Let me know and give me feedback:
@@ -28,8 +30,15 @@ const content = ref(`
         </ul>
         <span style="color: rgb(113 113 122)">👉 Have a question? Telegram - <span>@youngjuicycashrussia</span> 🌐, send me a message.</span>
 `)
+
+const authstore = useAuthStore();
+const { isSkeleton } = storeToRefs(authstore);
 </script>
 
 <template>
-  <EditorTiptap v-model="content" />
+  <EditorTiptap v-if="!isSkeleton" v-model="content" />
+  <div v-else class="flex flex-col gap-6 w-full px-72 pt-36">
+    <UiSkeleton class="h-10 w-[500px]" />
+    <UiSkeleton class="h-6 w-[220px]" />
+  </div>
 </template>

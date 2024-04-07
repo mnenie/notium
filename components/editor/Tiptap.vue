@@ -72,15 +72,17 @@ const editor = useEditor({
 });
 
 onMounted(() => {
-  onMounted(() => {
-    if (editor.value) {
-      const emptyParagraph = document.querySelector('.editor-content p:empty');
-      if (emptyParagraph instanceof HTMLElement) {
-        emptyParagraph.focus();
-      }
+  if (editor.value) {
+    const emptyParagraph = document.querySelector('.editor-content p:empty');
+    if (emptyParagraph instanceof HTMLElement) {
+      emptyParagraph.focus();
     }
-  });
+  }
 });
+
+onBeforeUnmount(() => {
+  editor.value?.destroy();
+})
 </script>
 <template>
   <div class="overflow-auto">

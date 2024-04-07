@@ -5,8 +5,10 @@ export const useAuthStore = defineStore('auth', () => {
   const user = ref<null | UserType>(null);
   const isLoading = ref<boolean>(false);
   const token = useCookie('token');
+  const isSkeleton = ref<boolean>(true);
 
-  const { onFirebaseLogin, onFirebaseRegistration, onGithubLogin, getCurrentFirebaseUser, onLogout } = useFirebaseAuth();
+  const { onFirebaseLogin, onFirebaseRegistration, onGithubLogin, getCurrentFirebaseUser, onLogout } =
+    useFirebaseAuth();
 
   const login = async (userInfo: { email: string; password: string }) => {
     isLoading.value = true;
@@ -97,14 +99,27 @@ export const useAuthStore = defineStore('auth', () => {
     }
   };
 
+  const setSkeleton = () => {
+    setTimeout(() => {
+      isSkeleton.value = false;
+    }, 1500);
+  };
+
+  const setSkeletonOnUnmount = () => {
+    isSkeleton.value = true;
+  };
+
   return {
     user,
     token,
     isLoading,
+    isSkeleton,
     login,
     registration,
     oAuth2Github,
     logout,
+    setSkeleton,
+    setSkeletonOnUnmount,
     getCurrentUser
   };
 });
