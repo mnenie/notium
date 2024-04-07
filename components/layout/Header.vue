@@ -9,7 +9,7 @@ const links = reactive<Links[]>([
 ]);
 
 const authStore = useAuthStore()
-const { user } = storeToRefs(authStore)
+const { user, token } = storeToRefs(authStore)
 
 onMounted(async () => {
   if (user) {
@@ -31,7 +31,7 @@ onMounted(async () => {
           {{ link.name }}
         </span>
       </div>
-      <div v-if="!user" class="flex items-center space-x-3">
+      <div v-if="!token" class="flex items-center space-x-3">
         <UiButton @click="navigateTo(LOGIN_ROUTE)" variant="ghost">Log in</UiButton>
         <UiButton @click="navigateTo(REGISTRATION_ROUTE)">Get started</UiButton>
       </div>

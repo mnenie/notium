@@ -15,7 +15,7 @@ import { useAuthStore } from '~/store/auth.store';
 import { useOnline } from '@vueuse/core'
 
 const authStore = useAuthStore()
-const { user } = storeToRefs(authStore)
+const { user, token } = storeToRefs(authStore)
 const online = useOnline()
 
 onMounted(async () => {
@@ -40,7 +40,7 @@ onMounted(async () => {
       </UiButton>
     </DropdownMenuTrigger>
     <DropdownMenuContent class="w-[236px]">
-      <DropdownMenuLabel v-if="user" class="w-full flex items-center justify-between overflow-hidden text-ellipsis whitespace-nowrap">
+      <DropdownMenuLabel v-if="token && user" class="w-full flex items-center justify-between overflow-hidden text-ellipsis whitespace-nowrap">
         {{ user.email }}
         <div v-if="online" class="h-2 w-2 rounded-full bg-green-600"></div>
         <div v-else class="h-2 w-2 rounded-full bg-amber-500"></div>

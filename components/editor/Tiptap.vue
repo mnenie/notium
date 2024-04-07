@@ -13,6 +13,10 @@ import Bold from '@tiptap/extension-bold';
 import Document from '@tiptap/extension-document';
 import Paragraph from '@tiptap/extension-paragraph';
 import Heading from '@tiptap/extension-heading';
+import Link from '@tiptap/extension-link';
+import Underline from '@tiptap/extension-underline';
+import Code from '@tiptap/extension-code';
+import BulletList from '@tiptap/extension-bullet-list';
 
 const props = defineProps<{
   modelValue: Content;
@@ -41,12 +45,20 @@ const editor = useEditor({
     Paragraph,
     Text,
     Bold,
+    Underline,
     TextStyle,
     OrderedList,
     ListItem,
     HardBreak,
+    Code,
+    BulletList,
+    OrderedList,
+    ListItem,
     Heading.configure({
       levels: [1, 2, 3, 4]
+    }),
+    Link.configure({
+      openOnClick: true
     })
   ],
   editable: true,

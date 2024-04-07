@@ -3,7 +3,7 @@ import { redirect } from '~/helpers/helperBlankRedirect';
 import { useAuthStore } from '~/store/auth.store';
 
 const authStore = useAuthStore()
-const {user} = storeToRefs(authStore)
+const {user, token} = storeToRefs(authStore)
 
 onMounted(async () => {
   if(user){
@@ -27,7 +27,7 @@ onMounted(async () => {
       AI, assistant NotiumAI
     </p>
     <div class="flex w-full items-center justify-center space-x-4 py-4 md:pb-10">
-      <UiButton v-if="!user" @click="navigateTo(REGISTRATION_ROUTE)">Get Started</UiButton>
+      <UiButton v-if="!token" @click="navigateTo(REGISTRATION_ROUTE)">Get Started</UiButton>
       <UiButton v-else @click="navigateTo(ABOUT_ROUTE)">Go to Notium</UiButton>
       <UiButton @click="redirect('https://github.com/mnenie/Notium')" variant="outline">
         <img src="/icons/github.png" class="mr-2 h-4 w-4" />
