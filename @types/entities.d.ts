@@ -12,3 +12,8 @@ type Note = {
   favorite: boolean;
   prioritet: string;
 };
+
+type ChatCompletionRequestMessage = {
+  role: 'user' | 'assistant';
+  content: string;
+}
