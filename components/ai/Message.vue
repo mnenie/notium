@@ -13,7 +13,7 @@ onMounted(() => {
   authstore.setSkeleton();
 });
 
-const model = defineModel<string>('')
+const model = defineModel<string>()
 </script>
 
 <template>

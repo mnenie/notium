@@ -2,7 +2,7 @@ import OpenAI from "openai";
 
 const config = useRuntimeConfig();
 const openai = new OpenAI({
-    apiKey: config.openaiKey
+    apiKey: config.OPENAI_KEY
 });
 
 export default defineEventHandler(async (event) => {

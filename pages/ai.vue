@@ -11,6 +11,7 @@ const model = ref("")
 const messages = ref<ChatCompletionRequestMessage[]>([]);
 
 const handleSubmit = async () => {
+  console.log(model.value)
   const userMessage: ChatCompletionRequestMessage = {
     role: 'user',
     content: model.value,
@@ -22,9 +23,6 @@ const handleSubmit = async () => {
       messages: newMessages,
     },
   });
-  if (error.value) {
-    console.log(error.value.statusMessage);
-  }
   if (data.value) {
     messages.value = [
       ...messages.value,
@@ -36,7 +34,6 @@ const handleSubmit = async () => {
     ];
     await refreshNuxtData('userData');
   }
-  model.value = '';
 };
 
 </script>
