@@ -13,7 +13,6 @@ const props = defineProps<{
 <style scoped>
 .btn-bubble-menu {
   user-select: none;
-  transition: background 20ms ease-in 0s;
   cursor: pointer;
   display: flex;
   padding: 0 6px;

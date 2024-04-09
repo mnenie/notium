@@ -2,19 +2,25 @@
 import { ArrowBigUpDash } from 'lucide-vue-next';
 import { useAuthStore } from '~/store/auth.store';
 
+const emit = defineEmits<{
+  (e: 'onSubmit'): void;
+}>()
+
 const authstore = useAuthStore();
 const { isSkeleton } = storeToRefs(authstore);
 
 onMounted(() => {
   authstore.setSkeleton();
 });
+
+const model = defineModel<string>('')
 </script>
 
 <template>
   <div v-if="!isSkeleton" class="relative flex w-full flex-col items-center">
     <div class="relative w-full">
-      <UiTextarea placeholder="Tell NotiumAI a little bit about yourself" class="h-[41px] resize-none" />
-      <UiButton variant="ghost" class="absolute right-[3px] top-1/2 -translate-y-1/2 px-2">
+      <UiTextarea v-model="model" placeholder="Tell NotiumAI a little bit about yourself" class="h-[50px] resize-none" />
+      <UiButton @click="emit('onSubmit')" variant="ghost" class="absolute right-[3px] top-1/2 -translate-y-1/2 px-2">
         <ArrowBigUpDash color="rgb(82 82 91 / 0.9)" />
       </UiButton>
     </div>

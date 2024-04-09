@@ -1,14 +1,19 @@
 <script setup lang="ts">
+import { useNotesStore } from '~/store/notes.store';
+
 useSeoMeta({
   title: 'Notium - cloud app of your notes'
 });
 definePageMeta({
   middleware: 'auth'
 });
+
+const { notes } = storeToRefs(useNotesStore());
 </script>
 
 <template>
   <div class="w-full">
-    <HomeEmptyNotes />
+    <HomeEmptyNotes v-if="!notes" />
+    <HomeNotes v-else />
   </div>
 </template>
