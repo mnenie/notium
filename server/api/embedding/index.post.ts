@@ -1,6 +1,7 @@
 import {pinecone, getEmbedding} from '~/server/utils'
 
 export default defineEventHandler(async (event) => {
+
   const { title, content, id, userId } = await readBody(event);
 
   const getEmbeddingForNote = async (title: string, content: string | undefined) => {

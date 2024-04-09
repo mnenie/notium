@@ -18,12 +18,12 @@ const model = defineModel<string>('')
 
 <template>
   <div v-if="!isSkeleton" class="relative flex w-full flex-col items-center">
-    <div class="relative w-full">
+    <form @submit.prevent="emit('onSubmit')" class="relative w-full">
       <UiTextarea v-model="model" placeholder="Tell NotiumAI a little bit about yourself" class="h-[50px] resize-none" />
-      <UiButton @click="emit('onSubmit')" variant="ghost" class="absolute right-[3px] top-1/2 -translate-y-1/2 px-2">
+      <UiButton type="submit" variant="ghost" class="absolute right-[3px] top-1/2 -translate-y-1/2 px-2">
         <ArrowBigUpDash color="rgb(82 82 91 / 0.9)" />
       </UiButton>
-    </div>
+    </form>
     <span class="py-1 text-sm text-zinc-400">
       Notium AI - your ai assistant. Remember your ideas in one click.
     </span>

@@ -9,6 +9,7 @@ const props = defineProps<{
 
 <template>
   <BubbleMenu v-if="props.editor" :editor="props.editor" :tippy-options="{ duration: 100 }">
+    <EditorAiButton />
     <EditorHeading :editor="props.editor" />
     <EditorTextStyles :editor="props.editor" />
     <EditorLink :editor="props.editor" />

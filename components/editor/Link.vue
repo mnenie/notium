@@ -2,7 +2,6 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Link } from 'lucide-vue-next';
 import { Editor } from '@tiptap/vue-3';
-import MenuButton from './MenuButton.vue';
 
 const props = defineProps<{
   editor: Editor | undefined;
@@ -29,9 +28,9 @@ const onLink = () => {
   <div class="h-full">
     <DropdownMenu>
       <DropdownMenuTrigger class="h-full" as-child>
-        <MenuButton :is-active="props.editor!.isActive('link')" @click="onLink" class="h-full">
+        <EditorMenuButton :is-active="props.editor!.isActive('link')" @click="onLink" class="h-full">
           <Link :size="14" />
-        </MenuButton>
+        </EditorMenuButton>
       </DropdownMenuTrigger>
       <DropdownMenuContent class="p-2 mt-4 shadow-xl">
         <UiInput class="h-7" v-model="urlRef" placeholder="Paste your link" ref="" />
