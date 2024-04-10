@@ -2,8 +2,15 @@ export const useNotesStore = defineStore('notes', () => {
   const notes = ref([
     {
       id: '1',
-      title: 'Football',
-      content: 'I need go to the football on Monday',
+      title: 'Футбол',
+      content: 'Мне надо пойти на матч в понедельник',
+      favorite: false,
+      prioritet: 'none'
+    },
+    {
+      id: '2',
+      title: 'Рецепт',
+      content: 'Рецепт пирога: 2 яйца и одно пшано',
       favorite: false,
       prioritet: 'none'
     },

@@ -15,5 +15,5 @@ type Note = {
 
 type ChatCompletionRequestMessage = {
   role: 'user' | 'assistant';
-  content: string;
+  text: string;
 }

@@ -17,7 +17,7 @@ const model = defineModel<string>()
 </script>
 
 <template>
-  <div v-if="!isSkeleton" class="relative flex w-full flex-col items-center">
+  <div v-if="!isSkeleton" class="relative flex w-full flex-col items-center mt-10">
     <form @submit.prevent="emit('onSubmit')" class="relative w-full">
       <UiTextarea v-model="model" placeholder="Tell NotiumAI a little bit about yourself" class="h-[50px] resize-none" />
       <UiButton type="submit" variant="ghost" class="absolute right-[3px] top-1/2 -translate-y-1/2 px-2">

@@ -1,29 +1,47 @@
-import OpenAI from "openai";
-
-const config = useRuntimeConfig();
-const openai = new OpenAI({
-    apiKey: config.OPENAI_KEY
-});
+import { getIamToken } from '~/server/utils/auth-gpt';
 
 export default defineEventHandler(async (event) => {
-    const { messages } = await readBody(event);
-    if (!openai.apiKey) {
-        throw createError({
-            statusCode: 500,
-            statusMessage: 'OpenAI API Key not configured.',
-        })
-    }
-    if (!messages) {
-        throw createError({
-            statusCode: 400,
-            statusMessage: 'Messages are required',
-        })
+  const config = useRuntimeConfig();
 
-    }
-    const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages,
-    })
-    return response.choices[0].message
+  const { text, dists, most_similar_index, most_similar_note } = await readBody(event);
 
-})
+  const token = await getIamToken(config);
+
+  const similarityThreshold = 0.6;
+  if (dists[most_similar_index] < similarityThreshold) {
+    const response_completion = await fetch(
+      'https://llm.api.cloud.yandex.net/foundationModels/v1/completion',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          'x-folder-id': config.YANDEX_FOLDER_ID
+        },
+        body: JSON.stringify({
+          modelUri: `gpt://${config.YANDEX_FOLDER_ID}/yandexgpt`,
+          completionOptions: {
+            stream: false,
+            temperature: 0.2,
+            maxTokens: '8000'
+          },
+          messages: [
+            {
+              role: 'system',
+              text: `Ты умное приложение для заметок для помощи людям найти подходящую заметку из существующих. Выводи всегда типо: У вас есть такая заметка с названием: ${most_similar_note.title}, и да, ${most_similar_note.content}.Есть ли у вас еще вопросы?, ну и представь пользователю возможно как бы ты исправил содержимое заметки`
+            },
+            {
+              role: 'user',
+              text
+            }
+          ]
+        })
+      }
+    );
+
+    const response_completionData = await response_completion.json();
+    return response_completionData.result.alternatives[0].message;
+  } else {
+    return { role: 'assistant', text: 'Подходящей заметки не найдено, запишите свои идеи в Notium!' };
+  }
+});
