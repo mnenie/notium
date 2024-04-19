@@ -20,3 +20,10 @@ type Menu = {
   active: boolean;
   route: string;
 };
+
+type Priority = {
+  label: string;
+  value: string;
+  color?: string;
+  icon?: Component;
+};

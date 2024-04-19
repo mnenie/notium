@@ -12,19 +12,26 @@ const model = ref('');
 const messages = ref<ChatCompletionRequestMessage[]>([]);
 
 const { notes } = storeToRefs(useNotesStore());
-const {usePostConversations} = useConversation(notes.value, model)
+const { usePostConversations } = useConversation(notes.value, model);
 
 const handleSubmit = async () => {
+  const userMessage: { role: 'user'; text: string } = { role: 'user', text: model.value };
+  messages.value.push(userMessage);
   const response = await usePostConversations();
-  messages.value = response;
+  messages.value.push(response);
+  model.value = '';
 };
 </script>
 
 <template>
-  <div class="relative flex h-full w-full flex-col justify-end px-72">
-    <div class="flex w-full flex-col items-center justify-center">
-      {{ messages }}
-      <AiMessage v-model="model" @on-submit="handleSubmit" />
-    </div>
+  <div class="transition-width messages relative w-full flex-col">
+    <AiContent :messages="messages" class="" />
+    <AiMessage v-model="model" @on-submit="handleSubmit" />
   </div>
 </template>
+
+<style scoped>
+.messages {
+  height: calc(100% - 128px);
+}
+</style>

@@ -22,7 +22,7 @@ onUnmounted(() => {
       <HomeAccount />
     </div>
     <div class="flex w-full flex-col">
-      <HomeTopPart :title="title" />
+      <LayoutTopPart :title="title" />
       <slot />
     </div>
   </div>
