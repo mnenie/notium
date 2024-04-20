@@ -9,10 +9,21 @@ const {user} = storeToRefs(useAuthStore())
 </script>
 <template>
   <div class="px-4 pt-4">
-    <div class="grid grid-cols-5 gap-3">
+    <div class="grid gap-3 grid-cols-5 notes">
       <HomeNote :notes="notes" />
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@media screen and (max-width: 1670px) {
+  .notes{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media screen and (max-width: 1340px) {
+  .notes{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+</style>

@@ -17,7 +17,7 @@ const model = defineModel<string>();
 </script>
 
 <template>
-  <div v-if="!isSkeleton" class="flex w-full flex-col items-center px-72 mt-2">
+  <div v-if="!isSkeleton" class="flex w-full flex-col items-center px-64">
     <form @submit.prevent="emit('onSubmit')" class="relative w-full">
       <UiInput
         v-model="model"

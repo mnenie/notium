@@ -11,9 +11,12 @@ type Note = {
   date?: string;
   favorite: boolean;
   prioritet: string;
+  createdAt?: Date;
+  updateAt?: Date;
+  deleteAt?: Date;
 };
 
 type ChatCompletionRequestMessage = {
   role: 'user' | 'assistant';
   text: string;
-}
+};

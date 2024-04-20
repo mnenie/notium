@@ -28,13 +28,13 @@ onMounted(async () => {
 <template>
   <DropdownMenu v-if="!isSkeleton && token">
     <DropdownMenuTrigger as-child>
-      <UiButton variant="ghost" class="flex h-9 w-[236px] items-center justify-between">
+      <UiButton variant="ghost" class="flex w-[236px] items-center justify-between py-1 h-9">
         <div class="mr-4 flex items-center">
-          <Avatar class="mr-2 h-5 w-5">
+          <Avatar class="mr-2 h-6 w-6">
             <AvatarImage v-if="user && user.photoUrl" :src="user.photoUrl" :alt="user.email" />
             <AvatarFallback v-if="user && user.email">{{ user.email.slice(0, 2) }}</AvatarFallback>
           </Avatar>
-          <span v-if="user" class="w-36 overflow-hidden text-ellipsis whitespace-nowrap">{{
+          <span v-if="user" class="w-40 overflow-hidden text-ellipsis whitespace-nowrap text-[13px]">{{
             user.email
           }}</span>
         </div>
