@@ -28,14 +28,14 @@ const emit = defineEmits<{
     <PopoverTrigger as-child>
       <UiButton variant="outline" size="sm" class="mr-1 flex h-7 items-center border-dashed">
         <PlusCircleIcon class="mr-2 h-4 w-4" color="rgb(82 82 91)" />
-        <span class="text-sm">Priority</span>
+        <span class="text-xs">Priority</span>
         <template v-if="selectedValues.length > 0">
           <Separator orientation="vertical" class="mx-2 h-4" />
           <Badge variant="secondary" class="rounded-sm px-1 font-normal lg:hidden">
             {{ selectedValues.length }}
           </Badge>
           <div class="hidden space-x-1 lg:flex">
-            <Badge v-if="selectedValues.length > 2" variant="secondary" class="rounded-sm px-1 font-normal">
+            <Badge v-if="selectedValues.length > 2" variant="secondary" class="rounded-sm px-1 font-normal text-xs">
               {{ selectedValues.length }} selected
             </Badge>
 
@@ -88,7 +88,7 @@ const emit = defineEmits<{
                     class="mr-2 h-4 w-4"
                     color="rgb(82 82 91 / 0.9)"
                   />
-                  <span>{{ option.value }}</span>
+                  <span class="text-xs">{{ option.value }}</span>
                 </div>
               </div>
             </CommandItem>

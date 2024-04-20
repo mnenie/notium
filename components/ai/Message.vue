@@ -22,7 +22,7 @@ const model = defineModel<string>();
       <UiInput
         v-model="model"
         placeholder="Tell NotiumAI a little bit about yourself"
-        class="h-12"
+        class="h-11"
       />
       <UiButton type="submit" variant="ghost" class="absolute right-[3px] top-1/2 -translate-y-1/2 px-2">
         <ArrowBigUpDash color="rgb(82 82 91 / 0.9)" />

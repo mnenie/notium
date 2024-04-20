@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/store/auth.store';
-import { Star } from 'lucide-vue-next';
+import { Star, PlusCircleIcon } from 'lucide-vue-next';
 import { priorities } from '~/mocks/priorities';
 
 const props = defineProps<{
@@ -46,10 +46,11 @@ const toggleStar = () => {
           @toogle-priority="togglePriority"
         />
         <UiButton @click="toggleStar" variant="outline" size="sm" class="h-7 border-dashed px-2">
-          <Star class="h-4 w-4" :color="colorStar" />
+          <Star class="h-[15px] w-[15px]" :color="colorStar" />
         </UiButton>
       </div>
       <UiSkeleton v-else class="h-6 w-[180px]" />
     </div>
+    <FeaturesFilterNotes v-if="$route.path === NOTES_ROUTE || $route.path === FAVORITES_ROUTE" />
   </div>
 </template>

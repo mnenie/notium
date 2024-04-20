@@ -32,6 +32,6 @@ const handleSubmit = async () => {
 
 <style scoped>
 .messages {
-  height: calc(100% - 128px);
+  height: calc(100% - 126px);
 }
 </style>

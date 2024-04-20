@@ -9,7 +9,7 @@ const props = defineProps<{
 <template>
   <div class="flex h-full flex-1 flex-col-reverse overflow-y-auto px-72">
     <div class="flex h-full flex-col-reverse">
-      <div v-for="(message, index) in props.messages" :key="index" class="mb-4 flex items-center gap-4">
+      <div v-for="(message, index) in props.messages" :key="index" :class="cn('mb-4 flex items-center gap-4', message.role === 'user' ? 'flex-row-reverse' : '')">
         <UiAvatar
           size="sm"
           :class="
