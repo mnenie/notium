@@ -16,9 +16,12 @@ type Menu = {
   title: string;
   icon: Component;
   arrow?: Component;
+  isArrowActive?: boolean;
   color?: string;
-  active: boolean;
   route: string;
+  notes?: Note[];
+  favrites?: Note[];
+  iconsFile?: Component;
 };
 
 type Priority = {

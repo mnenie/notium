@@ -28,20 +28,20 @@ onMounted(async () => {
 <template>
   <DropdownMenu v-if="!isSkeleton && token">
     <DropdownMenuTrigger as-child>
-      <UiButton variant="ghost" class="flex w-[236px] items-center justify-between py-1 h-9">
+      <UiButton variant="ghost" class="flex w-full items-center justify-between py-1 h-9">
         <div class="mr-4 flex items-center">
           <Avatar class="mr-2 h-6 w-6">
             <AvatarImage v-if="user && user.photoUrl" :src="user.photoUrl" :alt="user.email" />
             <AvatarFallback v-if="user && user.email">{{ user.email.slice(0, 2) }}</AvatarFallback>
           </Avatar>
-          <span v-if="user" class="w-40 overflow-hidden text-ellipsis whitespace-nowrap text-[13px]">{{
+          <span v-if="user" class="w-36 overflow-hidden text-ellipsis whitespace-nowrap text-[13px]">{{
             user.email
           }}</span>
         </div>
         <ChevronsUpDown class="h-4 w-4 shrink-0 opacity-50" />
       </UiButton>
     </DropdownMenuTrigger>
-    <DropdownMenuContent class="w-[236px]">
+    <DropdownMenuContent class="z-[999999] w-[220px]">
       <DropdownMenuLabel
         v-if="token && user"
         class="flex w-full items-center justify-between overflow-hidden text-ellipsis whitespace-nowrap"
@@ -63,7 +63,7 @@ onMounted(async () => {
       </DropdownMenuGroup>
     </DropdownMenuContent>
   </DropdownMenu>
-  <div v-else class="flex items-center h-9 px-[14px] py-[5px]">
+  <div v-else class="flex items-center h-9 px-[14px] py-[3px]">
     <UiSkeleton class="h-6 w-6 rounded-full mr-2" />
     <UiSkeleton class="h-4 w-[176px]" />
   </div>

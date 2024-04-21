@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/store/auth.store';
 
-const { title, changeActiveMenu, menuItems } = useLayout();
+const { menuItems } = useLayout();
 
 const authstore = useAuthStore();
+
+const route = useRoute()
+
+const getCurrentMenuItemTitle = computed(() => {
+  const currentItem = menuItems.value.find(item => item.route === route.path);
+  return currentItem ? currentItem.title : '';
+});
 
 onMounted(() => {
   authstore.setSkeleton();
@@ -11,18 +18,14 @@ onMounted(() => {
 
 onUnmounted(() => {
   authstore.setSkeletonOnUnmount();
-})
+});
 </script>
 
 <template>
   <div class="relative flex h-screen flex-1">
-    <div class="flex w-[280px] flex-col justify-between bg-zinc-50/80 p-1.5 pt-2.5 pb-1 select-none"
-      style="box-shadow: rgba(0, 0, 0, 0.024) -1px 0px 0px 0px inset">
-      <LayoutSidebar :menu-items="menuItems" @change-active-menu="changeActiveMenu" />
-      <HomeAccount />
-    </div>
+    <LayoutSidebar :nav-items="menuItems" />
     <div class="flex w-full flex-col">
-      <LayoutTopPart :title="title" />
+      <LayoutTopPart :title="getCurrentMenuItemTitle" />
       <slot />
     </div>
   </div>
