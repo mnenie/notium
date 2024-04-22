@@ -40,7 +40,7 @@ const { notes } = storeToRefs(noteStore);
           color="rgb(82 82 91 / 0.9)"
         />
         <component :is="item.icon" class="mr-2 h-[16px] w-[16px]" :color="item.color" />
-        <span class="text-[13px] text-zinc-600">{{ item.title }}</span>
+        <span class="text-[14px] 2xl:text-[14px] xl:text-[13px] text-zinc-600">{{ item.title }}</span>
       </UiButton>
     </NuxtLink>
     <div
@@ -55,7 +55,7 @@ const { notes } = storeToRefs(noteStore);
         class="h-8 w-full justify-start pl-[50px]"
       >
         <component :is="File" class="mr-2 h-[16px] w-[16px]" color="rgb(82 82 91 / 0.9)" />
-        <span class="text-[13px] text-zinc-600">{{ note.title }}</span>
+        <span class="text-[14px] 2xl:text-[14px] xl:text-[13px] text-zinc-600">{{ note.title }}</span>
       </UiButton>
     </div>
   </div>
