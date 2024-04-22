@@ -37,7 +37,7 @@ const { isSkeleton } = storeToRefs(authstore);
 
 <template>
   <EditorTiptap v-if="!isSkeleton" v-model="content" />
-  <div v-else class="flex flex-col gap-6 w-full px-72 pt-36">
+  <div v-else class="flex flex-col gap-6 w-full px-72 pt-40">
     <UiSkeleton class="h-10 w-[500px]" />
     <UiSkeleton class="h-6 w-[220px]" />
   </div>

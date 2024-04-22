@@ -8,5 +8,8 @@ definePageMeta({
 </script>
 
 <template>
-  <div>settings</div>
+  <div class="h-full px-4 pt-16">
+    <SettingsContacts />
+    <SettingsAppearance />
+  </div>
 </template>

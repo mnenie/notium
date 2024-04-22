@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <UiSkeleton class="mx-4 mb-3.5 mt-[3px] h-6 w-[110px]" />
+    <UiSkeleton class="mx-4 mb-3 mt-[4px] h-6 w-[110px]" />
     <div class="w-full space-y-px px-3">
       <div
         v-for="(_, index) in 5"

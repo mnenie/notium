@@ -34,11 +34,11 @@ const toggleStar = () => {
 
 <template>
   <div
-    class="absolute top-0 right-0 left-0 z-50 flex w-full select-none items-center justify-between bg-[#fff9]/95 px-4 py-1.5 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60"
+    class="absolute top-0 right-0 left-0 z-50 flex w-full select-none items-center justify-between bg-[#fff9]/95 px-4 py-2 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60"
   >
     <h2 v-if="!isSkeleton" class="text-xl font-semibold tracking-tight">{{ props.title }}</h2>
-    <UiSkeleton class="h-6 w-[130px]" v-else />
-    <div v-if="$route.path !== AI_ROUTE && $route.path !== NOTES_ROUTE && $route.path !== FAVORITES_ROUTE">
+    <UiSkeleton class="h-6 w-[130px] mt-[4px]" v-else />
+    <div v-if="$route.path !== AI_ROUTE && $route.path !== NOTES_ROUTE && $route.path !== FAVORITES_ROUTE && $route.path !== SETTINGS_ROUTE">
       <div v-if="!isSkeleton" class="flex items-center">
         <FeaturesPriority
           :priorities="priorities"
@@ -53,7 +53,7 @@ const toggleStar = () => {
     </div>
     <FeaturesFilterNotes v-if="$route.path === NOTES_ROUTE || $route.path === FAVORITES_ROUTE" />
     <UiButton
-      v-if="$route.path === AI_ROUTE"
+      v-if="$route.path === AI_ROUTE || $route.path === SETTINGS_ROUTE"
       @click="navigateTo(NOTES_ROUTE)"
       size="sm"
       variant="outline"

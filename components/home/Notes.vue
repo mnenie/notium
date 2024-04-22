@@ -8,7 +8,7 @@ const {user} = storeToRefs(useAuthStore())
 
 </script>
 <template>
-  <div class="px-4 pt-4 h-full">
+  <div class="px-4 pt-16 h-full">
     <div class="grid gap-3 grid-cols-5 notes">
       <HomeNote :notes="notes" />
     </div>

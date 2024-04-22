@@ -6,7 +6,7 @@ const noteStore = useNotesStore();
 </script>
 <template>
   <div class="flex h-full flex-col">
-    <div class="flex h-full flex-col items-center self-center pt-52">
+    <div class="flex h-full flex-col items-center self-center pt-56">
       <img class="h-52 w-52" src="https://cdn-icons-png.flaticon.com/512/6598/6598519.png" />
       <h2 class="text-2xl font-semibold tracking-tight">
         {{ $route.path === NOTES_ROUTE ? "You don't have any notes" : "You don't have any favorite notes" }}

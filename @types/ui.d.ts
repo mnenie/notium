@@ -30,3 +30,12 @@ type Priority = {
   color?: string;
   icon?: Component;
 };
+
+type ContactCard = {
+  id: number;
+  title: string;
+  description: string;
+  who: string;
+  icon: string;
+  url: string;
+}
