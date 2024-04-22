@@ -24,14 +24,8 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-  <div class="transition-width messages relative w-full flex-col">
+  <div class="transition-width h-full overflow-hidden relative w-full flex-col">
     <AiContent :messages="messages" />
     <AiMessage v-model="model" @on-submit="handleSubmit" />
   </div>
 </template>
-
-<style scoped>
-.messages {
-  height: calc(100% - 104px);
-}
-</style>

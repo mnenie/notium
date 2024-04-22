@@ -41,7 +41,7 @@ onMounted(async () => {
         <ChevronsUpDown class="h-4 w-4 shrink-0 opacity-50" />
       </UiButton>
     </DropdownMenuTrigger>
-    <DropdownMenuContent class="z-[999999] w-[220px]">
+    <DropdownMenuContent class="z-[999999] w-[230px]">
       <DropdownMenuLabel
         v-if="token && user"
         class="flex w-full items-center justify-between overflow-hidden text-ellipsis whitespace-nowrap"

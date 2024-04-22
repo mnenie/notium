@@ -16,7 +16,7 @@ const { isSkeleton } = storeToRefs(authstore);
   >
     <div v-if="!isSkeleton" class="flex flex-col">
       <h2 class="mb-3 px-4 text-xl font-semibold tracking-tight">Workspace</h2>
-      <div class="space-y-1">
+      <div class="space-y-px">
         <MenuItem :menu-items="props.navItems" />
       </div>
     </div>

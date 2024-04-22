@@ -12,8 +12,8 @@ const { notes } = storeToRefs(useNotesStore());
 </script>
 
 <template>
-  <div class="w-full">
-    <HomeEmptyNotes v-if="!notes" />
+  <div class="w-full h-full">
+    <HomeEmptyNotes v-if="notes.length === 0" />
     <HomeNotes v-else />
   </div>
 </template>

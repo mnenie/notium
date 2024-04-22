@@ -40,7 +40,7 @@ const { notes } = storeToRefs(noteStore);
           color="rgb(82 82 91 / 0.9)"
         />
         <component :is="item.icon" class="mr-2 h-[16px] w-[16px]" :color="item.color" />
-        <span class="text-[13px] text-zinc-600">{{ item.title }}</span>
+        <span class="text-sm text-zinc-600">{{ item.title }}</span>
       </UiButton>
     </NuxtLink>
     <div

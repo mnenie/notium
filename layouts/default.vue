@@ -2,7 +2,6 @@
 import { useAuthStore } from '~/store/auth.store';
 
 const { menuItems } = useLayout();
-
 const authstore = useAuthStore();
 
 const route = useRoute()
@@ -15,7 +14,6 @@ const getCurrentMenuItemTitle = computed(() => {
 onMounted(() => {
   authstore.setSkeleton();
 });
-
 onUnmounted(() => {
   authstore.setSkeletonOnUnmount();
 });
@@ -24,7 +22,7 @@ onUnmounted(() => {
 <template>
   <div class="relative flex h-screen flex-1">
     <LayoutSidebar :nav-items="menuItems" />
-    <div class="flex w-full flex-col">
+    <div class="flex w-full flex-col h-full relative">
       <LayoutTopPart :title="getCurrentMenuItemTitle" />
       <slot />
     </div>

@@ -8,11 +8,8 @@ const {user} = storeToRefs(useAuthStore())
 
 </script>
 <template>
-  <div class="px-4 pt-4">
-    <div v-if="notes.length === 0">
-      <HomeEmptyNotes />
-    </div>
-    <div v-else class="grid gap-3 grid-cols-5 notes">
+  <div class="px-4 pt-4 h-full">
+    <div class="grid gap-3 grid-cols-5 notes">
       <HomeNote :notes="notes" />
     </div>
   </div>
