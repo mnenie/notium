@@ -34,7 +34,7 @@ onMounted(async () => {
             <AvatarImage v-if="user && user.photoUrl" :src="user.photoUrl" :alt="user.email" />
             <AvatarFallback v-if="user && user.email">{{ user.email.slice(0, 2) }}</AvatarFallback>
           </Avatar>
-          <span v-if="user" class="w-32 overflow-hidden text-ellipsis whitespace-nowrap text-[13px]">{{
+          <span v-if="user" class="w-[134px] overflow-hidden text-ellipsis whitespace-nowrap text-[13px]">{{
             user.email
           }}</span>
         </div>
