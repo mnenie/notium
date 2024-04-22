@@ -22,6 +22,7 @@ const { isSkeleton } = storeToRefs(authstore);
       <div class="space-y-px">
         <MenuItem :menu-items="props.navItems" />
       </div>
+      <ProvidersVideoPlayer />
     </div>
     <LayoutSkeletonSidebar v-else />
     <MenuAccount />

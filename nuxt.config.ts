@@ -1,3 +1,5 @@
+import { vite as vidstack } from 'vidstack/plugins';
+
 export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
@@ -17,5 +19,13 @@ export default defineNuxtConfig({
     YANDEX_API_KEY: process.env.YANDEX_API_KEY,
     YANDEX_FOLDER_ID: process.env.YANDEX_FOLDER_ID,
     YANDEX_OAUTH: process.env.YANDEX_OAUTH
-  }
+  },
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('media-'),
+    },
+  },
+  vite: {
+    plugins: [vidstack({ include: /player\// })],
+  },
 });

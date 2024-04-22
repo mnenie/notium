@@ -5345,6 +5345,16 @@ mdurl@^2.0.0:
   resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-2.0.0.tgz#80676ec0433025dd3e17ee983d0fe8de5a2237e0"
   integrity sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==
 
+media-captions@^1.0.1:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/media-captions/-/media-captions-1.0.3.tgz#e766d1e7cb7e32a2e43008541e59eab4c3580016"
+  integrity sha512-y2Qi5rqjwgH97zoko1vzu5Q6nnS0KzEQSvd4NOjnFym9JqnFb5VSsUg21RNb5cQ/nhCFJ0wz/XK+2uMwFCr6TQ==
+
+media-icons@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/media-icons/-/media-icons-1.1.4.tgz#5a4f7ed4c58fe80746f6bddfb552be109edfa0ee"
+  integrity sha512-dXdIh7kQ2Mx50tIe01mWlklNxmBemchVncn1Z7T53CcJymeRVls42BBKOkgee4nNnc6VWOM1Es1Cj25YexSU/g==
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
@@ -7906,6 +7916,16 @@ unplugin@^1.10.0, unplugin@^1.3.1, unplugin@^1.5.0, unplugin@^1.5.1, unplugin@^1
     webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.6.1"
 
+unplugin@^1.10.1:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-1.10.1.tgz#8ceda065dc71bc67d923dea0920f05c67f2cd68c"
+  integrity sha512-d6Mhq8RJeGA8UfKCu54Um4lFA0eSaRa3XxdAJg8tIdxbu1ubW0hBCZUL7yI2uGyYCRndvbK8FLHzqy2XKfeMsg==
+  dependencies:
+    acorn "^8.11.3"
+    chokidar "^3.6.0"
+    webpack-sources "^3.2.3"
+    webpack-virtual-modules "^0.6.1"
+
 unstorage@^1.10.2:
   version "1.10.2"
   resolved "https://registry.npmjs.org/unstorage/-/unstorage-1.10.2.tgz"
@@ -8023,6 +8043,14 @@ vee-validate@4.12.6, vee-validate@^4.12.6:
   dependencies:
     "@vue/devtools-api" "^6.5.1"
     type-fest "^4.8.3"
+
+vidstack@^1.11.19:
+  version "1.11.19"
+  resolved "https://registry.yarnpkg.com/vidstack/-/vidstack-1.11.19.tgz#04b4a58d8671cea0af05c2854e4c8a0c123dbb37"
+  integrity sha512-J1g9KL5YJLVgLBdeylz/8VFCOI8dF5FW3jiTOHFQ3+3feOw3UZKcSS3Jj5jUBEoqAoHH7DslVGtMml0fnYCQCg==
+  dependencies:
+    media-captions "^1.0.1"
+    unplugin "^1.10.1"
 
 vite-hot-client@^0.2.3:
   version "0.2.3"

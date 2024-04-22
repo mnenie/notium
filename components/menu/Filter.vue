@@ -9,7 +9,7 @@ const model = defineModel<string>();
     <UiInput
       v-model="model"
       placeholder="Search"
-      class="h-8 w-full border-0 border-none pl-[40px] pr-[40px] text-[14px] font-medium text-zinc-600 placeholder:font-medium placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-zinc-100 xl:text-[13px] xl:placeholder:text-[13px] 2xl:text-[14px] 2xl:placeholder:text-[14px]"
+      class="h-8 w-full border-0 border-none pl-[38px] pr-[40px] text-[14px] font-medium text-zinc-600 placeholder:font-medium placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-zinc-100 xl:text-[13px] xl:placeholder:text-[13px] 2xl:text-[14px] 2xl:placeholder:text-[14px]"
     />
     <UiBadge
       variant="secondary"

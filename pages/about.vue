@@ -21,12 +21,13 @@ const content = ref(`
           <li>Uses the built-in ai, assistant <code>NotiumAI 🤖</code></li>
         </ul>
         <p>
-          Do you want to see more? Ok! Let me know and give me feedback:
+          Do you want to see more? Ok! Let us know and give a feedback
         </p>
+        <p>Our team:</p>
         <ul>
-          <li>I’am a 👨‍💻 vue/nuxt frontend developer.</li>
+          <li>👨‍💻 vue/nuxt frontend developer + backend developer.</li>
           <li>Contributor of <span style="font-weight: 500;font-style: italic;">@vuejs</span> 💚 community.</li>
-          <li>Have a lot of projects ranging from standard applications to large-scale endeavors, such as an ecommerce websites, business services, agile system, virtual whiteboard, configs and more.</li>
+          <li>A lot of projects ranging from standard applications to large-scale endeavors, such as an ecommerce websites, business services, agile system, virtual whiteboard, configs and more.</li>
         </ul>
         <span style="color: rgb(113 113 122)">👉 Have a question? Telegram - <span>@youngjuicycashrussia</span> 🌐, send me a message.</span>
 `)
