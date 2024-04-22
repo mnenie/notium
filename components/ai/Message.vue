@@ -8,12 +8,11 @@ const emit = defineEmits<{
 
 const authstore = useAuthStore();
 const { isSkeleton } = storeToRefs(authstore);
+const model = defineModel<string>();
 
 onMounted(() => {
   authstore.setSkeleton();
 });
-
-const model = defineModel<string>();
 </script>
 
 <template>

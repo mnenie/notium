@@ -3,7 +3,7 @@ export default function useConversation(notes: Note[], text: Ref<string>) {
   const usePostConversations = async () => {
     const embeddings = await usePostEmbedding();
     try {
-      const { data } = await useFetch('/api/conversation', {
+      const data = await $fetch('/api/conversation', {
         method: 'POST',
         body: {
           text: text.value,
@@ -13,7 +13,7 @@ export default function useConversation(notes: Note[], text: Ref<string>) {
           most_similar_note: embeddings?.note
         }
       });
-      return data.value;
+      return data;
     } catch (e) {
       console.log(e);
     }
