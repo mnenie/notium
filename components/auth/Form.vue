@@ -16,7 +16,7 @@ const formSchema = toTypedSchema(
     password: z
       .string({ required_error: 'Password is a required field' })
       .nonempty('Password is a required field')
-      .min(8, 'Password must be at least 8 characters')
+      .min(3, 'Password must be at least 8 characters')
   })
 );
 
