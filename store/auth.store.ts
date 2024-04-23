@@ -1,4 +1,5 @@
 import type { User } from 'firebase/auth';
+import UserService from '~/services/UserService';
 import { ABOUT_ROUTE } from '~/utils/consts';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -13,13 +14,12 @@ export const useAuthStore = defineStore('auth', () => {
   const login = async (userInfo: { email: string; password: string }) => {
     isLoading.value = true;
     try {
-      const response = await onFirebaseLogin(userInfo);
+      const response = await UserService.login(userInfo);
       user.value = {
-        email: userInfo.email,
-        id: response?.user.uid!
+        email: response.data.email,
+        _id: response.data._id
       };
-      //@ts-ignore
-      token.value = response?.user.accessToken;
+      token.value = response.data.token;
       if (token.value) {
         navigateTo(ABOUT_ROUTE);
       }
@@ -33,13 +33,12 @@ export const useAuthStore = defineStore('auth', () => {
   const registration = async (userInfo: { email: string; password: string }) => {
     isLoading.value = true;
     try {
-      const response = await onFirebaseRegistration(userInfo);
+      const response = await UserService.registration(userInfo);
       user.value = {
-        email: userInfo.email,
-        id: response?.user.uid!
+        email: response.data.email,
+        _id: response.data._id!
       };
-      //@ts-ignore
-      token.value = response?.user.accessToken;
+      token.value = response!.data.token;
       if (token.value) {
         navigateTo(ABOUT_ROUTE);
       }
@@ -56,7 +55,7 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       const response = await onGithubLogin();
       user.value = {
-        id: response?.user.uid!,
+        _id: response?.user.uid!,
         email: response?.user.email!,
         photoUrl: response?.user.photoURL!
       };
@@ -88,11 +87,11 @@ export const useAuthStore = defineStore('auth', () => {
 
   const getCurrentUser = async () => {
     try {
-      const response = (await getCurrentFirebaseUser()) as User;
+      const response = await UserService.getUser()
       user.value = {
-        id: response.uid,
-        email: response.email!,
-        photoUrl: response.photoURL!
+        _id: response.data._id,
+        email: response.data.email!,
+        photoUrl: response.data.photoUrl
       };
     } catch (err) {
       console.log(err);

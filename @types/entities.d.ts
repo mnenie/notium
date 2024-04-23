@@ -1,8 +1,18 @@
-type UserType = {
-  id?: string;
+interface DateParams {
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date;
+}
+
+interface UserType extends DateParams {
+  _id?: string;
   email: string;
   photoUrl?: string;
-};
+}
+
+interface UserAuth extends UserType {
+  token: string;
+}
 
 type Note = {
   id: string;

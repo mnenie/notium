@@ -44,6 +44,7 @@
     "@vueuse/motion": "^2.1.0",
     "ai": "^3.0.19",
     "appwrite": "^14.0.0",
+    "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "firebase": "^10.10.0",
