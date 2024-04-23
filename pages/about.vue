@@ -1,44 +1,26 @@
 <script setup lang="ts">
-import { useAuthStore } from '~/store/auth.store';
-
 useSeoMeta({
   title: 'Notium - cloud app of your notes'
 });
 definePageMeta({
   middleware: 'auth'
 });
-
-const content = ref(`
-        <h1>👋 Welcome to Notium</h1>
-        <p>Cloud app for users that can realize their thoughts</p>
-        <p></p>
-        <p>
-          About this app:
-        </p>
-        <ul>
-          <li>Allows users to create and store notes.</li>
-          <li>State the priorities.</li>
-          <li>Uses the built-in ai, assistant <code>NotiumAI 🤖</code></li>
-        </ul>
-        <p>
-          Do you want to see more? Ok! Let us know and give a feedback
-        </p>
-        <p>Our team:</p>
-        <ul>
-          <li>👨‍💻 vue/nuxt frontend developer + backend developer.</li>
-          <li>Contributor of <span style="font-weight: 500;font-style: italic;">@vuejs</span> 💚 community.</li>
-          <li>A lot of projects ranging from standard applications to large-scale endeavors, such as an ecommerce websites, business services, agile system, virtual whiteboard, configs and more.</li>
-        </ul>
-        <span style="color: rgb(113 113 122)">👉 Have a question? Telegram - <span>@youngjuicycashrussia</span> 🌐, send me a message.</span>
-`)
+import { useAuthStore } from '~/store/auth.store';
+import {content} from '~/mocks/about.preview'
 
 const authstore = useAuthStore();
 const { isSkeleton } = storeToRefs(authstore);
+
+const selectedText = ref<string>('');
+
+provide(EditorKey, {selectedText, content});
 </script>
 
 <template>
-  <EditorTiptap v-if="!isSkeleton" v-model="content" />
-  <div v-else class="flex flex-col gap-6 w-full px-72 pt-40">
+  <div v-if="!isSkeleton">
+    <EditorTiptap v-model="content" />
+  </div>
+  <div v-else class="flex w-full flex-col gap-6 px-72 pt-40">
     <UiSkeleton class="h-10 w-[500px]" />
     <UiSkeleton class="h-6 w-[220px]" />
   </div>

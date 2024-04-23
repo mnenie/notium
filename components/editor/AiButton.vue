@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { Sparkle } from 'lucide-vue-next';
+
+const editor = inject(EditorKey);
+
+const {onAutoCompletion} = useEditorCompletion(editor!.selectedText, editor!.content)
 </script>
 
 <template>
-  <button class="btn_ai gap-1 border-r border-r-zinc-200/70">
+  <button @click="onAutoCompletion" class="btn_ai gap-1 border-r border-r-zinc-200/70">
     <Sparkle color="rgb(202 138 4)" :size="14" />
     <span class="text-sm font-medium text-yellow-600">Ask AI</span>
   </button>

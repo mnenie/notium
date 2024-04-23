@@ -78,6 +78,16 @@ const editor = useEditor({
   }
 });
 
+watch(
+  () => props.modelValue,
+  (value) => {
+    if (editor.value) {
+      if (editor.value.getHTML() === value) return;
+      editor.value.commands.setContent(props.modelValue, false);
+    }
+  }
+);
+
 onMounted(() => {
   if (editor.value) {
     const emptyParagraph = document.querySelector('.editor-content p:empty');
