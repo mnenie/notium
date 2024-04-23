@@ -7,12 +7,12 @@ export default function useFirebaseAuth() {
     email: string;
     password: string;
   }): Promise<AxiosResponse<UserAuth>> {
-    const resp = await $api.post('https://back-for-notium.vercel.app/auth/register', registrationData);
+    const resp = await $api.post('/auth/register', registrationData);
     return resp;
   }
 
   async function onLogin(loginData: { email: string; password: string }): Promise<AxiosResponse<UserAuth>> {
-    const resp = await $api.post('https://back-for-notium.vercel.app/auth/login', loginData);
+    const resp = await $api.post('/auth/login', loginData);
     return resp;
   }
 
