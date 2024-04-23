@@ -2,14 +2,8 @@
 import { redirect } from '~/helpers/helperBlankRedirect';
 import { useAuthStore } from '~/store/auth.store';
 
-const authStore = useAuthStore()
-const {user, token} = storeToRefs(authStore)
-
-onMounted(async () => {
-  if(user){
-    await authStore.getCurrentUser()
-  }
-})
+const authStore = useAuthStore();
+const { token } = storeToRefs(authStore);
 </script>
 
 <template>

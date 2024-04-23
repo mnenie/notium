@@ -9,13 +9,8 @@ const links = reactive<Links[]>([
 ]);
 
 const authStore = useAuthStore()
-const { user, token } = storeToRefs(authStore)
+const { token } = storeToRefs(authStore)
 
-onMounted(async () => {
-  if (user) {
-    await authStore.getCurrentUser()
-  }
-})
 </script>
 <template>
   <header

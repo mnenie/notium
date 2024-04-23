@@ -1,5 +1,4 @@
-import type { User } from 'firebase/auth';
-import UserService from '~/services/UserService';
+
 import { ABOUT_ROUTE } from '~/utils/consts';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -11,10 +10,12 @@ export const useAuthStore = defineStore('auth', () => {
   const { onFirebaseLogin, onFirebaseRegistration, onGithubLogin, getCurrentFirebaseUser, onLogout } =
     useFirebaseAuth();
 
+  const {onLogin, onRegistration, getUser} = useUserAuth()
+
   const login = async (userInfo: { email: string; password: string }) => {
     isLoading.value = true;
     try {
-      const response = await UserService.login(userInfo);
+      const response = await onLogin(userInfo);
       user.value = {
         email: response.data.email,
         _id: response.data._id
@@ -33,7 +34,7 @@ export const useAuthStore = defineStore('auth', () => {
   const registration = async (userInfo: { email: string; password: string }) => {
     isLoading.value = true;
     try {
-      const response = await UserService.registration(userInfo);
+      const response = await onRegistration(userInfo);
       user.value = {
         email: response.data.email,
         _id: response.data._id!
@@ -87,7 +88,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const getCurrentUser = async () => {
     try {
-      const response = await UserService.getUser()
+      const response = await getUser()
       user.value = {
         _id: response.data._id,
         email: response.data.email!,
