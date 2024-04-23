@@ -17,12 +17,16 @@ import Link from '@tiptap/extension-link';
 import Underline from '@tiptap/extension-underline';
 import Code from '@tiptap/extension-code';
 import BulletList from '@tiptap/extension-bullet-list';
+import Typography from '@tiptap/extension-typography';
 
 const props = defineProps<{
   modelValue: Content;
 }>();
 
 const emits = defineEmits(['update:modelValue']);
+
+const { ColorHighlighter } = useFindColorsConverter();
+const { SmilieReplacer } = useSmileConverter();
 
 const editor = useEditor({
   content: props.modelValue,
@@ -59,13 +63,16 @@ const editor = useEditor({
     }),
     Link.configure({
       openOnClick: true
-    })
+    }),
+    Typography,
+    ColorHighlighter,
+    SmilieReplacer
   ],
   editable: true,
   autofocus: useRoute().path === ABOUT_ROUTE ? 75 : 'start',
   editorProps: {
     attributes: {
-      class: 'blog',
+      class: 'editor-notium',
       spellcheck: 'false'
     }
   }
@@ -82,7 +89,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   editor.value?.destroy();
-})
+});
 </script>
 <template>
   <div class="overflow-auto">

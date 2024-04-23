@@ -1,7 +1,6 @@
 import { Bot, ChevronDown, Star, BookText, Settings, File } from 'lucide-vue-next';
 
-export default function useLayout() {
-  const menuItems = ref<Menu[]>([
+export const menuItems = ref<Menu[]>([
     {
       id: 0,
       title: 'About.file.txt',
@@ -16,7 +15,19 @@ export default function useLayout() {
       arrow: ChevronDown,
       color: 'rgb(82 82 91 / 0.9)',
       isArrowActive: false,
-      route: NOTES_ROUTE
+      route: NOTES_ROUTE,
+      children: [
+        {
+          id: 0,
+          title: 'Untitled',
+          route: '/home/notes/untitled'
+        },
+        {
+          id: 1,
+          title: 'Untitled2',
+          route: '/home/notes/untitled2'
+        }
+      ]
     },
     {
       id: 2,
@@ -25,7 +36,14 @@ export default function useLayout() {
       color: 'rgb(82 82 91 / 0.9)',
       arrow: ChevronDown,
       isArrowActive: false,
-      route: FAVORITES_ROUTE
+      route: FAVORITES_ROUTE,
+      children: [
+        {
+          id: 0,
+          title: 'Untitled',
+          route: '/home/notes/untitled'
+        }
+      ]
     },
     { id: 3, title: 'AI asistant', icon: Bot, color: 'rgb(82 82 91 / 0.9)', route: AI_ROUTE },
     {
@@ -36,9 +54,3 @@ export default function useLayout() {
       route: SETTINGS_ROUTE
     }
   ]);
-
-
-  return {
-    menuItems,
-  };
-}

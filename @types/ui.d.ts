@@ -11,6 +11,12 @@ type Links = {
   section: string;
 };
 
+type Children = {
+  id: number;
+  title: string;
+  route: string;
+}
+
 type Menu = {
   id: number;
   title: string;
@@ -22,6 +28,7 @@ type Menu = {
   notes?: Note[];
   favrites?: Note[];
   iconsFile?: Component;
+  children?: Children[];
 };
 
 type Priority = {

@@ -1,14 +1,23 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/store/auth.store';
-
-const { menuItems } = useLayout();
+import { menuItems } from '~/mocks/menu';
 const authstore = useAuthStore();
 
-const route = useRoute()
+const route = useRoute();
 
 const getCurrentMenuItemTitle = computed(() => {
-  const currentItem = menuItems.value.find(item => item.route === route.path);
-  return currentItem ? currentItem.title : '';
+  let currentItemTitle = '';
+  menuItems.value.forEach((item) => {
+    if (item.route === route.path) {
+      currentItemTitle = item.title;
+    } else if (item.children) {
+      const childItem = item.children.find((child) => child.route === route.path);
+      if (childItem) {
+        currentItemTitle = childItem.title;
+      }
+    }
+  });
+  return currentItemTitle;
 });
 
 onMounted(() => {
@@ -22,7 +31,7 @@ onUnmounted(() => {
 <template>
   <div class="relative flex h-screen flex-1">
     <LayoutSidebar :nav-items="menuItems" />
-    <div class="flex w-full flex-col h-full relative">
+    <div class="relative flex h-full w-full flex-col">
       <LayoutTopPart :title="getCurrentMenuItemTitle" />
       <slot />
     </div>

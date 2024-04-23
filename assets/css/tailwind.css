@@ -6,73 +6,73 @@
   @apply relative min-h-[40px] px-72 pt-36 focus:!outline-0;
 }
 
-.blog {
+.editor-notium {
   @apply flex flex-col space-y-4;
 }
 
-.blog h1 {
+.editor-notium h1 {
   @apply text-[40px] font-extrabold;
 }
 
-.blog h2 {
+.editor-notium h2 {
   @apply text-3xl font-extrabold;
 }
 
-.blog h3 {
+.editor-notium h3 {
   @apply text-2xl font-extrabold;
 }
 
-.blog p {
+.editor-notium p {
   @apply text-lg;
 }
 
-.blog span {
+.editor-notium span {
   @apply text-base;
 }
 
-.blog ol,
-.blog ul {
+.editor-notium ol,
+.editor-notium ul {
   @apply !mt-2 ml-8 list-outside;
 }
 
-.blog ol {
+.editor-notium ol {
   @apply list-decimal;
 }
-.blog ul {
+.editor-notium ul {
   @apply list-disc;
 }
 
-.blog ol li,
-.blog ul li {
+.editor-notium ol li,
+.editor-notium ul li {
   @apply mt-2 first:mt-0;
 }
 
-.blog blockquote {
+.editor-notium blockquote {
   @apply !mb-2 !mt-6 ml-6 border-l-4 border-gray-300 p-4 py-2 italic;
 }
 
-.blog a {
+.editor-notium a {
   @apply cursor-pointer text-blue-800 hover:underline;
 }
 
-.blog hr {
+.editor-notium hr {
   @apply border-gray-400;
 }
 
-.blog table {
+.editor-notium table {
   @apply w-full table-fixed border-collapse border border-gray-400;
 }
 
-.blog table th,
-.blog table td {
+.editor-notium table th,
+.editor-notium table td {
   @apply relative border border-gray-400 px-2 py-1;
 }
 
-.blog table th {
+.editor-notium table th {
   @apply bg-blue-100;
 }
 
-.blog .tableWrapper {
+.editor-notium .tableWrapper {
   @apply overflow-auto;
 }
 
@@ -139,6 +139,22 @@
 
 .tippy-content .is-active {
   @apply bg-zinc-200;
+}
+.editor-notium .color {
+  white-space: nowrap;
+
+  &::before {
+    content: ' ';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    vertical-align: middle;
+    margin-right: 0.1em;
+    margin-bottom: 0.15em;
+    border-radius: 2px;
+    background-color: var(--color);
+  }
 }
 
 .tiptap code {
