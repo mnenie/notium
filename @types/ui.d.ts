@@ -46,3 +46,8 @@ type ContactCard = {
   icon: string;
   url: string;
 }
+
+enum ErrorAuth {
+  LOGIN_ERROR = 'Login error, please try again! Notium cannot give you access to use :/',
+  REGISTRATION_ERROR = 'Registration error, please try again! Notium cannot give you access to use :/'
+}

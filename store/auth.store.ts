@@ -1,4 +1,3 @@
-
 import { ABOUT_ROUTE } from '~/utils/consts';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -6,11 +5,12 @@ export const useAuthStore = defineStore('auth', () => {
   const isLoading = ref<boolean>(false);
   const token = useCookie('token');
   const isSkeleton = ref<boolean>(true);
+  const error = ref('');
 
   const { onFirebaseLogin, onFirebaseRegistration, onGithubLogin, getCurrentFirebaseUser, onLogout } =
     useFirebaseAuth();
 
-  const {onLogin, onRegistration, getUser} = useUserAuth()
+  const { onLogin, onRegistration, getUser } = useUserAuth();
 
   const login = async (userInfo: { email: string; password: string }) => {
     isLoading.value = true;
@@ -25,6 +25,7 @@ export const useAuthStore = defineStore('auth', () => {
         navigateTo(ABOUT_ROUTE);
       }
     } catch (err: any) {
+      error.value = ErrorAuth.LOGIN_ERROR;
       throw new Error(err);
     } finally {
       isLoading.value = false;
@@ -44,6 +45,7 @@ export const useAuthStore = defineStore('auth', () => {
         navigateTo(ABOUT_ROUTE);
       }
     } catch (err: any) {
+      error.value = ErrorAuth.REGISTRATION_ERROR;
       throw new Error(err);
     } finally {
       isLoading.value = false;
@@ -88,7 +90,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const getCurrentUser = async () => {
     try {
-      const response = await getUser()
+      const response = await getUser();
       user.value = {
         _id: response.data._id,
         email: response.data.email!,
@@ -111,6 +113,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   return {
     user,
+    error,
     token,
     isLoading,
     isSkeleton,

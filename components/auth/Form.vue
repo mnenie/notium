@@ -5,6 +5,7 @@ import * as z from 'zod';
 import { vAutoAnimate } from '@formkit/auto-animate/vue';
 import { Loader2 } from 'lucide-vue-next';
 import { Label } from '@/components/ui/label';
+import { toast } from 'vue-sonner';
 import { useAuthStore } from '~/store/auth.store';
 
 const formSchema = toTypedSchema(
@@ -16,7 +17,7 @@ const formSchema = toTypedSchema(
     password: z
       .string({ required_error: 'Password is a required field' })
       .nonempty('Password is a required field')
-      .min(3, 'Password must be at least 8 characters')
+      .min(8, 'Password must be at least 8 characters')
   })
 );
 
@@ -28,16 +29,20 @@ const { value: email } = useField<string>('email');
 const { value: password } = useField<string>('password');
 
 const authStore = useAuthStore();
-const { isLoading } = storeToRefs(authStore);
+const { isLoading, error } = storeToRefs(authStore);
 const { login, registration } = authStore;
 
 const route = useRoute();
 
 const onSubmit = handleSubmit(async (values) => {
-  if (route.path === LOGIN_ROUTE) {
-    await login({ ...values });
-  } else if (route.path === REGISTRATION_ROUTE) {
-    await registration({ ...values });
+  try {
+    if (route.path === LOGIN_ROUTE) {
+      await login({ ...values });
+    } else if (route.path === REGISTRATION_ROUTE) {
+      await registration({ ...values });
+    }
+  } catch (err) {
+    toast.error(error.value);
   }
 });
 </script>
