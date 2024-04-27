@@ -6,6 +6,7 @@ export const useAuthStore = defineStore('auth', () => {
   const token = useCookie('token');
   const isSkeleton = ref<boolean>(true);
   const error = ref('');
+  const localPath = useLocalePath();
 
   const { onFirebaseLogin, onFirebaseRegistration, onGithubLogin, getCurrentFirebaseUser, onLogout } =
     useFirebaseAuth();
@@ -22,7 +23,7 @@ export const useAuthStore = defineStore('auth', () => {
       };
       token.value = response.data.token;
       if (token.value) {
-        navigateTo(ABOUT_ROUTE);
+        navigateTo(localPath(ABOUT_ROUTE));
       }
     } catch (err: any) {
       error.value = ErrorAuth.LOGIN_ERROR;
@@ -42,14 +43,13 @@ export const useAuthStore = defineStore('auth', () => {
       };
       token.value = response!.data.token;
       if (token.value) {
-        navigateTo(ABOUT_ROUTE);
+        navigateTo(localPath(ABOUT_ROUTE));
       }
     } catch (err: any) {
       error.value = ErrorAuth.REGISTRATION_ERROR;
       throw new Error(err);
     } finally {
       isLoading.value = false;
-      await navigateTo(ABOUT_ROUTE);
     }
   };
 
@@ -82,7 +82,7 @@ export const useAuthStore = defineStore('auth', () => {
       token.value = '';
       const uid = useCookie('uid');
       uid.value = null;
-      await navigateTo(HOME_ROUTE);
+      await navigateTo(localPath(HOME_ROUTE));
     } catch (e) {
       console.log(e);
     }

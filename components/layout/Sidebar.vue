@@ -17,7 +17,7 @@ const { isSkeleton } = storeToRefs(authstore);
     style="box-shadow: rgba(0, 0, 0, 0.024) -1px 0px 0px 0px inset"
   >
     <div v-if="!isSkeleton" class="flex flex-col">
-      <h2 class="mb-3 px-4 text-xl font-semibold tracking-tight">Workspace</h2>
+      <h2 class="mb-3 px-4 text-xl font-semibold tracking-tight">{{ $t('sidebar_title') }}</h2>
       <MenuFilter v-model="filter" />
       <div class="space-y-px">
         <MenuItem :menu-items="props.navItems" />

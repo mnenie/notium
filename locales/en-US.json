@@ -1,0 +1,42 @@
+{
+  "sidebar_title": "Workspace",
+  "non-active": "Notium Preview",
+  "active": "Close Preview",
+  "Notes": "Notes",
+  "Favorites": "Favorites",
+  "AI asistant": "AI asistant",
+  "Settings": "Settings",
+  "settings_page": {
+    "contacts": {
+      "title": "Contacts",
+      "description": "Follow us on social media and GitHub to stay updated on all the latest developments and news about our Notium!",
+      "redirect": "Redirect",
+      "card": {
+        "Alex Peshkov": "Alex Peshkov",
+        "Airat Bagautdinov": "Airat Bagautdinov",
+        "who": [
+          "Follow my GitHub account under the name 'mnenie' to learn more information.",
+          "Follow my GitHub account under the name 'airvt1x' to learn more information.",
+          "Log into my Telegram account to communicate with me directly via messenger.",
+          "Log into my Telegram account to communicate with me directly via messenger."
+        ]
+      }
+    }
+  },
+  "top_menu": {
+    "btns": {
+        "rerdirect_notes": "Go to Notes",
+        "favorite": "Add Favorite",
+        "note": "Add Note",
+        "filter": "Filter notes..."
+    },
+    "priority": {
+        "title": "Priority",
+        "filter": "Priority",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "none": "none"
+    }
+  }
+}

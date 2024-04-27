@@ -33,12 +33,13 @@ const { isLoading, error } = storeToRefs(authStore);
 const { login, registration } = authStore;
 
 const route = useRoute();
+const localPath = useLocalePath();
 
 const onSubmit = handleSubmit(async (values) => {
   try {
-    if (route.path === LOGIN_ROUTE) {
+    if (route.path === localPath(LOGIN_ROUTE)) {
       await login({ ...values });
-    } else if (route.path === REGISTRATION_ROUTE) {
+    } else if (route.path === localPath(REGISTRATION_ROUTE)) {
       await registration({ ...values });
     }
   } catch (err) {
@@ -87,14 +88,14 @@ const onSubmit = handleSubmit(async (values) => {
         <div class="grid gap-2">
           <UiButton :disabled="isLoading">
             <Loader2 v-if="isLoading" class="mr-2 h-4 w-4 animate-spin" />
-            {{ $route.path === LOGIN_ROUTE ? 'Sign In with Email' : 'Sign Up with Email' }}
+            {{ $route.path === localPath(LOGIN_ROUTE) ? 'Sign In with Email' : 'Sign Up with Email' }}
           </UiButton>
           <p class="text-sm text-[#72717a]">
-            {{ $route.path === LOGIN_ROUTE ? `Don't have an account?` : 'Have an account?' }}
+            {{ $route.path === localPath(LOGIN_ROUTE) ? `Don't have an account?` : 'Have an account?' }}
             <span
-              @click="$route.path === LOGIN_ROUTE ? navigateTo(REGISTRATION_ROUTE) : navigateTo(LOGIN_ROUTE)"
+              @click="$route.path === localPath(LOGIN_ROUTE) ? navigateTo(localPath(REGISTRATION_ROUTE)) : navigateTo(localPath(LOGIN_ROUTE))"
               class="cursor-pointer underline underline-offset-4 hover:text-zinc-900"
-              >{{ $route.path === LOGIN_ROUTE ? `Sign Up Now` : 'Sign In Now' }}</span
+              >{{ $route.path === localPath(LOGIN_ROUTE) ? `Sign Up Now` : 'Sign In Now' }}</span
             >
           </p>
         </div>

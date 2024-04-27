@@ -4,11 +4,12 @@ import { menuItems } from '~/mocks/menu';
 const authstore = useAuthStore();
 
 const route = useRoute();
+const localPath = useLocalePath();
 
 const getCurrentMenuItemTitle = computed(() => {
   let currentItemTitle = '';
   menuItems.value.forEach((item) => {
-    if (item.route === route.path) {
+    if (localPath(item.route) === route.path) {
       currentItemTitle = item.title;
     } else if (item.children) {
       const childItem = item.children.find((child) => child.route === route.path);

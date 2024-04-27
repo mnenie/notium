@@ -5,9 +5,9 @@ import {cards} from '~/mocks/cards'
 <template>
   <div class="mb-10">
     <div>
-      <h3 class="mb-1 text-lg font-medium">Contacts</h3>
+      <h3 class="mb-1 text-lg font-medium">{{ $t('settings_page.contacts.title') }}</h3>
       <p class="text-sm text-zinc-600">
-        Follow us on social media and GitHub to stay updated on all the latest developments and news about our Notium!
+        {{ $t('settings_page.contacts.description') }}
       </p>
     </div>
     <UiSeparator class="my-6" />

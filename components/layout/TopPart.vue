@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/store/auth.store';
-import { Star, PlusCircleIcon } from 'lucide-vue-next';
+import { Star } from 'lucide-vue-next';
 import { priorities } from '~/mocks/priorities';
 
 const props = defineProps<{
@@ -21,12 +21,12 @@ const togglePriority = (value: string) => {
   }
 };
 
-const isStar = ref(false);
+const localPath = useLocalePath();
 
+const isStar = ref(false);
 const colorStar = computed(() => {
   return isStar.value ? 'rgb(251 191 36)' : 'rgb(82 82 91)';
 });
-
 const toggleStar = () => {
   isStar.value = !isStar.value;
 };
@@ -36,14 +36,14 @@ const toggleStar = () => {
   <div
     class="absolute left-0 right-0 top-0 z-50 flex w-full select-none items-center justify-between bg-[#fff9]/95 px-4 py-2 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60"
   >
-    <h2 v-if="!isSkeleton" class="text-xl font-semibold tracking-tight">{{ props.title }}</h2>
+    <h2 v-if="!isSkeleton" class="text-xl font-semibold tracking-tight">{{ $t(props.title) }}</h2>
     <UiSkeleton class="mt-[4px] h-6 w-[130px]" v-else />
     <div
       v-if="
-        $route.path !== AI_ROUTE &&
-        $route.path !== NOTES_ROUTE &&
-        $route.path !== FAVORITES_ROUTE &&
-        $route.path !== SETTINGS_ROUTE
+        $route.path !== localPath(AI_ROUTE) &&
+        $route.path !== localPath(NOTES_ROUTE) &&
+        $route.path !== localPath(FAVORITES_ROUTE) &&
+        $route.path !== localPath(SETTINGS_ROUTE)
       "
     >
       <div v-if="!isSkeleton" class="flex items-center">
@@ -58,15 +58,15 @@ const toggleStar = () => {
       </div>
       <UiSkeleton v-else class="h-6 w-[160px]" />
     </div>
-    <FeaturesFilterNotes v-if="$route.path === NOTES_ROUTE || $route.path === FAVORITES_ROUTE" />
+    <FeaturesFilterNotes v-if="$route.path === localPath(NOTES_ROUTE) || $route.path === localPath(FAVORITES_ROUTE)" />
     <UiButton
-      v-if="$route.path === AI_ROUTE || $route.path === SETTINGS_ROUTE"
-      @click="navigateTo(NOTES_ROUTE)"
+      v-if="$route.path === localPath(AI_ROUTE) || $route.path === localPath(SETTINGS_ROUTE)"
+      @click="navigateTo(localPath(NOTES_ROUTE))"
       size="sm"
       variant="outline"
       class="flex h-8 items-center border-dashed"
     >
-      <span class="text-sm">Go to Notes</span>
+      <span class="text-sm">{{ $t('top_menu.btns.rerdirect_notes') }}</span>
     </UiButton>
   </div>
 </template>

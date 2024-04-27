@@ -11,6 +11,7 @@ const links = reactive<Links[]>([
 const authStore = useAuthStore()
 const { token } = storeToRefs(authStore)
 
+const localPath = useLocalePath();
 </script>
 <template>
   <header
@@ -27,10 +28,10 @@ const { token } = storeToRefs(authStore)
         </span>
       </div>
       <div v-if="!token" class="flex items-center space-x-3">
-        <UiButton @click="navigateTo(LOGIN_ROUTE)" variant="ghost">Log in</UiButton>
-        <UiButton @click="navigateTo(REGISTRATION_ROUTE)">Get started</UiButton>
+        <UiButton @click="navigateTo(localPath(LOGIN_ROUTE))" variant="ghost">Log in</UiButton>
+        <UiButton @click="navigateTo(localPath(REGISTRATION_ROUTE))">Get started</UiButton>
       </div>
-      <UiButton v-else @click="navigateTo(ABOUT_ROUTE)">Go to Notium</UiButton>
+      <UiButton v-else @click="navigateTo(localPath(ABOUT_ROUTE))">Go to Notium</UiButton>
     </div>
   </header>
 </template>

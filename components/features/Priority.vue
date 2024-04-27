@@ -28,7 +28,7 @@ const emit = defineEmits<{
     <PopoverTrigger as-child>
       <UiButton variant="outline" size="sm" class="mr-1 flex h-8 items-center border-dashed">
         <PlusCircleIcon class="mr-2 h-4 w-4" color="rgb(82 82 91)" />
-        <span class="text-[12px]">Priority</span>
+        <span class="text-[12px]">{{ $t('top_menu.priority.title') }}</span>
         <template v-if="selectedValues.length > 0">
           <Separator orientation="vertical" class="mx-2 h-4" />
           <Badge variant="secondary" class="rounded-sm px-1 font-normal lg:hidden">
@@ -46,7 +46,7 @@ const emit = defineEmits<{
                 variant="secondary"
                 class="rounded-sm px-1 font-normal"
               >
-                {{ option }}
+                {{ $t(`top_menu.priority.${option}`) }}
               </Badge>
             </template>
           </div>
@@ -59,7 +59,7 @@ const emit = defineEmits<{
           (list: Priority[], term) => list.filter((i) => i.label.toLowerCase().includes(term.toLowerCase()))
         "
       >
-        <CommandInput :placeholder="'Priority'" />
+        <CommandInput :placeholder="$t(`top_menu.priority.filter`)" />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup>
@@ -88,7 +88,7 @@ const emit = defineEmits<{
                     class="mr-2 h-4 w-4"
                     color="rgb(82 82 91 / 0.9)"
                   />
-                  <span class="text-sm">{{ option.value }}</span>
+                  <span class="text-sm">{{ $t(`top_menu.priority.${option.value}`) }}</span>
                 </div>
               </div>
             </CommandItem>
