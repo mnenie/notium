@@ -9,7 +9,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "format": "prettier --write \"**/*.{js,ts,vue}\""
+    "format": "prettier --write \"**/*.{js,ts,vue}\"",
+    "prepare": "husky"
   },
   "resolutions": {
     "string-width": "4.2.3"
@@ -78,6 +79,7 @@
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@types/uuid": "^9.0.8",
     "eslint": "^8.57.0",
+    "husky": "^9.0.11",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
     "shadcn-nuxt": "^0.10.2"
