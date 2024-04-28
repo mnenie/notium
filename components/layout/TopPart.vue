@@ -22,10 +22,11 @@ const togglePriority = (value: string) => {
 };
 
 const localPath = useLocalePath();
+const { store } = useColorMode();
 
 const isStar = ref(false);
 const colorStar = computed(() => {
-  return isStar.value ? 'rgb(251 191 36)' : 'rgb(82 82 91)';
+  return isStar.value ? 'rgb(251 191 36)' : store.value === 'light' ? 'rgb(82 82 91)' : 'rgb(113 113 122)';
 });
 const toggleStar = () => {
   isStar.value = !isStar.value;
@@ -34,9 +35,9 @@ const toggleStar = () => {
 
 <template>
   <div
-    class="absolute left-0 right-0 top-0 z-50 flex w-full select-none items-center justify-between bg-[#fff9]/95 px-4 py-2 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60"
+    class="absolute left-0 right-0 top-0 z-50 flex w-full select-none items-center justify-between bg-[#fff9]/95 px-4 py-2 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60 dark:bg-transparent"
   >
-    <h2 v-if="!isSkeleton" class="text-xl font-semibold tracking-tight">{{ $t(props.title) }}</h2>
+    <h2 v-if="!isSkeleton" class="text-xl font-semibold tracking-tight dark:text-zinc-100">{{ $t(props.title) }}</h2>
     <UiSkeleton class="mt-[4px] h-6 w-[130px]" v-else />
     <div
       v-if="

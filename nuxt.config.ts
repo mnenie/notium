@@ -2,7 +2,14 @@ import i18nConfig from './i18n.config';
 import { vite as vidstack } from 'vidstack/plugins';
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@vueuse/motion/nuxt', '@pinia/nuxt', '@nuxtjs/i18n'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt',
+    '@vueuse/motion/nuxt',
+    '@vueuse/nuxt',
+    '@pinia/nuxt',
+    '@nuxtjs/i18n'
+  ],
   i18n: {...i18nConfig},
   shadcn: {
     prefix: 'Ui',

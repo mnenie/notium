@@ -8,6 +8,8 @@ const emit = defineEmits<{
 
 const authstore = useAuthStore();
 const { isSkeleton } = storeToRefs(authstore);
+const { store } = useColorMode();
+
 const model = defineModel<string>();
 
 onMounted(() => {
@@ -20,7 +22,7 @@ onMounted(() => {
     <form @submit.prevent="emit('onSubmit')" class="relative w-full">
       <UiInput v-model="model" :placeholder="$t('ai.placeholder')" class="h-11" />
       <UiButton type="submit" variant="ghost" class="absolute right-[3px] top-1/2 -translate-y-1/2 px-2">
-        <ArrowBigUpDash color="rgb(82 82 91 / 0.9)" />
+        <ArrowBigUpDash :color="store === 'light' ? 'rgb(82 82 91 / 0.9)' : 'rgb(113 113 122)'" />
       </UiButton>
     </form>
     <span class="py-1 text-xs text-zinc-400">

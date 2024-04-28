@@ -10,6 +10,6 @@ definePageMeta({
 <template>
   <div class="h-full px-4 pt-16">
     <SettingsContacts />
-    <SettingsAppearance />
+    <SettingsAppearence />
   </div>
 </template>

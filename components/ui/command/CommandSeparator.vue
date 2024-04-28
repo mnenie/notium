@@ -16,7 +16,7 @@ const delegatedProps = computed(() => {
 <template>
   <ComboboxSeparator
     v-bind="delegatedProps"
-    :class="cn('-mx-1 h-px bg-zinc-200 dark:bg-zinc-800', props.class)"
+    :class="cn('-mx-1 h-px bg-zinc-200 dark:bg-neutral-800', props.class)"
   >
     <slot />
   </ComboboxSeparator>

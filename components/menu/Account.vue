@@ -8,6 +8,7 @@ const { user, token, isSkeleton } = storeToRefs(authStore);
 const online = useOnline();
 
 const localePath = useLocalePath();
+const { store } = useColorMode();
 
 onMounted(async () => {
   if (user) {
@@ -25,11 +26,11 @@ onMounted(async () => {
             <UiAvatarImage v-if="user && user.photoUrl" :src="user.photoUrl" :alt="user.email" />
             <UiAvatarFallback v-if="user && user.email">{{ user.email.slice(0, 2) }}</UiAvatarFallback>
           </UiAvatar>
-          <span v-if="user" class="w-[134px] overflow-hidden text-ellipsis whitespace-nowrap text-[13px] text-start">{{
+          <span v-if="user" class="w-[134px] overflow-hidden text-ellipsis whitespace-nowrap text-[13px] text-start dark:text-zinc-200">{{
             user.email
           }}</span>
         </div>
-        <ChevronsUpDown class="h-4 w-4 shrink-0 opacity-50" />
+        <ChevronsUpDown class="h-4 w-4 shrink-0 opacity-50" :color="store === 'light' ? 'rgb(82 82 91 / 0.9)' : 'rgb(113 113 122)'" />
       </UiButton>
     </UiDropdownMenuTrigger>
     <UiDropdownMenuContent class="z-[999999] w-[220px]">

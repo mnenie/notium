@@ -23,7 +23,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 <template>
   <ComboboxRoot
     v-bind="forwarded"
-    :class="cn('flex h-full w-full flex-col overflow-hidden rounded-md bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50', props.class)"
+    :class="cn('flex h-full w-full flex-col overflow-hidden rounded-md bg-white text-zinc-950 dark:bg-[#1d1d1d] dark:text-zinc-200', props.class)"
   >
     <slot />
   </ComboboxRoot>

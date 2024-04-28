@@ -24,13 +24,15 @@ const toggleVideo = () => {
     $player.value?.destroy();
   }
 };
+
+const { store } = useColorMode();
 </script>
 
 <template>
   <div>
     <UiButton @click="toggleVideo" variant="ghost" class="mt-4 h-8 w-full justify-start">
-      <MonitorPlay class="mr-2 h-[16px] w-[16px]" color="rgb(82 82 91 / 0.9)" />
-      <span class="text-[14px] text-zinc-600 xl:text-[13px] 2xl:text-[14px]">{{
+      <MonitorPlay class="mr-2 h-[16px] w-[16px]" :color="store === 'light' ? 'rgb(82 82 91 / 0.9)' : 'rgb(113 113 122)'" />
+      <span class="text-[14px] text-zinc-600 xl:text-[13px] 2xl:text-[14px] dark:text-zinc-300">{{
         isVideoActive ? $t("active") : $t('non-active')
       }}</span>
     </UiButton>

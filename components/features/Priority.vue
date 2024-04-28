@@ -1,19 +1,9 @@
 <script setup lang="ts">
 import { PlusCircleIcon, CheckIcon } from 'lucide-vue-next';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import {
-  CommandGroup,
-  CommandItem,
-  CommandList,
-  Command,
-  CommandInput,
-  CommandEmpty
-} from '@/components/ui/command';
-
 import { cn } from '@/lib/utils';
-const props = defineProps<{
+
+defineProps<{
   selectedValues: string[];
   priorities: Priority[];
 }>();
@@ -21,16 +11,18 @@ const props = defineProps<{
 const emit = defineEmits<{
   (e: 'tooglePriority', value: string): void;
 }>();
+
+const { store } = useColorMode();
 </script>
 
 <template>
-  <Popover>
-    <PopoverTrigger as-child>
+  <UiPopover>
+    <UiPopoverTrigger as-child>
       <UiButton variant="outline" size="sm" class="mr-1 flex h-8 items-center border-dashed">
-        <PlusCircleIcon class="mr-2 h-4 w-4" color="rgb(82 82 91)" />
+        <PlusCircleIcon class="mr-2 h-4 w-4" :color="store === 'light' ? 'rgb(82 82 91)' : 'rgb(113 113 122)'" />
         <span class="text-[12px]">{{ $t('top_menu.priority.title') }}</span>
         <template v-if="selectedValues.length > 0">
-          <Separator orientation="vertical" class="mx-2 h-4" />
+          <UiSeparator orientation="vertical" class="mx-2 h-4" />
           <Badge variant="secondary" class="rounded-sm px-1 font-normal lg:hidden">
             {{ selectedValues.length }}
           </Badge>
@@ -44,7 +36,7 @@ const emit = defineEmits<{
                 v-for="(option, i) in selectedValues"
                 :key="i"
                 variant="secondary"
-                class="rounded-sm px-1 font-normal"
+                class="rounded-sm px-1 font-normal dark:text-zinc-200"
               >
                 {{ $t(`top_menu.priority.${option}`) }}
               </Badge>
@@ -52,18 +44,18 @@ const emit = defineEmits<{
           </div>
         </template>
       </UiButton>
-    </PopoverTrigger>
-    <PopoverContent class="w-[188px] p-0" align="end">
-      <Command
+    </UiPopoverTrigger>
+    <UiPopoverContent class="w-[188px] p-0" align="end">
+      <UiCommand
         :filter-function="
           (list: Priority[], term) => list.filter((i) => i.label.toLowerCase().includes(term.toLowerCase()))
         "
       >
-        <CommandInput :placeholder="$t(`top_menu.priority.filter`)" />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup>
-            <CommandItem
+        <UiCommandInput :placeholder="$t(`top_menu.priority.filter`)" />
+        <UiCommandList>
+          <UiCommandEmpty>No results found.</UiCommandEmpty>
+          <UiCommandGroup>
+            <UiCommandItem
               v-for="option in priorities"
               :key="option.value"
               :value="option"
@@ -91,10 +83,10 @@ const emit = defineEmits<{
                   <span class="text-sm">{{ $t(`top_menu.priority.${option.value}`) }}</span>
                 </div>
               </div>
-            </CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </Command>
-    </PopoverContent>
-  </Popover>
+            </UiCommandItem>
+          </UiCommandGroup>
+        </UiCommandList>
+      </UiCommand>
+    </UiPopoverContent>
+  </UiPopover>
 </template>

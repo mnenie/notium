@@ -34,7 +34,9 @@ onUnmounted(() => {
     <LayoutSidebar :nav-items="menuItems" />
     <div class="relative flex h-full w-full flex-col">
       <LayoutTopPart :title="getCurrentMenuItemTitle" />
-      <slot />
+      <div class="dark:bg-[#1a1a1a] h-full w-full">
+        <slot />
+      </div>
     </div>
   </div>
 </template>

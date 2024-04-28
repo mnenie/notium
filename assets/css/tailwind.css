@@ -11,48 +11,48 @@
 }
 
 .editor-notium h1 {
-  @apply text-[40px] font-extrabold;
+  @apply text-[40px] font-extrabold dark:text-zinc-200;
 }
 
 .editor-notium h2 {
-  @apply text-3xl font-extrabold;
+  @apply text-3xl font-extrabold dark:text-zinc-200;
 }
 
 .editor-notium h3 {
-  @apply text-2xl font-extrabold;
+  @apply text-2xl font-extrabold dark:text-zinc-200;
 }
 
 .editor-notium p {
-  @apply text-lg;
+  @apply text-lg dark:text-zinc-200;
 }
 
 .editor-notium span {
-  @apply text-base;
+  @apply text-base dark:text-zinc-200;
 }
 
 .editor-notium ol,
 .editor-notium ul {
-  @apply !mt-2 ml-8 list-outside;
+  @apply !mt-2 ml-8 list-outside dark:text-zinc-200;
 }
 
 .editor-notium ol {
-  @apply list-decimal;
+  @apply list-decimal dark:text-zinc-200;
 }
 .editor-notium ul {
-  @apply list-disc;
+  @apply list-disc dark:text-zinc-200;
 }
 
 .editor-notium ol li,
 .editor-notium ul li {
-  @apply mt-2 first:mt-0;
+  @apply mt-2 first:mt-0 dark:text-zinc-200;
 }
 
 .editor-notium blockquote {
-  @apply !mb-2 !mt-6 ml-6 border-l-4 border-gray-300 p-4 py-2 italic;
+  @apply !mb-2 !mt-6 ml-6 border-l-4 border-gray-300 p-4 py-2 italic dark:text-zinc-200;
 }
 
 .editor-notium a {
-  @apply cursor-pointer text-blue-800 hover:underline;
+  @apply cursor-pointer text-blue-800 hover:underline dark:text-zinc-200;
 }
 
 .editor-notium hr {
@@ -164,6 +164,7 @@
   background-color: rgba(97, 97, 97, 0.1);
   color: #616161;
   box-decoration-break: clone;
+  @apply dark:text-zinc-400
 }
 
 @keyframes ProseMirror-cursor-blink {
