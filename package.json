@@ -11,6 +11,9 @@
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,ts,vue}\""
   },
+  "resolutions": {
+    "string-width": "4.2.3"
+  },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.1",
     "@nuxtjs/i18n": "^8.3.1",
@@ -75,7 +78,6 @@
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@types/uuid": "^9.0.8",
     "eslint": "^8.57.0",
-    "husky": "^9.0.11",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
     "shadcn-nuxt": "^0.10.2"
