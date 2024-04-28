@@ -28,6 +28,9 @@ const emits = defineEmits(['update:modelValue']);
 const { ColorHighlighter } = useFindColorsConverter();
 const { SmilieReplacer } = useSmileConverter();
 
+const localePath = useLocalePath();
+const route = useRoute();
+
 const editor = useEditor({
   content: props.modelValue,
   onUpdate: ({ editor }) => {
@@ -69,7 +72,7 @@ const editor = useEditor({
     SmilieReplacer
   ],
   editable: true,
-  autofocus: useRoute().path === ABOUT_ROUTE ? 75 : 'start',
+  autofocus: localePath(route.path) === ABOUT_ROUTE ? 75 : 'start',
   editorProps: {
     attributes: {
       class: 'editor-notium',

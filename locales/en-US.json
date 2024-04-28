@@ -13,30 +13,37 @@
       "redirect": "Redirect",
       "card": {
         "Alex Peshkov": "Alex Peshkov",
-        "Airat Bagautdinov": "Airat Bagautdinov",
-        "who": [
-          "Follow my GitHub account under the name 'mnenie' to learn more information.",
-          "Follow my GitHub account under the name 'airvt1x' to learn more information.",
-          "Log into my Telegram account to communicate with me directly via messenger.",
-          "Log into my Telegram account to communicate with me directly via messenger."
-        ]
+        "Airat Bagautdinov": "Airat Bagautdinov"
       }
+    },
+    "appearence": {
+      "title": "Appearence",
+      "description": "Customize the appearance of the app. Automatically switch between themes. Language selection.",
+      "theme": {
+        "title": "Theme",
+        "description": "Select the theme for Notium.",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      },
+      "update": "Update preferences"
     }
   },
   "top_menu": {
     "btns": {
-        "rerdirect_notes": "Go to Notes",
-        "favorite": "Add Favorite",
-        "note": "Add Note",
-        "filter": "Filter notes..."
+      "rerdirect_notes": "Go to Notes",
+      "favorite": "Add Favorite",
+      "note": "Add Note",
+      "filter": "Filter notes...",
+      "search": "Search"
     },
     "priority": {
-        "title": "Priority",
-        "filter": "Priority",
-        "low": "low",
-        "medium": "medium",
-        "high": "high",
-        "none": "none"
+      "title": "Priority",
+      "filter": "Priority",
+      "low": "low",
+      "medium": "medium",
+      "high": "high",
+      "none": "none"
     }
   }
 }

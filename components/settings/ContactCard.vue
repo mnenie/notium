@@ -2,6 +2,8 @@
 const props = defineProps<{
   cards: ContactCard[];
 }>();
+
+const {locale} = useI18n()
 </script>
 
 <template>
@@ -19,7 +21,7 @@ const props = defineProps<{
     </UiCardHeader>
     <UiCardContent class="pl-4 pr-4 pb-1">
       <div class="flex items-center space-x-4 text-xs text-zinc-500">
-        {{ card.description }}
+        {{ locale == 'en-US' ? card.description : card.descriptionRu }}
       </div>
     </UiCardContent>
     <UiCardFooter class="pl-4 pr-4 pt-3 pb-4">

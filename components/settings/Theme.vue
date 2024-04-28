@@ -1,8 +1,8 @@
 <template>
   <UiFormField v-slot="{ componentField }" type="radio" name="theme">
     <UiFormItem class="space-y-1">
-      <UiFormLabel>Theme</UiFormLabel>
-      <UiFormDescription> Select the theme for Notium.</UiFormDescription>
+      <UiFormLabel>{{ $t('settings_page.appearence.theme.title') }}</UiFormLabel>
+      <UiFormDescription>{{ $t('settings_page.appearence.theme.description') }}</UiFormDescription>
       <UiFormMessage />
 
       <UiRadioGroup class="grid max-w-2xl grid-cols-3 gap-8 pt-2" v-bind="componentField">
@@ -27,7 +27,7 @@
                 </div>
               </div>
             </div>
-            <span class="block w-full p-2 text-center font-normal"> Light </span>
+            <span class="block w-full p-2 text-center font-normal">{{ $t('settings_page.appearence.theme.light') }}</span>
           </UiFormLabel>
         </UiFormItem>
         <UiFormItem>
@@ -51,7 +51,7 @@
                 </div>
               </div>
             </div>
-            <span class="block w-full p-2 text-center font-normal"> Dark </span>
+            <span class="block w-full p-2 text-center font-normal">{{ $t('settings_page.appearence.theme.dark') }}</span>
           </UiFormLabel>
         </UiFormItem>
         <UiFormItem>
@@ -75,7 +75,7 @@
                 </div>
               </div>
             </div>
-            <span class="block w-full p-2 text-center font-normal"> System </span>
+            <span class="block w-full p-2 text-center font-normal">{{ $t('settings_page.appearence.theme.system') }}</span>
           </UiFormLabel>
         </UiFormItem>
       </UiRadioGroup>

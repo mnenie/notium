@@ -28,9 +28,9 @@ const onSubmit = handleSubmit((values) => {});
 
 <template>
   <div>
-    <h3 class="mb-1 text-lg font-medium">Appearence</h3>
+    <h3 class="mb-1 text-lg font-medium">{{ $t('settings_page.appearence.title') }}</h3>
     <p class="text-sm text-zinc-600">
-      Customize the appearance of the app. Automatically switch between themes.
+      {{ $t('settings_page.appearence.description') }}
     </p>
   </div>
   <UiSeparator class="my-6" />
@@ -38,7 +38,7 @@ const onSubmit = handleSubmit((values) => {});
     <SettingsLanguage />
     <SettingsTheme />
     <div class="flex justify-start">
-      <UiButton variant="outline" type="submit">Update preferences</UiButton>
+      <UiButton variant="outline" type="submit">{{ $t('settings_page.appearence.update') }}</UiButton>
     </div>
   </form>
 </template>

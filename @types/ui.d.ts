@@ -42,6 +42,7 @@ type ContactCard = {
   id: number;
   title: string;
   description: string;
+  descriptionRu?: string;
   who: string;
   icon: string;
   url: string;
