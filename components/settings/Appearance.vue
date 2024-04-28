@@ -7,10 +7,6 @@ const appearanceFormSchema = toTypedSchema(
   z.object({
     theme: z.enum(['light', 'dark', 'system'], {
       required_error: 'Please select a theme.'
-    }),
-    language: z.enum(['English', 'Русский'], {
-      invalid_type_error: 'Select a language',
-      required_error: 'Please select a language.'
     })
   })
 );
@@ -18,8 +14,7 @@ const appearanceFormSchema = toTypedSchema(
 const { handleSubmit } = useForm({
   validationSchema: appearanceFormSchema,
   initialValues: {
-    theme: 'light',
-    language: 'English'
+    theme: 'light'
   }
 });
 

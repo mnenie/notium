@@ -9,8 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "format": "prettier --write \"**/*.{js,ts,vue}\"",
-    "prepare": "husky"
+    "format": "prettier --write \"**/*.{js,ts,vue}\""
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.1",
