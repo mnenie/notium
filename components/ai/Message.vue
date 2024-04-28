@@ -18,13 +18,13 @@ onMounted(() => {
 <template>
   <div v-if="!isSkeleton" class="sticky bottom-0 z-50 flex w-full flex-col items-center px-64">
     <form @submit.prevent="emit('onSubmit')" class="relative w-full">
-      <UiInput v-model="model" placeholder="Tell NotiumAI a little bit about yourself" class="h-11" />
+      <UiInput v-model="model" :placeholder="$t('ai.placeholder')" class="h-11" />
       <UiButton type="submit" variant="ghost" class="absolute right-[3px] top-1/2 -translate-y-1/2 px-2">
         <ArrowBigUpDash color="rgb(82 82 91 / 0.9)" />
       </UiButton>
     </form>
     <span class="py-1 text-xs text-zinc-400">
-      Notium AI - your ai assistant. Remember your ideas in one click.
+      {{ $t('ai.description') }}
     </span>
   </div>
   <div v-else class="flex w-full flex-col items-center px-64">

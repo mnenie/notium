@@ -1,15 +1,4 @@
 <script setup lang="ts">
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ChevronsUpDown } from 'lucide-vue-next';
 import { useAuthStore } from '~/store/auth.store';
 import { useOnline } from '@vueuse/core';
@@ -17,6 +6,8 @@ import { useOnline } from '@vueuse/core';
 const authStore = useAuthStore();
 const { user, token, isSkeleton } = storeToRefs(authStore);
 const online = useOnline();
+
+const localePath = useLocalePath();
 
 onMounted(async () => {
   if (user) {
@@ -26,43 +17,43 @@ onMounted(async () => {
 </script>
 
 <template>
-  <DropdownMenu v-if="!isSkeleton && token">
-    <DropdownMenuTrigger as-child>
+  <UiDropdownMenu v-if="!isSkeleton && token">
+    <UiDropdownMenuTrigger as-child>
       <UiButton variant="ghost" class="flex w-full items-center justify-between py-1 h-9">
-        <div class="mr-4 flex items-center">
-          <Avatar class="mr-2 h-6 w-6">
-            <AvatarImage v-if="user && user.photoUrl" :src="user.photoUrl" :alt="user.email" />
-            <AvatarFallback v-if="user && user.email">{{ user.email.slice(0, 2) }}</AvatarFallback>
-          </Avatar>
-          <span v-if="user" class="w-[134px] overflow-hidden text-ellipsis whitespace-nowrap text-[13px]">{{
+        <div class="mr-4 flex items-center justify-start">
+          <UiAvatar class="mr-2 h-6 w-6">
+            <UiAvatarImage v-if="user && user.photoUrl" :src="user.photoUrl" :alt="user.email" />
+            <UiAvatarFallback v-if="user && user.email">{{ user.email.slice(0, 2) }}</UiAvatarFallback>
+          </UiAvatar>
+          <span v-if="user" class="w-[134px] overflow-hidden text-ellipsis whitespace-nowrap text-[13px] text-start">{{
             user.email
           }}</span>
         </div>
         <ChevronsUpDown class="h-4 w-4 shrink-0 opacity-50" />
       </UiButton>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent class="z-[999999] w-[220px]">
-      <DropdownMenuLabel
+    </UiDropdownMenuTrigger>
+    <UiDropdownMenuContent class="z-[999999] w-[220px]">
+      <UiDropdownMenuLabel
         v-if="token && user"
         class="flex w-full items-center justify-between overflow-hidden text-ellipsis whitespace-nowrap"
       >
         {{ user.email }}
         <div v-if="online" class="h-2 w-2 rounded-full bg-green-600"></div>
         <div v-else class="h-2 w-2 rounded-full bg-amber-500"></div>
-      </DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuGroup>
-        <DropdownMenuItem @click="navigateTo(HOME_ROUTE)">
-          <span>Go to Welcome</span>
-          <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-        </DropdownMenuItem>
-        <DropdownMenuItem @click="authStore.logout">
-          <span>Log out</span>
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
-      </DropdownMenuGroup>
-    </DropdownMenuContent>
-  </DropdownMenu>
+      </UiDropdownMenuLabel>
+      <UiDropdownMenuSeparator />
+      <UiDropdownMenuGroup>
+        <UiDropdownMenuItem @click="navigateTo(localePath(HOME_ROUTE))">
+          <span>{{ $t('account.welcome') }}</span>
+          <UiDropdownMenuShortcut>⌘B</UiDropdownMenuShortcut>
+        </UiDropdownMenuItem>
+        <UiDropdownMenuItem @click="authStore.logout">
+          <span>{{ $t('account.logout') }}</span>
+          <UiDropdownMenuShortcut>⇧⌘Q</UiDropdownMenuShortcut>
+        </UiDropdownMenuItem>
+      </UiDropdownMenuGroup>
+    </UiDropdownMenuContent>
+  </UiDropdownMenu>
   <div v-else class="flex items-center h-9 px-[14px] py-[3px]">
     <UiSkeleton class="h-6 w-6 rounded-full mr-2" />
     <UiSkeleton class="h-4 w-[176px]" />

@@ -7,8 +7,11 @@ export const content = ref(`
         </p>
         <ul>
           <li>Allows users to create and store notes with priorities.</li>
-          <li>Auto-completion 📝 in note by using <code>AI</code> model.</li>
           <li>Uses the built-in ai, assistant <code>NotiumAI 🤖</code></li>
+          <ol>
+            <li>Finding your thoughts in notes cloud using the <span>knowledge base</span></li>
+            <li>Help you with finding 📝 <span style="font-style: italic;">auto-completion</span> of the text</li>
+          </ol>
         </ul>
         <p>
           Do you want to see more? Ok! Let us know and give a feedback

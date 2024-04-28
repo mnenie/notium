@@ -72,7 +72,7 @@ const editor = useEditor({
     SmilieReplacer
   ],
   editable: true,
-  autofocus: localePath(route.path) === ABOUT_ROUTE ? 75 : 'start',
+  autofocus: route.path === localePath(ABOUT_ROUTE) ? 75 : 'start',
   editorProps: {
     attributes: {
       class: 'editor-notium',

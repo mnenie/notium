@@ -45,5 +45,23 @@
       "high": "high",
       "none": "none"
     }
+  },
+  "account": {
+    "welcome": "Go to Welcome",
+    "logout": "Log out"
+  },
+  "notes_page_null": {
+    "title": "You don't have any notes",
+    "description": "Add new notes to your collection",
+    "btn": "Add new note"
+  },
+  "favorite_notes_page_null": {
+    "title": "You don't have any favorite notes",
+    "description": "Add new favorite notes to your collection",
+    "btn": "Add new fav note"
+  },
+  "ai": {
+    "placeholder": "Tell NotiumAI a little bit about yourself",
+    "description": "Notium AI - your ai assistant. Remember your ideas in one click."
   }
 }
