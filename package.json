@@ -10,6 +10,8 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,ts,vue}\"",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
     "prepare": "husky"
   },
   "resolutions": {
@@ -77,12 +79,16 @@
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@types/uuid": "^9.0.8",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/test-utils": "^2.4.5",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
+    "jsdom": "^24.0.0",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
-    "shadcn-nuxt": "^0.10.2"
+    "shadcn-nuxt": "^0.10.2",
+    "vitest": "^1.5.3"
   }
 }

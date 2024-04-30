@@ -1,5 +1,6 @@
 import i18nConfig from './i18n.config';
 import { vite as vidstack } from 'vidstack/plugins';
+
 export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
