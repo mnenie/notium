@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { useNotesStore } from '~/store/notes.store';
 useSeoMeta({
   title: 'Notium - cloud app of your notes'
 });
 definePageMeta({
   middleware: 'auth'
 });
+
+import { useNotesStore } from '~/store/notes.store';
+import useConversation from '~/composables/useConversation';
 
 const model = ref('');
 

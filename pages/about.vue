@@ -6,14 +6,15 @@ definePageMeta({
   middleware: 'auth'
 });
 import { useAuthStore } from '~/store/auth.store';
-import {content} from '~/mocks/about.preview'
+import { content } from '~/mocks/about.preview';
+import { EditorKey } from '~/utils/symbols';
 
 const authstore = useAuthStore();
 const { isSkeleton } = storeToRefs(authstore);
 
 const selectedText = ref<string>('');
 
-provide(EditorKey, {selectedText, content});
+provide(EditorKey, { selectedText, content });
 </script>
 
 <template>

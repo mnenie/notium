@@ -1,3 +1,5 @@
+import useEmbedding from "./useEmbedding";
+
 export default function useConversation(notes: Note[], text: Ref<string>) {
   const { usePostEmbedding } = useEmbedding(notes, text);
   const usePostConversations = async () => {
