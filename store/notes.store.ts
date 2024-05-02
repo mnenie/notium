@@ -1,13 +1,96 @@
+import { menuItems } from '~/mocks/menu';
+
 export const useNotesStore = defineStore('notes', () => {
   const notes = ref<Note[]>([]);
+  const note = ref<Note>({} as Note);
+  const skeletonNote = ref<boolean>(true);
+  const defaultNote = ref<NoteData>({
+    content: '<h1>Untitledddd</h1><p></p>',
+    type: 'doc'
+  });
+
+  const { getExistingNotes, getExistingNoteById, postNoteToNotes } = useNotes();
 
   const addNewNote = async () => {
-    await navigateTo(NOTES_ROUTE + '/untitled');
-    notes.value.push({ id: '1', title: 'Untitled', content: '', favorite: false, prioritet: '' });
+    try {
+      const response = await postNoteToNotes({ note_data: defaultNote.value, priority: 0 });
+      notes.value.push(response.data);
+      const childrens = menuItems.value.find((item) => item.id === '1');
+      if (childrens && childrens.children) {
+        childrens.children!.push({
+          id: response.data._id,
+          route: NOTES_ROUTE + '/' + response.data._id,
+          title: 'Untitled'
+        });
+      }
+      navigateTo(NOTES_ROUTE + '/' + response.data._id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getNotes = async () => {
+    try {
+      const response = await getExistingNotes();
+      notes.value = response.data;
+      notes.value.forEach((note) => {
+        const { _id } = note;
+
+        const child: Children = {
+          id: _id,
+          title: 'Untitled',
+          route: NOTES_ROUTE + '/' + _id
+        };
+        const childrens = menuItems.value.find((item) => item.id === '1');
+        if (childrens && childrens.children) {
+          const index = childrens.children.findIndex((c) => c.id === _id);
+          if (index === -1) {
+            childrens.children.push(child);
+          }
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getNoteById = async (id: string) => {
+    try {
+      const response = await getExistingNoteById(id);
+      note.value = response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const setSkeleton = () => {
+    setTimeout(() => {
+      skeletonNote.value = false;
+    }, 500);
+  };
+  const unsetSkeleton = () => {
+    skeletonNote.value = true;
+  };
+
+  const deleteNotes = () => {
+    notes.value = [];
+    note.value = {} as Note;
+    const childrens = menuItems.value.find((item) => item.id === '1');
+    if (childrens && childrens.children) {
+      childrens.children = [] as Children[];
+    }
   };
 
   return {
     notes,
-    addNewNote
+    note,
+    defaultNote,
+    unsetSkeleton,
+    skeletonNote,
+    setSkeleton,
+    getNoteById,
+    addNewNote,
+    getNotes,
+    deleteNotes
   };
 });

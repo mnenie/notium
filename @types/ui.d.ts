@@ -12,13 +12,13 @@ type Links = {
 };
 
 type Children = {
-  id: number;
+  id: string;
   title: string;
   route: string;
 }
 
 type Menu = {
-  id: number;
+  id: string;
   title: string;
   icon: Component;
   arrow?: Component;

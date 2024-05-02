@@ -2,52 +2,35 @@ import { Bot, ChevronDown, Star, BookText, Settings, File } from 'lucide-vue-nex
 
 export const menuItems = ref<Menu[]>([
     {
-      id: 0,
+      id: "0",
       title: 'About.file.txt',
       icon: File,
       color: 'rgb(82 82 91 / 0.9)',
       route: ABOUT_ROUTE
     },
     {
-      id: 1,
+      id: "1",
       title: 'Notes',
       icon: BookText,
       arrow: ChevronDown,
       color: 'rgb(82 82 91 / 0.9)',
       isArrowActive: false,
       route: NOTES_ROUTE,
-      children: [
-        {
-          id: 0,
-          title: 'Untitled',
-          route: '/home/notes/untitled'
-        },
-        {
-          id: 1,
-          title: 'Untitled2',
-          route: '/home/notes/untitled2'
-        }
-      ]
+      children: []
     },
     {
-      id: 2,
+      id: "2",
       title: 'Favorites',
       icon: Star,
       color: 'rgb(82 82 91 / 0.9)',
       arrow: ChevronDown,
       isArrowActive: false,
       route: FAVORITES_ROUTE,
-      children: [
-        {
-          id: 0,
-          title: 'Untitled',
-          route: '/home/notes/untitled'
-        }
-      ]
+      children: []
     },
-    { id: 3, title: 'AI asistant', icon: Bot, color: 'rgb(82 82 91 / 0.9)', route: AI_ROUTE },
+    { id: "3", title: 'AI asistant', icon: Bot, color: 'rgb(82 82 91 / 0.9)', route: AI_ROUTE },
     {
-      id: 4,
+      id:"4" ,
       title: 'Settings',
       icon: Settings,
       color: 'rgb(82 82 91 / 0.9)',

@@ -2,13 +2,20 @@
 import { ChevronsUpDown } from 'lucide-vue-next';
 import { useAuthStore } from '~/store/auth.store';
 import { useOnline } from '@vueuse/core';
+import { useNotesStore } from '~/store/notes.store';
 
 const authStore = useAuthStore();
 const { user, token, isSkeleton } = storeToRefs(authStore);
+const notesStore = useNotesStore()
 const online = useOnline();
 
 const localePath = useLocalePath();
 const { store } = useColorMode();
+
+const onLogout = () => {
+  authStore.logout();
+  notesStore.deleteNotes()
+}
 
 onMounted(async () => {
   if (user) {
@@ -48,7 +55,7 @@ onMounted(async () => {
           <span>{{ $t('account.welcome') }}</span>
           <UiDropdownMenuShortcut>⌘B</UiDropdownMenuShortcut>
         </UiDropdownMenuItem>
-        <UiDropdownMenuItem @click="authStore.logout">
+        <UiDropdownMenuItem @click="onLogout">
           <span>{{ $t('account.logout') }}</span>
           <UiDropdownMenuShortcut>⇧⌘Q</UiDropdownMenuShortcut>
         </UiDropdownMenuItem>

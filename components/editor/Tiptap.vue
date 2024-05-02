@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useEditor, EditorContent, type Content } from '@tiptap/vue-3';
+import { useEditor, EditorContent } from '@tiptap/vue-3';
+import type { Content } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 import { Color } from '@tiptap/extension-color';
@@ -72,7 +73,7 @@ const editor = useEditor({
     SmilieReplacer
   ],
   editable: true,
-  autofocus: route.path === localePath(ABOUT_ROUTE) ? 75 : 'start',
+  autofocus: route.path === localePath(ABOUT_ROUTE) ? 75 : 'end',
   editorProps: {
     attributes: {
       class: 'editor-notium',

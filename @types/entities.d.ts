@@ -14,17 +14,18 @@ interface UserAuth extends UserType {
   token: string;
 }
 
-type Note = {
-  id: string;
-  title: string;
+type NoteData = {
   content: string;
-  date?: string;
-  favorite: boolean;
-  prioritet: string;
-  createdAt?: Date;
-  updateAt?: Date;
-  deleteAt?: Date;
+  type: 'doc';
 };
+
+interface Note extends DateParams {
+  _id: string;
+  user: UserType;
+  note_data: NoteData;
+  favorite?: boolean;
+  priority?: number;
+}
 
 type ChatCompletionRequestMessage = {
   role: 'user' | 'assistant';

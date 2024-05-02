@@ -104,7 +104,7 @@ export const useAuthStore = defineStore('auth', () => {
   const setSkeleton = () => {
     setTimeout(() => {
       isSkeleton.value = false;
-    }, 1500);
+    }, 2000);
   };
 
   const setSkeletonOnUnmount = () => {

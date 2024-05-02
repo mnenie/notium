@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/store/auth.store';
 import { menuItems } from '~/mocks/menu';
+import { useNotesStore } from '~/store/notes.store';
 const authstore = useAuthStore();
+const notesStore = useNotesStore();
 
 const route = useRoute();
 const localPath = useLocalePath();
@@ -21,8 +23,9 @@ const getCurrentMenuItemTitle = computed(() => {
   return currentItemTitle;
 });
 
-onMounted(() => {
+onMounted(async() => {
   authstore.setSkeleton();
+  await notesStore.getNotes();
 });
 onUnmounted(() => {
   authstore.setSkeletonOnUnmount();

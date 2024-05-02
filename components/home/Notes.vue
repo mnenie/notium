@@ -1,28 +1,24 @@
 <script setup lang="ts">
-import { useAuthStore } from '~/store/auth.store';
-import { useNotesStore } from '~/store/notes.store';
-
-const { notes } = storeToRefs(useNotesStore());
-
-const {user} = storeToRefs(useAuthStore())
-
+const props = defineProps<{
+  notes: Note[];
+}>()
 </script>
 <template>
-  <div class="px-4 pt-16 h-full">
-    <div class="grid gap-3 grid-cols-5 notes">
-      <HomeNote :notes="notes" />
+  <div class="h-full px-4 pt-16">
+    <div class="notes grid grid-cols-5 gap-3">
+      <HomeNote :notes="props.notes" />
     </div>
   </div>
 </template>
 
 <style scoped>
 @media screen and (max-width: 1670px) {
-  .notes{
+  .notes {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 @media screen and (max-width: 1340px) {
-  .notes{
+  .notes {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
