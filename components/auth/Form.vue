@@ -90,11 +90,11 @@ const onSubmit = handleSubmit(async (values) => {
             <Loader2 v-if="isLoading" class="mr-2 h-4 w-4 animate-spin" />
             {{ $route.path === localPath(LOGIN_ROUTE) ? 'Sign In with Email' : 'Sign Up with Email' }}
           </UiButton>
-          <p class="text-sm text-[#72717a]">
+          <p class="text-sm text-[#72717a] dark:text-zinc-300">
             {{ $route.path === localPath(LOGIN_ROUTE) ? `Don't have an account?` : 'Have an account?' }}
             <span
               @click="$route.path === localPath(LOGIN_ROUTE) ? navigateTo(localPath(REGISTRATION_ROUTE)) : navigateTo(localPath(LOGIN_ROUTE))"
-              class="cursor-pointer underline underline-offset-4 hover:text-zinc-900"
+              class="cursor-pointer underline underline-offset-4 hover:text-zinc-900 dark:hover:text-zinc-300/80"
               >{{ $route.path === localPath(LOGIN_ROUTE) ? `Sign Up Now` : 'Sign In Now' }}</span
             >
           </p>

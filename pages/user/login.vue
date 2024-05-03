@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ChevronLeft } from 'lucide-vue-next';
-
 definePageMeta({
   layout: 'auth',
   middleware: 'sign-in'
@@ -12,15 +10,14 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="container h-full relative">
-    <div @click="navigateTo(HOME_ROUTE)" class="mt-20 ml-52 absolute rounded-md flex items-center gap-1 cursor-pointer">
-      <ChevronLeft :size="20" />
-      <span class="text-sm font-medium">Back</span>
-    </div>
+  <div class="container relative h-full">
+    <AuthBackLink />
     <div class="mx-auto flex h-full w-full flex-col items-center justify-center">
       <div class="flex w-[460px] flex-col space-y-2 text-center">
-        <h1 class="text-2xl font-semibold tracking-tight">Welcome back</h1>
-        <p class="pb-4 text-sm text-[#72717a]">Enter your info below to sign in your account</p>
+        <h1 class="text-2xl font-semibold tracking-tight dark:text-zinc-100">Welcome back</h1>
+        <p class="pb-4 text-sm text-[#72717a] dark:text-zinc-200">
+          Enter your info below to sign in your account
+        </p>
         <AuthForm />
         <AuthLine />
         <AuthGithub />

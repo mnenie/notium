@@ -15,15 +15,15 @@ const localPath = useLocalePath();
 </script>
 <template>
   <header
-    class="sticky top-0 z-50 w-full border-b border-[#e4e4e766]/40 bg-[#fff9]/95 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60">
+    class="sticky top-0 z-50 w-full border-b border-[#e4e4e766]/40 bg-[#fff9]/95 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60 dark:bg-transparent dark:border-zinc-800">
     <div class="container flex h-14 max-w-screen-2xl items-center justify-between">
       <div @click="navigateTo(HOME_ROUTE)" class="flex items-center space-x-3 cursor-pointer">
-        <img src="/img/logo.png" class="h-7 w-7" />
-        <span class="text-[22px] font-bold">Notium</span>
+        <img src="/img/logo.png" class="h-7 w-7 text-zinc-100" />
+        <span class="text-[22px] font-bold dark:text-zinc-100">Notium</span>
       </div>
       <div class="flex items-center space-x-10">
         <span v-for="link in links" :key="link.id" @click="scrollToSection(link.section)"
-          class="cursor-pointer text-sm font-medium text-zinc-950/60 transition-colors hover:text-zinc-950/90">
+          class="cursor-pointer text-sm font-medium text-zinc-950/60 transition-colors hover:text-zinc-950/90 dark:text-zinc-200/80 dark:hover:text-zinc-200">
           {{ link.name }}
         </span>
       </div>
