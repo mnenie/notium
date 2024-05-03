@@ -2,6 +2,8 @@
 import { useAuthStore } from '~/store/auth.store';
 import { menuItems } from '~/mocks/menu';
 import { useNotesStore } from '~/store/notes.store';
+import { EditorKey } from '~/utils/symbols';
+
 const authstore = useAuthStore();
 const notesStore = useNotesStore();
 
@@ -22,6 +24,11 @@ const getCurrentMenuItemTitle = computed(() => {
   });
   return currentItemTitle;
 });
+
+const content = ref('<h1>Untitled</h1><p></p>');
+const selectedText = ref<string>('');
+
+provide(EditorKey, { selectedText, content });
 
 onMounted(async() => {
   authstore.setSkeleton();

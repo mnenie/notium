@@ -9,7 +9,7 @@ defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'tooglePriority', value: string): void;
+  (e: 'togglePriority', value: string): void;
 }>();
 
 const { store } = useColorMode();
@@ -18,7 +18,7 @@ const { store } = useColorMode();
 <template>
   <UiPopover>
     <UiPopoverTrigger as-child>
-      <UiButton variant="outline" size="sm" class="mr-1 flex h-8 items-center border-dashed">
+      <UiButton variant="outline" size="sm" class="flex h-8 items-center border-dashed">
         <PlusCircleIcon class="mr-2 h-4 w-4" :color="store === 'light' ? 'rgb(82 82 91)' : 'rgb(113 113 122)'" />
         <span class="text-[12px]">{{ $t('top_menu.priority.title') }}</span>
         <template v-if="selectedValues.length > 0">
@@ -60,7 +60,7 @@ const { store } = useColorMode();
               :key="option.value"
               :value="option"
               class="cursor-pointer gap-1"
-              @select="emit('tooglePriority', option.value)"
+              @select="emit('togglePriority', option.value)"
             >
               <div class="flex w-full items-center justify-between">
                 <div class="flex items-center">

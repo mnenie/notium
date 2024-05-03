@@ -9,7 +9,13 @@ export const useNotesStore = defineStore('notes', () => {
     type: 'doc'
   });
 
-  const { getExistingNotes, getExistingNoteById, postNoteToNotes } = useNotes();
+  const {
+    getExistingNotes,
+    getExistingNoteById,
+    postNoteToNotes,
+    updateCurrentNoteById,
+    deleteCurrentNoteById
+  } = useNotes();
 
   const addNewNote = async () => {
     try {
@@ -24,6 +30,15 @@ export const useNotesStore = defineStore('notes', () => {
         });
       }
       navigateTo(NOTES_ROUTE + '/' + response.data._id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateNoteById = async (data: { note_data: NoteData; priority: number }) => {
+    try {
+      const response = await updateCurrentNoteById(note.value._id, data);
+      note.value = response.data;
     } catch (err) {
       console.log(err);
     }
@@ -81,6 +96,23 @@ export const useNotesStore = defineStore('notes', () => {
     }
   };
 
+  const deleteNoteById = async () => {
+    try {
+      await deleteCurrentNoteById(note.value._id);
+      await navigateTo(HOME_ROUTE);
+      note.value = {} as Note;
+      const childrens = menuItems.value.find((item) => item.id === '1');
+      if (childrens && childrens.children) {
+        const index = childrens.children.findIndex((c) => c.id === note.value._id);
+        if (index !== -1) {
+          childrens.children.splice(index, 1);
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return {
     notes,
     note,
@@ -89,8 +121,10 @@ export const useNotesStore = defineStore('notes', () => {
     skeletonNote,
     setSkeleton,
     getNoteById,
+    updateNoteById,
     addNewNote,
     getNotes,
-    deleteNotes
+    deleteNotes,
+    deleteNoteById
   };
 });

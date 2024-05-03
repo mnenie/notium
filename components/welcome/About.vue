@@ -8,9 +8,6 @@ const { token } = storeToRefs(authStore);
 
 const localPath = useLocalePath();
 const { store } = useColorMode();
-
-const theme = typeof localStorage !== 'undefined' ? localStorage.getItem('vueuse-color-scheme') : null;
-console.log(theme);
 </script>
 
 <template>
@@ -38,7 +35,7 @@ console.log(theme);
     </div>
     <img
       class="rounded-[0.5rem] border shadow dark:border-zinc-600"
-      :src="theme == 'light' ? '/img/about/light-main.png' : '/img/about/dark-main.png'"
+      :src="store == 'light' ? '/img/about/light-main.png' : '/img/about/dark-main.png'"
     />
   </section>
 </template>

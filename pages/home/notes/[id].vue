@@ -16,17 +16,14 @@ const { note, skeletonNote } = storeToRefs(notesStore);
 const authstore = useAuthStore();
 const { isSkeleton } = storeToRefs(authstore);
 
-const content = ref('<h1>Untitled</h1><p></p>');
-const selectedText = ref<string>('');
+const editor = inject(EditorKey);
 
 const route = useRoute();
 
-provide(EditorKey, { selectedText, content });
-
 onMounted(async () => {
   await notesStore.getNoteById(route.params.id as string);
-  if (note.value !== ({} as Note)) {
-    content.value = note.value.note_data!.content;
+  if (note.value !== ({} as Note) && editor) {
+    editor.content.value = note.value.note_data!.content;
   }
   notesStore.setSkeleton();
 });
@@ -37,7 +34,7 @@ onUnmounted(() => {
 
 <template>
   <div v-if="!isSkeleton">
-    <EditorTiptap v-if="!skeletonNote" v-model="content" />
+    <EditorTiptap v-if="!skeletonNote && editor" v-model="editor.content.value" />
     <div v-else class="flex w-full flex-col gap-6 px-72 pt-40">
       <UiSkeleton class="h-10 w-[500px]" />
     </div>

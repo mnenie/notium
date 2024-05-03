@@ -37,7 +37,9 @@ const toggleStar = () => {
   <div
     class="absolute left-0 right-0 top-0 z-50 flex w-full select-none items-center justify-between bg-[#fff9]/95 px-4 py-2 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60 dark:bg-transparent"
   >
-    <h2 v-if="!isSkeleton" class="text-xl font-semibold tracking-tight dark:text-zinc-100">{{ $t(props.title) }}</h2>
+    <h2 v-if="!isSkeleton" class="text-xl font-semibold tracking-tight dark:text-zinc-100">
+      {{ $t(props.title) }}
+    </h2>
     <UiSkeleton class="mt-[4px] h-6 w-[130px]" v-else />
     <div
       v-if="
@@ -47,19 +49,17 @@ const toggleStar = () => {
         $route.path !== localPath(SETTINGS_ROUTE)
       "
     >
-      <div v-if="!isSkeleton" class="flex items-center">
-        <FeaturesPriority
-          :priorities="priorities"
-          :selected-values="selectedValues"
-          @toogle-priority="togglePriority"
-        />
-        <UiButton @click="toggleStar" variant="outline" size="sm" class="h-8 border-dashed px-2">
-          <Star class="h-4 w-4" :color="colorStar" />
-        </UiButton>
-      </div>
+      <FeaturesNoteParts
+        v-if="!isSkeleton"
+        :priorities="priorities"
+        :selected-values="selectedValues"
+        @toggle-priority="togglePriority"
+      />
       <UiSkeleton v-else class="h-6 w-[160px]" />
     </div>
-    <FeaturesFilterNotes v-if="$route.path === localPath(NOTES_ROUTE) || $route.path === localPath(FAVORITES_ROUTE)" />
+    <FeaturesFilterNotes
+      v-if="$route.path === localPath(NOTES_ROUTE) || $route.path === localPath(FAVORITES_ROUTE)"
+    />
     <UiButton
       v-if="$route.path === localPath(AI_ROUTE) || $route.path === localPath(SETTINGS_ROUTE)"
       @click="navigateTo(localPath(NOTES_ROUTE))"
