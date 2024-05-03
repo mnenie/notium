@@ -110,6 +110,10 @@
   animation: ProseMirror-cursor-blink 1.1s steps(2, start) infinite;
 }
 
+body{
+  @apply dark:bg-[#1a1a1a]
+}
+
 .tippy-box {
   @apply pointer-events-none;
   @apply rounded-md;

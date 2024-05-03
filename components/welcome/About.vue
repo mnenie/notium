@@ -8,6 +8,9 @@ const { token } = storeToRefs(authStore);
 
 const localPath = useLocalePath();
 const { store } = useColorMode();
+
+const theme = typeof localStorage !== 'undefined' ? localStorage.getItem('vueuse-color-scheme') : null;
+console.log(theme);
 </script>
 
 <template>
@@ -16,11 +19,11 @@ const { store } = useColorMode();
     class="mx-auto flex max-w-[980px] flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-52"
   >
     <h1
-      class="mb-1 text-center text-3xl font-bold leading-tight tracking-tighter md:text-6xl lg:leading-[1.1] dark:text-zinc-100"
+      class="mb-1 text-center text-3xl font-bold leading-tight tracking-tighter dark:text-zinc-100 md:text-6xl lg:leading-[1.1]"
     >
       Realize your future in notes
     </h1>
-    <p class="max-w-[600px] text-center text-lg text-[#72717a] sm:text-xl dark:text-zinc-400">
+    <p class="max-w-[600px] text-center text-lg text-[#72717a] dark:text-zinc-400 sm:text-xl">
       Сloud app that allows users to create and store notes based on their priorities, also uses the built-in
       AI, assistant NotiumAI
     </p>
@@ -33,6 +36,9 @@ const { store } = useColorMode();
         GitHub
       </UiButton>
     </div>
-    <img class="rounded-[0.5rem] border shadow dark:border-zinc-600" :src="store === 'light' ? '/img/about/light-main.png' : '/img/about/dark-main.png'" />
+    <img
+      class="rounded-[0.5rem] border shadow dark:border-zinc-600"
+      :src="theme == 'light' ? '/img/about/light-main.png' : '/img/about/dark-main.png'"
+    />
   </section>
 </template>
