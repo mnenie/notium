@@ -2,7 +2,7 @@
 import { PlusCircleIcon, Search } from 'lucide-vue-next';
 import { useNotesStore } from '~/store/notes.store';
 const noteStore = useNotesStore();
-const model = defineModel<string>();
+const model = ref('')
 
 const localPath = useLocalePath();
 const { store } = useColorMode();

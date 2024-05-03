@@ -2,6 +2,7 @@
 import { useAuthStore } from '~/store/auth.store';
 import { menuItems } from '~/mocks/menu';
 import { useNotesStore } from '~/store/notes.store';
+import { cn } from '~/lib/utils';
 import { EditorKey } from '~/utils/symbols';
 
 const authstore = useAuthStore();
@@ -30,7 +31,7 @@ const selectedText = ref<string>('');
 
 provide(EditorKey, { selectedText, content });
 
-onMounted(async() => {
+onMounted(async () => {
   authstore.setSkeleton();
   await notesStore.getNotes();
 });
@@ -44,7 +45,15 @@ onUnmounted(() => {
     <LayoutSidebar :nav-items="menuItems" />
     <div class="relative flex h-full w-full flex-col">
       <LayoutTopPart :title="getCurrentMenuItemTitle" />
-      <div class="dark:bg-[#1a1a1a] h-full w-full">
+      <div
+        :class="
+          cn('h-full w-full dark:bg-[#1a1a1a]', [
+            $route.path !== AI_ROUTE && $route.path !== SETTINGS_ROUTE && $route.path !== NOTES_ROUTE
+              ? 'overflow-auto pb-20'
+              : ''
+          ])
+        "
+      >
         <slot />
       </div>
     </div>

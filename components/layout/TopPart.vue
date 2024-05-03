@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/store/auth.store';
-import { Star } from 'lucide-vue-next';
 import { priorities } from '~/mocks/priorities';
 
 const props = defineProps<{
@@ -12,6 +11,8 @@ const { isSkeleton } = storeToRefs(authStore);
 
 const selectedValues = ref(['none']);
 
+const localPath = useLocalePath();
+
 const togglePriority = (value: string) => {
   const index = selectedValues.value.indexOf(value);
   if (index === -1) {
@@ -19,17 +20,6 @@ const togglePriority = (value: string) => {
   } else {
     selectedValues.value.splice(index, 1);
   }
-};
-
-const localPath = useLocalePath();
-const { store } = useColorMode();
-
-const isStar = ref(false);
-const colorStar = computed(() => {
-  return isStar.value ? 'rgb(251 191 36)' : store.value === 'light' ? 'rgb(82 82 91)' : 'rgb(113 113 122)';
-});
-const toggleStar = () => {
-  isStar.value = !isStar.value;
 };
 </script>
 

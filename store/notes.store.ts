@@ -5,7 +5,7 @@ export const useNotesStore = defineStore('notes', () => {
   const note = ref<Note>({} as Note);
   const skeletonNote = ref<boolean>(true);
   const defaultNote = ref<NoteData>({
-    content: '<h1>Untitledddd</h1><p></p>',
+    content: '<h1>Untitled</h1><p></p>',
     type: 'doc'
   });
 
