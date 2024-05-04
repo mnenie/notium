@@ -21,7 +21,7 @@ const props = defineProps<{
     <UiCardHeader class="flex flex-row items-start justify-between gap-4 space-y-0 p-4">
       <div class="space-y-1">
         <UiCardTitle class="text-base">{{ htmlH1ToText(note.note_data.content) }}</UiCardTitle>
-        <UiCardDescription class="text-sm text-zinc-600">
+        <UiCardDescription class="text-sm text-zinc-600 text-ellipsis">
           {{ htmlContentToText(note.note_data.content) }}
         </UiCardDescription>
       </div>

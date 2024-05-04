@@ -33,7 +33,6 @@ provide(EditorKey, { selectedText, content });
 
 onMounted(async () => {
   authstore.setSkeleton();
-  await notesStore.getNotes();
 });
 onUnmounted(() => {
   authstore.setSkeletonOnUnmount();

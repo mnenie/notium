@@ -28,7 +28,14 @@ const togglePriority = (value: string) => {
     class="absolute left-0 right-0 top-0 z-50 flex w-full select-none items-center justify-between bg-[#fff9]/95 px-4 py-2 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60 dark:bg-transparent"
   >
     <h2 v-if="!isSkeleton" class="text-xl font-semibold tracking-tight dark:text-zinc-100">
-      {{ $t(props.title) }}
+      {{
+        $route.path === localPath(AI_ROUTE) ||
+        $route.path === localPath(SETTINGS_ROUTE) ||
+        $route.path === localPath(NOTES_ROUTE) ||
+        $route.path === localPath(FAVORITES_ROUTE)
+          ? $t(props.title)
+          : props.title
+      }}
     </h2>
     <UiSkeleton class="mt-[4px] h-6 w-[130px]" v-else />
     <div

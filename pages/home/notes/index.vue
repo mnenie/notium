@@ -12,6 +12,10 @@ const notesStore = useNotesStore();
 const { notes } = storeToRefs(notesStore);
 const authStore = useAuthStore();
 const { isSkeleton } = storeToRefs(authStore);
+
+onMounted(async () => {
+  await notesStore.getNotes();
+})
 </script>
 
 <template>
