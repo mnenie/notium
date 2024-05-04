@@ -9,6 +9,13 @@ const {htmlH1ToText, htmlContentToText} = helperHtmlToText()
 const props = defineProps<{
   notes: Note[];
 }>();
+
+const redirectToNote = (id: string) => {
+  navigateTo(NOTES_ROUTE + '/' + id);
+  menuItems.value.forEach((item) => {
+    item.isArrowActive = true;
+  })
+}
 </script>
 
 <template>
@@ -16,7 +23,7 @@ const props = defineProps<{
     v-for="note in props.notes"
     :key="note._id"
     class="flex w-full max-w-[400px] cursor-pointer flex-col justify-between"
-    @click="navigateTo(NOTES_ROUTE + '/' + note._id)"
+    @click="redirectToNote(note._id)"
   >
     <UiCardHeader class="flex flex-row items-start justify-between gap-4 space-y-0 p-4">
       <div class="space-y-1">

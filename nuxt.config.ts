@@ -30,6 +30,9 @@ export default defineNuxtConfig({
       isCustomElement: (tag) => tag.startsWith('media-')
     }
   },
+  experimental: {
+    renderJsonPayloads: false
+  },
   vite: {
     plugins: [vidstack({ include: /player\// })]
   }

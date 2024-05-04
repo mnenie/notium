@@ -21,11 +21,11 @@ const editor = inject(EditorKey);
 const route = useRoute();
 
 onMounted(async () => {
+  notesStore.setSkeleton();
   await notesStore.getNoteById(route.params.id as string);
   if (note.value !== ({} as Note) && editor) {
     editor.content.value = note.value.note_data!.content;
   }
-  notesStore.setSkeleton();
 });
 onUnmounted(() => {
   notesStore.unsetSkeleton();
@@ -34,7 +34,7 @@ onUnmounted(() => {
 
 <template>
   <div v-if="!isSkeleton">
-    <EditorTiptap v-if="!skeletonNote && editor" v-model="editor.content.value" />
+    <EditorTiptap v-if="skeletonNote" v-model="editor!.content.value" />
     <div v-else class="flex w-full flex-col gap-6 px-72 pt-40">
       <UiSkeleton class="h-10 w-[500px]" />
     </div>

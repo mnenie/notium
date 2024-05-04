@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/store/auth.store';
 import { priorities } from '~/mocks/priorities';
+import { useNotesStore } from '~/store/notes.store';
+import helperHtmlToText from '~/helpers/helperHtmlToText';
 
 const props = defineProps<{
   title: string;
@@ -8,6 +10,9 @@ const props = defineProps<{
 
 const authStore = useAuthStore();
 const { isSkeleton } = storeToRefs(authStore);
+const { note, skeletonNote } = storeToRefs(useNotesStore());
+
+const { htmlH1ToText } = helperHtmlToText();
 
 const selectedValues = ref(['none']);
 
@@ -29,15 +34,12 @@ const togglePriority = (value: string) => {
   >
     <h2 v-if="!isSkeleton" class="text-xl font-semibold tracking-tight dark:text-zinc-100">
       {{
-        $route.path === localPath(AI_ROUTE) ||
-        $route.path === localPath(SETTINGS_ROUTE) ||
-        $route.path === localPath(NOTES_ROUTE) ||
-        $route.path === localPath(FAVORITES_ROUTE)
+        $route.path !== localPath(NOTES_ROUTE + '/' + note._id)
           ? $t(props.title)
-          : props.title
+          : htmlH1ToText(note.note_data.content)
       }}
     </h2>
-    <UiSkeleton class="mt-[4px] h-6 w-[130px]" v-else />
+    <UiSkeleton v-else class="mt-[4px] h-6 w-[130px]" />
     <div
       v-if="
         $route.path !== localPath(AI_ROUTE) &&

@@ -9,7 +9,7 @@ definePageMeta({
   middleware: 'auth'
 });
 const notesStore = useNotesStore();
-const { notes } = storeToRefs(notesStore);
+const { notes, filteredNotes } = storeToRefs(notesStore);
 const authStore = useAuthStore();
 const { isSkeleton } = storeToRefs(authStore);
 
@@ -21,7 +21,7 @@ onMounted(async () => {
 <template>
   <div v-if="!isSkeleton" class="h-full w-full">
     <HomeEmptyNotes v-if="notes.length === 0" />
-    <HomeNotes v-else :notes="notes" />
+    <HomeNotes v-else :notes="filteredNotes" />
   </div>
   <div v-else class="h-full px-4 pt-16">
     <div class="notes grid grid-cols-5 gap-3">

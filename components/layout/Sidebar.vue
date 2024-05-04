@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import helperHtmlToText from '~/helpers/helperHtmlToText';
-import { menuItems } from '~/mocks/menu';
 import { useAuthStore } from '~/store/auth.store';
 import { useNotesStore } from '~/store/notes.store';
 
@@ -8,10 +6,15 @@ const props = defineProps<{
   navItems: Menu[];
 }>();
 
-const filter = ref('');
+const filter = defineModel<string>('filter');
 
 const authstore = useAuthStore();
 const { isSkeleton } = storeToRefs(authstore);
+const notesStore = useNotesStore();
+
+onMounted(async () => {
+  await notesStore.getNotes();
+})
 </script>
 
 <template>

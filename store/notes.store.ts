@@ -1,10 +1,10 @@
 import helperHtmlToText from '~/helpers/helperHtmlToText';
-import { menuItems } from '~/mocks/menu';
 
 export const useNotesStore = defineStore('notes', () => {
   const notes = ref<Note[]>([]);
   const note = ref<Note>({} as Note);
-  const skeletonNote = ref<boolean>(true);
+  const skeletonNote = ref<boolean>(false);
+  const filterModel = ref<string>('');
   const defaultNote = ref<NoteData>({
     content: '<h1>Untitled</h1><p></p>',
     type: 'doc'
@@ -95,11 +95,11 @@ export const useNotesStore = defineStore('notes', () => {
 
   const setSkeleton = () => {
     setTimeout(() => {
-      skeletonNote.value = false;
-    }, 500);
+      skeletonNote.value = true;
+    }, 1500);
   };
   const unsetSkeleton = () => {
-    skeletonNote.value = true;
+    skeletonNote.value = false;
   };
 
   const deleteNotes = () => {
@@ -132,6 +132,16 @@ export const useNotesStore = defineStore('notes', () => {
     }
   };
 
+  const filteredNotes = computed(() => {
+    if (filterModel.value === '') {
+      return [...notes.value];
+    }
+    const filtered = [...notes.value].filter((note) =>
+      htmlH1ToText(note.note_data.content).toLowerCase().includes(filterModel.value.toLowerCase())
+    );
+    return filtered;
+  });
+
   return {
     notes,
     note,
@@ -144,6 +154,8 @@ export const useNotesStore = defineStore('notes', () => {
     addNewNote,
     getNotes,
     deleteNotes,
-    deleteNoteById
+    deleteNoteById,
+    filterModel,
+    filteredNotes
   };
 });
