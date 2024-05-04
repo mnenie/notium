@@ -5,7 +5,6 @@ import * as z from 'zod';
 import { vAutoAnimate } from '@formkit/auto-animate/vue';
 import { Loader2 } from 'lucide-vue-next';
 import { Label } from '@/components/ui/label';
-import { toast } from 'vue-sonner';
 import { useAuthStore } from '~/store/auth.store';
 
 const formSchema = toTypedSchema(
@@ -29,7 +28,7 @@ const { value: email } = useField<string>('email');
 const { value: password } = useField<string>('password');
 
 const authStore = useAuthStore();
-const { isLoading, error } = storeToRefs(authStore);
+const { isLoading } = storeToRefs(authStore);
 const { login, registration } = authStore;
 
 const route = useRoute();
@@ -43,7 +42,7 @@ const onSubmit = handleSubmit(async (values) => {
       await registration({ ...values });
     }
   } catch (err) {
-    toast.error(error.value);
+    console.log(err);
   }
 });
 </script>
@@ -93,7 +92,11 @@ const onSubmit = handleSubmit(async (values) => {
           <p class="text-sm text-[#72717a] dark:text-zinc-300">
             {{ $route.path === localPath(LOGIN_ROUTE) ? `Don't have an account?` : 'Have an account?' }}
             <span
-              @click="$route.path === localPath(LOGIN_ROUTE) ? navigateTo(localPath(REGISTRATION_ROUTE)) : navigateTo(localPath(LOGIN_ROUTE))"
+              @click="
+                $route.path === localPath(LOGIN_ROUTE)
+                  ? navigateTo(localPath(REGISTRATION_ROUTE))
+                  : navigateTo(localPath(LOGIN_ROUTE))
+              "
               class="cursor-pointer underline underline-offset-4 hover:text-zinc-900 dark:hover:text-zinc-300/80"
               >{{ $route.path === localPath(LOGIN_ROUTE) ? `Sign Up Now` : 'Sign In Now' }}</span
             >
