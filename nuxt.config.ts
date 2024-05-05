@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n'
   ],
-  i18n: {...i18nConfig},
+  i18n: {...i18nConfig, defaultLocale: 'en-US'},
   shadcn: {
     prefix: 'Ui',
     componentDir: './components/ui'
