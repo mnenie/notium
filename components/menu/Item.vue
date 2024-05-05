@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { File } from 'lucide-vue-next';
+import { File, BookText } from 'lucide-vue-next';
 import { cn } from '~/lib/utils';
+import { useNotesStore } from '~/store/notes.store';
 
 const props = defineProps<{
   menuItems: Menu[];
 }>();
 
 const { store } = useColorMode();
+const { favs } = storeToRefs(useNotesStore());
+const favsLength = computed(() => favs.value.length);
 
 const toggleActiveArrow = (id: string): void => {
   props.menuItems.forEach((item) => {
@@ -20,12 +23,12 @@ const route = useRoute();
 const localPath = useLocalePath();
 
 const isActiveRoute = (targetRoute: string): boolean => {
-  return route.path === targetRoute;
+  return route.path === localPath(targetRoute);
 };
 
 onMounted(() => {
   props.menuItems.forEach((item) => {
-    if (item.children) {
+    if (item.children && item.id === '1') {
       item.children.forEach((child) => {
         if (route.path === localPath(child.route)) {
           toggleActiveArrow(item.id);
@@ -54,11 +57,20 @@ onMounted(() => {
           "
           :color="store === 'light' ? 'rgb(82 82 91 / 0.9)' : 'rgb(113 113 122)'"
         />
-        <component
-          :is="item.icon"
-          class="mr-2 h-[16px] w-[16px]"
-          :color="store === 'light' ? 'rgb(82 82 91 / 0.9)' : 'rgb(113 113 122)'"
-        />
+        <div class="relative flex items-center">
+          <component
+            :is="item.icon"
+            class="mr-2 h-[16px] w-[16px]"
+            :color="store === 'light' ? 'rgb(82 82 91 / 0.9)' : 'rgb(113 113 122)'"
+          />
+          <div
+            v-if="item.folder"
+            class="absolute right-1.5 top-0 flex h-2 w-2 items-center justify-center rounded-full bg-amber-500"
+          >
+            <span class="text-[6px] text-zinc-50">{{ favsLength }}</span>
+          </div>
+        </div>
+
         <span class="text-[14px] text-zinc-600 dark:text-zinc-300 xl:text-[13px] 2xl:text-[14px]">{{
           $t(item.title)
         }}</span>
@@ -69,16 +81,18 @@ onMounted(() => {
         <NuxtLink :to="localPath(child.route)" :exact="true">
           <UiButton
             :variant="isActiveRoute(child.route) ? 'secondary' : 'ghost'"
-            class="h-8 w-full justify-start pl-[50px]"
+            class="h-8 w-full justify-between pl-[50px]"
           >
-            <component
-              :is="File"
-              class="mr-2 h-[16px] w-[16px]"
-              :color="store === 'light' ? 'rgb(82 82 91 / 0.9)' : 'rgb(113 113 122)'"
-            />
-            <span class="text-[14px] text-zinc-600 dark:text-zinc-300 xl:text-[13px] 2xl:text-[14px]">{{
-              child.title
-            }}</span>
+            <div class="flex items-center">
+              <component
+                :is="File"
+                class="mr-2 h-[16px] w-[16px]"
+                :color="store === 'light' ? 'rgb(82 82 91 / 0.9)' : 'rgb(113 113 122)'"
+              />
+              <span class="text-[14px] text-zinc-600 dark:text-zinc-300 xl:text-[13px] 2xl:text-[14px]">{{
+                child.title
+              }}</span>
+            </div>
           </UiButton>
         </NuxtLink>
       </div>

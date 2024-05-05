@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/store/auth.store';
-import { priorities } from '~/mocks/priorities';
 import { useNotesStore } from '~/store/notes.store';
 import helperHtmlToText from '~/helpers/helperHtmlToText';
 
@@ -14,18 +13,7 @@ const { note, skeletonNote } = storeToRefs(useNotesStore());
 
 const { htmlH1ToText } = helperHtmlToText();
 
-const selectedValues = ref(['none']);
-
 const localPath = useLocalePath();
-
-const togglePriority = (value: string) => {
-  const index = selectedValues.value.indexOf(value);
-  if (index === -1) {
-    selectedValues.value.push(value);
-  } else {
-    selectedValues.value.splice(index, 1);
-  }
-};
 </script>
 
 <template>
@@ -48,12 +36,7 @@ const togglePriority = (value: string) => {
         $route.path !== localPath(SETTINGS_ROUTE)
       "
     >
-      <FeaturesNoteParts
-        v-if="!isSkeleton"
-        :priorities="priorities"
-        :selected-values="selectedValues"
-        @toggle-priority="togglePriority"
-      />
+      <FeaturesNoteParts v-if="!isSkeleton" />
       <UiSkeleton v-else class="h-6 w-[160px]" />
     </div>
     <FeaturesFilterNotes

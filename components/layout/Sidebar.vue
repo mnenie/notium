@@ -14,7 +14,8 @@ const notesStore = useNotesStore();
 
 onMounted(async () => {
   await notesStore.getNotes();
-})
+  await notesStore.getFavsNotes();
+});
 </script>
 
 <template>

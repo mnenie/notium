@@ -22,11 +22,9 @@ export const menuItems = ref<Menu[]>([
       id: "2",
       title: 'Favorites',
       icon: Star,
+      folder: true,
       color: 'rgb(82 82 91 / 0.9)',
-      arrow: ChevronDown,
-      isArrowActive: false,
       route: FAVORITES_ROUTE,
-      children: []
     },
     { id: "3", title: 'AI asistant', icon: Bot, color: 'rgb(82 82 91 / 0.9)', route: AI_ROUTE },
     {

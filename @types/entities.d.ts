@@ -24,7 +24,7 @@ interface Note extends DateParams {
   user: UserType;
   note_data: NoteData;
   favorite?: boolean;
-  priority?: number;
+  priority?: string[];
 }
 
 type ChatCompletionRequestMessage = {

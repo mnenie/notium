@@ -2,10 +2,10 @@
 import { PlusCircleIcon, CheckIcon } from 'lucide-vue-next';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { priorities } from '~/mocks/priorities';
 
 defineProps<{
   selectedValues: string[];
-  priorities: Priority[];
 }>();
 
 const emit = defineEmits<{
@@ -21,7 +21,7 @@ const { store } = useColorMode();
       <UiButton variant="outline" size="sm" class="flex h-8 items-center border-dashed">
         <PlusCircleIcon class="mr-2 h-4 w-4" :color="store === 'light' ? 'rgb(82 82 91)' : 'rgb(113 113 122)'" />
         <span class="text-[12px]">{{ $t('top_menu.priority.title') }}</span>
-        <template v-if="selectedValues.length > 0">
+        <template v-if="true">
           <UiSeparator orientation="vertical" class="mx-2 h-4" />
           <Badge variant="secondary" class="rounded-sm px-1 font-normal lg:hidden">
             {{ selectedValues.length }}

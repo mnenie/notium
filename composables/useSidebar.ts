@@ -34,9 +34,32 @@ export default function useSidebar() {
     });
   });
 
+  const updateMenuItemTitle = (menuItems: Menu[], itemId: string, noteId: string, newTitle: string) => {
+    const menuItem = menuItems.find((item) => item.id === itemId);
+    if (menuItem && menuItem.children) {
+      const index = menuItem.children.findIndex((c) => c.id === noteId);
+      if (index !== -1) {
+        menuItem.children[index].title = newTitle;
+      }
+    }
+  };
+
+  const getMenuChildrens = (childrens: Children[] | undefined, id: string, newChild: Children) => {
+    if (childrens) {
+      const index = childrens.findIndex((c) => c.id === newChild.id);
+      if (index === -1) {
+        childrens.push(newChild);
+      } else {
+        childrens[index].title = newChild.title;
+      }
+    }
+  };
+
   return {
     getCurrentMenuItemTitle,
     filteredSidebarItems,
-    filterSidebar
+    filterSidebar,
+    updateMenuItemTitle,
+    getMenuChildrens
   };
 }

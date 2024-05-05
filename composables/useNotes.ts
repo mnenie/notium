@@ -5,7 +5,7 @@ export default function useNotes() {
 
   const postNoteToNotes = async (noteData: {
     note_data: NoteData;
-    priority: number;
+    priority: string[];
   }): Promise<AxiosResponse<Note>> => {
     const response = await $api.post('/notes', noteData, {
       headers: { Authorization: `Bearer ${useCookie('token').value}` }
@@ -15,7 +15,7 @@ export default function useNotes() {
 
   const updateCurrentNoteById = async (
     id: string,
-    noteData: { note_data: NoteData; priority: number }
+    noteData: { note_data: NoteData; priority: string[] }
   ): Promise<AxiosResponse<Note>> => {
     const response = await $api.patch('/notes/' + id, noteData, {
       headers: { Authorization: `Bearer ${useCookie('token').value}` }
@@ -41,11 +41,29 @@ export default function useNotes() {
     });
   };
 
+  const toggleFavoriteNoteById = async (id: string, favorite: boolean): Promise<AxiosResponse<Note>> => {
+    const response = await $api.patch(
+      '/notes/' + id,
+      { favorite },
+      {
+        headers: { Authorization: `Bearer ${useCookie('token').value}` }
+      }
+    );
+    return response;
+  };
+
+  const getFavoriteNotes = async (): Promise<AxiosResponse<Note[]>> => {
+    const response = await $api.get('/fav_notes');
+    return response;
+  };
+
   return {
     getExistingNotes,
     getExistingNoteById,
     updateCurrentNoteById,
     postNoteToNotes,
-    deleteCurrentNoteById
+    deleteCurrentNoteById,
+    toggleFavoriteNoteById,
+    getFavoriteNotes
   };
 }

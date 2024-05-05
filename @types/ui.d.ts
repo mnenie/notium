@@ -28,6 +28,7 @@ type Menu = {
   notes?: Note[];
   favrites?: Note[];
   iconsFile?: Component;
+  folder?: boolean;
   children?: Children[];
 };
 

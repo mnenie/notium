@@ -3,6 +3,7 @@ import helperHtmlToText from '~/helpers/helperHtmlToText';
 export const useNotesStore = defineStore('notes', () => {
   const notes = ref<Note[]>([]);
   const note = ref<Note>({} as Note);
+  const favs = ref<Note[]>([]);
   const skeletonNote = ref<boolean>(false);
   const filterModel = ref<string>('');
   const defaultNote = ref<NoteData>({
@@ -15,30 +16,39 @@ export const useNotesStore = defineStore('notes', () => {
     getExistingNoteById,
     postNoteToNotes,
     updateCurrentNoteById,
-    deleteCurrentNoteById
+    deleteCurrentNoteById,
+    toggleFavoriteNoteById,
+    getFavoriteNotes
   } = useNotes();
 
   const { htmlH1ToText } = helperHtmlToText();
+  const localPath = useLocalePath();
+  const route = useRoute();
 
   const addNewNote = async () => {
     try {
-      const response = await postNoteToNotes({ note_data: defaultNote.value, priority: 0 });
+      const response = await postNoteToNotes({ note_data: defaultNote.value, priority: ['none'] });
       notes.value.push(response.data);
       const childrens = menuItems.value.find((item) => item.id === '1');
       if (childrens && childrens.children) {
         childrens.children!.push({
           id: response.data._id,
-          route: NOTES_ROUTE + '/' + response.data._id,
+          route: localPath(NOTES_ROUTE + '/' + response.data._id),
           title: 'Untitled'
         });
       }
-      navigateTo(NOTES_ROUTE + '/' + response.data._id);
+      menuItems.value.forEach((item) => {
+        if (item.id == '1') {
+          item.isArrowActive = true;
+        }
+      });
+      navigateTo(localPath(NOTES_ROUTE + '/' + response.data._id));
     } catch (err) {
       console.log(err);
     }
   };
 
-  const updateNoteById = async (data: { note_data: NoteData; priority: number }) => {
+  const updateNoteById = async (data: { note_data: NoteData; priority: string[] }) => {
     try {
       const response = await updateCurrentNoteById(note.value._id, data);
       note.value = response.data;
@@ -65,7 +75,7 @@ export const useNotesStore = defineStore('notes', () => {
         const child: Children = {
           id: _id,
           title: htmlH1ToText(note_data.content),
-          route: NOTES_ROUTE + '/' + _id
+          route: localPath(NOTES_ROUTE + '/' + _id)
         };
         const childrens = menuItems.value.find((item) => item.id === '1');
         if (childrens && childrens.children) {
@@ -132,19 +142,48 @@ export const useNotesStore = defineStore('notes', () => {
     }
   };
 
-  const filteredNotes = computed(() => {
-    if (filterModel.value === '') {
-      return [...notes.value];
+  const toggleFavoiteNote = async (fav: boolean) => {
+    try {
+      const response = await toggleFavoriteNoteById(note.value._id, fav);
+      note.value.favorite = response.data.favorite;
+      if (note.value.favorite === true) {
+        favs.value.push(note.value);
+      } else {
+        const indexToRemove = favs.value.findIndex((favNote) => favNote._id === note.value._id);
+        if (indexToRemove !== -1) {
+          favs.value.splice(indexToRemove, 1);
+        }
+      }
+    } catch (err) {
+      console.log(err);
     }
-    const filtered = [...notes.value].filter((note) =>
-      htmlH1ToText(note.note_data.content).toLowerCase().includes(filterModel.value.toLowerCase())
-    );
-    return filtered;
+  };
+
+  const getFavsNotes = async () => {
+    try {
+      skeletonNote.value = true;
+      const response = await getFavoriteNotes();
+      favs.value = response.data;
+    } catch (err) {
+      console.log(err);
+    } finally {
+      skeletonNote.value = false;
+    }
+  };
+
+  const filteredNotes = computed(() => {
+    const source = route.path === localPath(NOTES_ROUTE) ? [...notes.value] : [...favs.value];
+    return filterModel.value === ''
+      ? source
+      : source.filter((note) =>
+          htmlH1ToText(note.note_data.content).toLowerCase().includes(filterModel.value.toLowerCase())
+        );
   });
 
   return {
     notes,
     note,
+    favs,
     defaultNote,
     unsetSkeleton,
     skeletonNote,
@@ -156,6 +195,8 @@ export const useNotesStore = defineStore('notes', () => {
     deleteNotes,
     deleteNoteById,
     filterModel,
-    filteredNotes
+    filteredNotes,
+    toggleFavoiteNote,
+    getFavsNotes
   };
 });
