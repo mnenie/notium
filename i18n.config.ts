@@ -7,10 +7,7 @@ export default {
   ],
   langDir: 'locales',
   lazy: true,
-  detectBrowserLanguage: {
-    useCookie: true,
-    cookieKey: 'i18n_redirected',
-  },
+  detectBrowserLanguage: false,
   defaultLocale: 'en-US',
   localeDetection: false,
   strategy: 'prefix_except_default'

@@ -3,11 +3,13 @@ import { cn } from '~/lib/utils';
 import { buttonVariants } from '../ui/button';
 
 const { locale, locales, setLocale } = useI18n();
+const lang = useCookie('lang')
 
 const language = computed({
   get: () => locale.value,
   set: (value) => {
     setLocale(value);
+    lang.value = value;
   }
 });
 </script>
