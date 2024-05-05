@@ -12,5 +12,6 @@ export default {
     cookieKey: 'i18n_redirected',
   },
   defaultLocale: 'en-US',
+  localeDetection: false,
   strategy: 'prefix_except_default'
 } as NuxtI18nOptions;
