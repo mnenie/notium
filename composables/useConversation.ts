@@ -1,7 +1,9 @@
+import helperHtmlToText from '~/helpers/helperHtmlToText';
 import useEmbedding from "./useEmbedding";
 
-export default function useConversation(notes: Note[], text: Ref<string>) {
+export default function useConversation(notes: Ref<Note[]>, text: Ref<string>) {
   const { usePostEmbedding } = useEmbedding(notes, text);
+  const {htmlH1ToText } = helperHtmlToText()
   const usePostConversations = async () => {
     const embeddings = await usePostEmbedding();
     try {
@@ -12,7 +14,9 @@ export default function useConversation(notes: Note[], text: Ref<string>) {
           dists: embeddings?.dists,
           most_similar_index: embeddings?.index,
           //@ts-ignore
-          most_similar_note: embeddings?.note
+          most_similar_note_title: htmlH1ToText(embeddings?.note.note_data.content),
+          //@ts-ignore
+          most_similar_note_text: embeddings?.note.note_data.content,
         }
       });
       return data;

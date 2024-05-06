@@ -11,10 +11,6 @@ const { isSkeleton } = storeToRefs(authstore);
 const { store } = useColorMode();
 
 const model = defineModel<string>();
-
-onMounted(() => {
-  authstore.setSkeleton();
-});
 </script>
 
 <template>
@@ -29,7 +25,7 @@ onMounted(() => {
       {{ $t('ai.description') }}
     </span>
   </div>
-  <div v-else class="flex w-full flex-col items-center px-64">
+  <div v-else class="sticky bottom-0 z-50 flex w-full flex-col items-center px-64">
     <UiSkeleton class="h-11 w-full" />
     <UiSkeleton class="my-1 h-4 w-[350px]" />
   </div>

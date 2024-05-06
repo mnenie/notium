@@ -29,7 +29,7 @@ const ellipsisText = (text: string, maxLength: number) => {
   <UiCard
     v-for="note in props.notes"
     :key="note._id"
-    class="relative flex w-full max-w-[400px] cursor-pointer flex-col justify-between"
+    class="relative flex w-full max-w-[400px] cursor-pointer flex-col justify-between min-h-[145px]"
     @click="redirectToNote(note._id)"
   >
     <UiCardHeader class="flex flex-row items-start justify-between gap-4 space-y-0 p-4">

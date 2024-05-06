@@ -11,14 +11,14 @@ export default function useTheme() {
     })
   );
 
+  const { store } = useColorMode();
+
   const { handleSubmit } = useForm({
     validationSchema: appearanceFormSchema,
     initialValues: {
-      theme: 'light'
+      theme: store.value
     }
   });
-
-  const { store } = useColorMode({ initialValue: 'light' });
 
   const onSubmit = handleSubmit((values) => {
     store.value = values.theme;

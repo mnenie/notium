@@ -3,7 +3,8 @@ useSeoMeta({
   title: 'Notium - cloud app of your notes'
 });
 definePageMeta({
-  middleware: 'auth'
+  middleware: 'auth',
+  keepalive: true
 });
 
 import { useNotesStore } from '~/store/notes.store';
@@ -14,7 +15,7 @@ const model = ref('');
 const messages = ref<ChatCompletionRequestMessage[]>([]);
 
 const { notes } = storeToRefs(useNotesStore());
-const { usePostConversations } = useConversation(notes.value, model);
+const { usePostConversations } = useConversation(notes, model);
 
 const handleSubmit = async () => {
   const userMessage: { role: 'user'; text: string } = { role: 'user', text: model.value };

@@ -3,7 +3,7 @@ import { getIamToken } from '~/server/utils/auth-gpt';
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
 
-  const { text, dists, most_similar_index, most_similar_note } = await readBody(event);
+  const { text, dists, most_similar_index, most_similar_note_title, most_similar_note_text } = await readBody(event);
 
   const token = await getIamToken(config);
 
@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
           messages: [
             {
               role: 'system',
-              text: `Ты умное приложение для заметок для помощи людям найти подходящую заметку из существующих. Выводи всегда типо: У вас есть такая заметка с названием: ${most_similar_note.title}, и да, ${most_similar_note.content}.Есть ли у вас еще вопросы?, ну и представь пользователю возможно как бы ты исправил содержимое заметки`
+              text: `Ты умное приложение для заметок для помощи людям найти подходящую заметку из существующих. Выводи всегда типо: У вас есть такая заметка с названием: ${most_similar_note_title}, и в ней написано, что ${most_similar_note_text}.Есть ли у вас еще вопросы?, ну и представь пользователю возможно как бы ты исправил содержимое заметки на 1-2 предложения. Если заметка длиннай по содержанию то выводи 6-7 предложений и в конце пиши: Чтобы ознакомиться подробнее, перейдите к этой заметке.`
             },
             {
               role: 'user',

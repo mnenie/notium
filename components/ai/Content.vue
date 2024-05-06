@@ -35,7 +35,7 @@ const markedMessagesToHtml = computed(() => {
           >
             <UiAvatarFallback>{{ message && message.role === 'user' ? '1a' : 'ai' }}</UiAvatarFallback>
           </UiAvatar>
-          <div class="text-[13px] dark:text-zinc-200" v-html="message ? message.text : ''"></div>
+          <div class="text-[14px] dark:text-zinc-200" v-html="message ? message.text : ''"></div>
         </div>
       </div>
     </div>

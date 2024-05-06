@@ -1,13 +1,18 @@
 <script setup lang="ts">
+import { useNotesStore } from '~/store/notes.store';
+
 const props = defineProps<{
   notes: Note[];
-}>()
+}>();
+
+const { isFilteredNotes } = storeToRefs(useNotesStore());
 </script>
 <template>
   <div class="h-full px-4 pt-16">
-    <div class="notes grid grid-cols-5 gap-3">
+    <div v-if="!isFilteredNotes" class="notes grid grid-cols-5 gap-3">
       <HomeNote :notes="props.notes" />
     </div>
+    <HomeNoneFiltered v-else />
   </div>
 </template>
 

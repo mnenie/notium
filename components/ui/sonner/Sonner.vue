@@ -10,8 +10,8 @@ const props = defineProps<ToasterProps>()
     v-bind="props"
     :toast-options="{
       classes: {
-        toast: 'group toast group-[.toaster]:bg-white group-[.toaster]:text-zinc-950 group-[.toaster]:border-zinc-200 group-[.toaster]:shadow-lg dark:group-[.toaster]:bg-zinc-950 dark:group-[.toaster]:text-zinc-50 dark:group-[.toaster]:border-zinc-800',
-        description: 'group-[.toast]:text-zinc-500 dark:group-[.toast]:text-zinc-400',
+        toast: 'group toast group-[.toaster]:bg-white group-[.toaster]:text-zinc-950 group-[.toaster]:border-zinc-200 group-[.toaster]:shadow-lg dark:group-[.toaster]:bg-neutral-800 dark:group-[.toaster]:text-zinc-200 dark:group-[.toaster]:border-zinc-800',
+        description: 'group-[.toast]:text-zinc-500 dark:group-[.toast]:text-zinc-200',
         actionButton:
           'group-[.toast]:bg-zinc-900 group-[.toast]:text-zinc-50 dark:group-[.toast]:bg-zinc-50 dark:group-[.toast]:text-zinc-900',
         cancelButton:

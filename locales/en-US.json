@@ -59,11 +59,19 @@
   },
   "favorite_notes_page_null": {
     "title": "You don't have any favorite notes",
-    "description": "Add new favorite notes to your collection",
+    "description": "Open your notes and add new favorite note to your collection",
     "btn": "Go to Notes"
   },
   "ai": {
     "placeholder": "Tell NotiumAI a little bit about yourself",
     "description": "Notium AI - your ai assistant. Remember your ideas in one click."
+  },
+  "toasts": {
+    "update": "Your note has been successfully updated!",
+    "delete": "Your note has been deleted!",
+    "update_about": "You can't change the note About.text.txt",
+    "delete_about": "You can't delete the note About.text.txt",
+    "favorite_about": "You can't add to favorite the note About.text.txt",
+    "warning": "Warning"
   }
 }

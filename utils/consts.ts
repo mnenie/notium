@@ -11,3 +11,8 @@ export const ErrorAuth = {
   LOGIN_ERROR: 'Login error, please try again! Notium cannot give you access to use :/',
   REGISTRATION_ERROR: 'Registration error, please try again! Notium cannot give you access to use :/'
 } as const;
+
+export const NoteToasts = {
+  NOTE_UPDATED: 'Your note has been successfully updated!',
+  NOTE_DELETED: 'The note has been deleted!',
+} as const;

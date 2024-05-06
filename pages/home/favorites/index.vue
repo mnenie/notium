@@ -20,7 +20,7 @@ onMounted(async () => {
 
 <template>
   <div v-if="!isSkeleton" class="h-full w-full">
-    <HomeEmptyNotes v-if="notes.length === 0" />
+    <HomeEmptyNotes v-if="favs.length === 0" />
     <HomeFavoriteNotes v-else :favs="filteredNotes" />
   </div>
   <div v-else class="h-full px-4 pt-16">
@@ -28,7 +28,7 @@ onMounted(async () => {
       <UiSkeleton
         v-for="_ in 3"
         :key="_"
-        class="flex h-[98px] w-full max-w-[400px] flex-col justify-between"
+        class="flex h-[145px] w-full max-w-[400px] flex-col justify-between"
       />
     </div>
   </div>

@@ -1,3 +1,4 @@
+import { toast } from 'vue-sonner';
 import helperHtmlToText from '~/helpers/helperHtmlToText';
 
 export const useNotesStore = defineStore('notes', () => {
@@ -6,6 +7,7 @@ export const useNotesStore = defineStore('notes', () => {
   const favs = ref<Note[]>([]);
   const skeletonNote = ref<boolean>(false);
   const filterModel = ref<string>('');
+  const isFilteredNotes = ref<boolean>(true)
   const defaultNote = ref<NoteData>({
     content: '<h1>Untitled</h1><p></p>',
     type: 'doc'
@@ -24,6 +26,7 @@ export const useNotesStore = defineStore('notes', () => {
   const { htmlH1ToText } = helperHtmlToText();
   const localPath = useLocalePath();
   const route = useRoute();
+  const { t } = useI18n();
 
   const addNewNote = async () => {
     try {
@@ -59,6 +62,7 @@ export const useNotesStore = defineStore('notes', () => {
           childrens.children[index].title = htmlH1ToText(note.value.note_data.content);
         }
       }
+      toast.info(t('toasts.update'));
     } catch (err) {
       console.log(err);
     }
@@ -106,7 +110,7 @@ export const useNotesStore = defineStore('notes', () => {
   const setSkeleton = () => {
     setTimeout(() => {
       skeletonNote.value = true;
-    }, 1500);
+    }, 1000);
   };
   const unsetSkeleton = () => {
     skeletonNote.value = false;
@@ -124,6 +128,7 @@ export const useNotesStore = defineStore('notes', () => {
   const deleteNoteById = async () => {
     try {
       await deleteCurrentNoteById(note.value._id);
+      toast.warning(t('toasts.delete'));
       await navigateTo(NOTES_ROUTE);
       const childrens = menuItems.value.find((item) => item.id === '1');
       if (childrens && childrens.children) {
@@ -135,6 +140,12 @@ export const useNotesStore = defineStore('notes', () => {
       const indexNote = notes.value.findIndex((i) => i._id === note.value._id);
       if (indexNote !== -1) {
         notes.value.splice(indexNote, 1);
+      }
+      if (favs.value.length > 0) {
+        const indexToRemove = favs.value.findIndex((favNote) => favNote._id === note.value._id);
+        if (indexToRemove !== -1) {
+          favs.value.splice(indexToRemove, 1);
+        }
       }
       note.value = {} as Note;
     } catch (err) {
@@ -173,11 +184,13 @@ export const useNotesStore = defineStore('notes', () => {
 
   const filteredNotes = computed(() => {
     const source = route.path === localPath(NOTES_ROUTE) ? [...notes.value] : [...favs.value];
-    return filterModel.value === ''
+    const filtered = filterModel.value === ''
       ? source
       : source.filter((note) =>
           htmlH1ToText(note.note_data.content).toLowerCase().includes(filterModel.value.toLowerCase())
         );
+    isFilteredNotes.value = filtered.length === 0;
+    return filtered;
   });
 
   return {
@@ -195,6 +208,7 @@ export const useNotesStore = defineStore('notes', () => {
     deleteNotes,
     deleteNoteById,
     filterModel,
+    isFilteredNotes,
     filteredNotes,
     toggleFavoiteNote,
     getFavsNotes

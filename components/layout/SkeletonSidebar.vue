@@ -8,7 +8,7 @@
         :key="index"
         class="flex h-8 items-center justify-start"
       >
-        <UiSkeleton class="mr-2 h-5 w-5" :class="[index === 1 || index === 2 ? 'ml-6' : 'ml-1']" />
+        <UiSkeleton class="mr-2 h-5 w-5" :class="[index === 1 ? 'ml-6' : 'ml-1']" />
         <UiSkeleton class="h-4 w-20" />
       </div>
     </div>

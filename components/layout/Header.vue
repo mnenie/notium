@@ -9,7 +9,9 @@ const links = reactive<Links[]>([
 ]);
 
 const authStore = useAuthStore()
-const { token } = storeToRefs(authStore)
+const { token } = storeToRefs(authStore);
+
+const { store } = useColorMode();
 
 const localPath = useLocalePath();
 </script>
@@ -18,7 +20,7 @@ const localPath = useLocalePath();
     class="sticky top-0 z-50 w-full border-b border-[#e4e4e766]/40 bg-[#fff9]/95 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60 dark:bg-transparent dark:border-zinc-800">
     <div class="container flex h-14 max-w-screen-2xl items-center justify-between">
       <div @click="navigateTo(HOME_ROUTE)" class="flex items-center space-x-3 cursor-pointer">
-        <img src="/img/logo.png" class="h-7 w-7 text-zinc-100" />
+        <img :src="store === 'light' ? '/img/logo.svg' : '/img/logo_white.svg'" class="h-7 w-7 text-zinc-100" />
         <span class="text-[22px] font-bold dark:text-zinc-100">Notium</span>
       </div>
       <div class="flex items-center space-x-10">

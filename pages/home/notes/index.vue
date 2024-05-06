@@ -28,7 +28,7 @@ onMounted(async () => {
       <UiSkeleton
         v-for="_ in 3"
         :key="_"
-        class="flex h-[98px] w-full max-w-[400px] flex-col justify-between"
+        class="flex h-[145px] w-full max-w-[400px] flex-col justify-between"
       />
     </div>
   </div>

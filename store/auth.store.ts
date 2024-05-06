@@ -1,4 +1,4 @@
-import { useToast } from '~/components/ui/toast';
+import { toast } from 'vue-sonner';
 import { ABOUT_ROUTE } from '~/utils/consts';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -13,7 +13,6 @@ export const useAuthStore = defineStore('auth', () => {
     useFirebaseAuth();
 
   const { onLogin, onRegistration, getUser } = useUserAuth();
-  const { toast } = useToast()
 
   const login = async (userInfo: { email: string; password: string }) => {
     isLoading.value = true;
@@ -29,9 +28,7 @@ export const useAuthStore = defineStore('auth', () => {
       }
     } catch (err: any) {
       error.value = ErrorAuth.LOGIN_ERROR;
-      toast({
-        description: error.value
-      })
+      toast.error(error.value);
     } finally {
       isLoading.value = false;
     }
@@ -51,9 +48,7 @@ export const useAuthStore = defineStore('auth', () => {
       }
     } catch (err: any) {
       error.value = ErrorAuth.REGISTRATION_ERROR;
-      toast({
-        description: error.value
-      })
+      toast.error(error.value);
     } finally {
       isLoading.value = false;
     }

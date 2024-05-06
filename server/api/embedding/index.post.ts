@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   const doc_uri = `emb://${config.YANDEX_FOLDER_ID}/text-search-doc/latest`;
   const query_uri = `emb://${config.YANDEX_FOLDER_ID}/text-search-query/latest`;
 
-  const doc_texts = (notes as Note[]).map((note) => note.content);
+  const doc_texts = (notes as Note[]).map((note) => note.note_data.content);
 
   const docs_embedding = [];
   for (const doc_text of doc_texts) {

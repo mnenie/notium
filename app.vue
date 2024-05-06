@@ -1,6 +1,10 @@
+<script setup lang="ts">
+import { Toaster } from '~/components/ui/sonner';
+</script>
+
 <template>
   <NuxtLayout>
-    <NuxtPage :keepalive="{ include: ['ai', 'login', 'registration'] }" />
-    <UiToaster />
+    <NuxtPage />
+    <Toaster />
   </NuxtLayout>
 </template>
