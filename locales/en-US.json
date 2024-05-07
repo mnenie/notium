@@ -45,7 +45,8 @@
       "low": "low",
       "medium": "medium",
       "high": "high",
-      "none": "none"
+      "none": "none",
+      "all": "all notes"
     }
   },
   "account": {

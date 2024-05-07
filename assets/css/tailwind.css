@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .ProseMirror {
-  @apply relative min-h-[40px] pl-[288px] px-72 pt-36 focus:!outline-0; 
+  @apply relative min-h-[40px] px-72 pt-36 focus:!outline-0; 
 }
 
 .editor-notium {

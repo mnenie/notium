@@ -35,11 +35,11 @@ onUnmounted(() => {
 <template>
   <div class="max-w-full" v-if="!isSkeleton">
     <EditorTiptap v-if="skeletonNote" v-model="editor!.content.value" />
-    <div v-else class="flex w-full flex-col gap-6 px-72 pt-[156px]">
+    <div v-else class="flex w-full flex-col gap-6 px-72 pt-40">
       <UiSkeleton class="h-10 w-[500px]" />
     </div>
   </div>
-  <div v-else class="flex w-full flex-col gap-6 px-72 pt-[156px]">
+  <div v-else class="flex w-full flex-col gap-6 px-72 pt-40">
     <UiSkeleton class="h-10 w-[500px]" />
     <UiSkeleton class="h-6 w-[220px]" />
   </div>
