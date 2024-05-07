@@ -7,7 +7,7 @@ export const useNotesStore = defineStore('notes', () => {
   const favs = ref<Note[]>([]);
   const skeletonNote = ref<boolean>(false);
   const filterModel = ref<string>('');
-  const isFilteredNotes = ref<boolean>(true)
+  const isFilteredNotes = ref<boolean>(true);
   const defaultNote = ref<NoteData>({
     content: '<h1>Untitled</h1><p></p>',
     type: 'doc'
@@ -22,10 +22,10 @@ export const useNotesStore = defineStore('notes', () => {
     toggleFavoriteNoteById,
     getFavoriteNotes
   } = useNotes();
+  const { filteredNotes, togglePriorityFilter } = useFilterNotes(notes, favs, filterModel, isFilteredNotes);
 
   const { htmlH1ToText } = helperHtmlToText();
   const localPath = useLocalePath();
-  const route = useRoute();
   const { t } = useI18n();
 
   const addNewNote = async () => {
@@ -182,17 +182,6 @@ export const useNotesStore = defineStore('notes', () => {
     }
   };
 
-  const filteredNotes = computed(() => {
-    const source = route.path === localPath(NOTES_ROUTE) ? [...notes.value] : [...favs.value];
-    const filtered = filterModel.value === ''
-      ? source
-      : source.filter((note) =>
-          htmlH1ToText(note.note_data.content).toLowerCase().includes(filterModel.value.toLowerCase())
-        );
-    isFilteredNotes.value = filtered.length === 0;
-    return filtered;
-  });
-
   return {
     notes,
     note,
@@ -210,6 +199,7 @@ export const useNotesStore = defineStore('notes', () => {
     filterModel,
     isFilteredNotes,
     filteredNotes,
+    togglePriorityFilter,
     toggleFavoiteNote,
     getFavsNotes
   };

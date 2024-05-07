@@ -22,6 +22,7 @@ const { store } = useColorMode();
         class="h-8 w-[150px] pb-[0.26rem] pl-8 lg:w-[250px]"
       />
     </div>
+    <FeaturesFilterByPriority />
     <UiButton
       v-if="$route.path === localPath(NOTES_ROUTE)"
       @click="noteStore.addNewNote"
