@@ -3,7 +3,8 @@
 import VueWriter from 'vue-writer';
 const text = ref(['Write everything you need in the future and edit if you need']);
 
-const { store } = useColorMode();
+const mode = useColorMode();
+
 </script>
 
 <template>
@@ -21,6 +22,6 @@ const { store } = useColorMode();
       </span>
       <VueWriter class="max-w-[500px] text-lg font-medium sm:text-lg dark:text-zinc-400" :array="text" />
     </div>
-    <img class="rounded-[0.5rem] border shadow dark:border-zinc-600" :src="store === 'light' ? '/img/mac.png' : '/img/dark-mac.png'" />
+    <img class="rounded-[0.5rem] border shadow dark:border-zinc-600" :src="mode === 'light' ? '/img/mac.png' : '/img/dark-mac.png'" />
   </section>
 </template>

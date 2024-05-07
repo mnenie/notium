@@ -3,7 +3,7 @@
 import VueWriter from 'vue-writer';
 const text = ref(['Read all your notes and everything you wrote in them']);
 
-const { store } = useColorMode();
+const mode = useColorMode();
 </script>
 
 <template>
@@ -11,7 +11,7 @@ const { store } = useColorMode();
     id="read"
     class="mx-auto grid max-w-7xl gap-10 px-4 pb-44 sm:gap-y-24 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8"
   >
-  <img class="rounded-[0.5rem] border shadow dark:border-zinc-600" :src="store === 'light' ? '/img/mac.png' : '/img/dark-mac.png'" />
+  <img class="rounded-[0.5rem] border shadow dark:border-zinc-600" :src="mode === 'light' ? '/img/mac.png' : '/img/dark-mac.png'" />
     <div class="flex flex-col space-y-4">
       <h2 class="text-xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1] dark:text-zinc-100">
         Read your notes

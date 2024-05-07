@@ -7,7 +7,7 @@ const authStore = useAuthStore();
 const { token } = storeToRefs(authStore);
 
 const localPath = useLocalePath();
-const { store } = useColorMode();
+const mode = useColorMode();
 </script>
 
 <template>
@@ -28,14 +28,14 @@ const { store } = useColorMode();
       <UiButton v-if="!token" @click="navigateTo(localPath(REGISTRATION_ROUTE))">Get Started</UiButton>
       <UiButton v-else @click="navigateTo(localPath(ABOUT_ROUTE))">Go to Notium</UiButton>
       <UiButton @click="redirect('https://github.com/mnenie/Notium')" variant="outline">
-        <img v-if="store === 'light'" src="/icons/github.png" class="mr-2 h-4 w-4" />
+        <img v-if="mode === 'light'" src="/icons/github.png" class="mr-2 h-4 w-4" />
         <GithubIcon v-else class="mr-2 h-4 w-4" />
         GitHub
       </UiButton>
     </div>
     <img
       class="rounded-[0.5rem] border shadow dark:border-zinc-600"
-      :src="store == 'light' ? '/img/about/light-main.png' : '/img/about/dark-main.png'"
+      :src="mode == 'light' ? '/img/about/light-main.png' : '/img/about/dark-main.png'"
     />
   </section>
 </template>
