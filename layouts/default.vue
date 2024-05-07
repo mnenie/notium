@@ -24,16 +24,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative flex h-screen flex-1">
+  <div class="relative flex h-screen w-screen flex-1">
     <LayoutSidebar v-model:filter="filterSidebar" :nav-items="filteredSidebarItems" />
     <div class="relative flex h-full w-full flex-col">
       <LayoutTopPart :title="getCurrentMenuItemTitle" />
       <div
         :class="
-          cn('h-full w-full dark:bg-[#1a1a1a]', [
+          cn('h-full w-full pl-[240px] dark:bg-[#1a1a1a]', [
             route.path !== localPath(AI_ROUTE) &&
             route.path !== localPath(SETTINGS_ROUTE) &&
-            route.path !== localPath(NOTES_ROUTE)
+            route.path !== localPath(NOTES_ROUTE) && 
+            route.path !== localPath(FAVORITES_ROUTE)
               ? 'overflow-auto pb-20'
               : ''
           ])

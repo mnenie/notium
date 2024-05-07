@@ -1,4 +1,5 @@
 import type { Content } from "@tiptap/vue-3";
+import { marked } from 'marked';
 
 export default function useEditorCompletion(text: Ref<string>, content: Ref<Content>) {
   const useEditorData = async () => {
@@ -24,7 +25,7 @@ export default function useEditorCompletion(text: Ref<string>, content: Ref<Cont
     if (index !== -1) {
       const newText = 
         content.value!.slice(0, index + text.value.length) +
-        ` ${response}` + 
+        ` ${marked.parse(response)}` + 
         content.value!.slice(index + text.value.length);
       content.value = newText;
     }

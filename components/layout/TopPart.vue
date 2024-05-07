@@ -29,9 +29,9 @@ const skeleton = computed(() => {
 
 <template>
   <div
-    class="absolute left-0 right-0 top-0 z-50 flex w-full select-none items-center justify-between bg-[#fff9]/95 px-4 py-2 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60 dark:bg-transparent"
+    class="absolute left-0 right-0 top-0 z-50 flex w-full select-none items-center justify-between bg-[#fff9]/95 px-4 pl-[256px] py-2 backdrop-blur supports-[backdrop-filter]:bg-[#fff9]/60 dark:bg-transparent"
   >
-    <h2 v-if="skeleton" class="text-xl font-semibold tracking-tight dark:text-zinc-100">
+    <h2 v-if="skeleton" class="text-xl font-semibold tracking-tight dark:text-zinc-100 overflow-hidden text-ellipsis whitespace-nowrap">
       {{
         $route.path !== localPath(NOTES_ROUTE + '/' + note._id)
           ? $t(props.title)

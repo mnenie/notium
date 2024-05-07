@@ -10,7 +10,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="flex h-full items-center border-l border-l-zinc-200/70">
+  <div class="flex h-full items-center border-l border-l-zinc-200/70 dark:border-l-neutral-700/80">
     <MenuButton
       :is-active="props.editor!.isActive('bulletList')"
       @click="props.editor!.chain().focus().toggleBulletList().run()"

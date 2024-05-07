@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .ProseMirror {
-  @apply relative min-h-[40px] px-72 pt-36 focus:!outline-0;
+  @apply relative min-h-[40px] pl-[288px] px-72 pt-36 focus:!outline-0; 
 }
 
 .editor-notium {
@@ -73,7 +73,7 @@
 }
 
 .editor-notium .tableWrapper {
-  @apply overflow-auto;
+  @apply overflow-x-hidden;
 }
 
 .ProseMirror iframe {
@@ -133,6 +133,7 @@ body{
   @apply text-sm;
   @apply rounded-md;
   @apply pointer-events-auto;
+  @apply dark:bg-neutral-800;
 }
 
 .tippy-content > div {

@@ -34,7 +34,7 @@ const ellipsisText = (text: string, maxLength: number) => {
   >
     <UiCardHeader class="flex flex-row items-start justify-between gap-4 space-y-0 p-4">
       <div class="space-y-1.5">
-        <UiCardTitle class="text-base">{{ htmlH1ToText(note.note_data.content) }}</UiCardTitle>
+        <UiCardTitle class="text-base w-[250px] overflow-hidden text-ellipsis whitespace-nowrap text-start">{{ htmlH1ToText(note.note_data.content) }}</UiCardTitle>
         <UiCardDescription class="text-ellipsis text-sm text-zinc-600">
           {{ ellipsisText(htmlContentToText(note.note_data.content), 70) }}
         </UiCardDescription>

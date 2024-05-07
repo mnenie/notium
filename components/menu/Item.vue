@@ -89,7 +89,7 @@ onMounted(() => {
                 class="mr-2 h-[16px] w-[16px]"
                 :color="store === 'light' ? 'rgb(82 82 91 / 0.9)' : 'rgb(113 113 122)'"
               />
-              <span class="text-[14px] text-zinc-600 dark:text-zinc-300 xl:text-[13px] 2xl:text-[14px]">{{
+              <span class="text-[14px] text-zinc-600 dark:text-zinc-300 xl:text-[13px] 2xl:text-[14px] w-[134px] overflow-hidden text-ellipsis whitespace-nowrap text-start">{{
                 child.title
               }}</span>
             </div>

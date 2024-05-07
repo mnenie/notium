@@ -20,7 +20,7 @@ onMounted(async () => {
 
 <template>
   <aside
-    class="relative z-[99999] flex h-full w-[240px] min-w-[240px] max-w-[240px] select-none flex-col justify-between overflow-y-auto bg-zinc-50/80 pb-1 pl-1.5 pr-1.5 pt-[8.5px] dark:bg-[#202020]"
+    class="absolute z-[99999] flex h-full w-[240px] min-w-[240px] max-w-[240px] select-none flex-col justify-between overflow-y-auto bg-zinc-50/80 pb-1 pl-1.5 pr-1.5 pt-[8.5px] dark:bg-[#202020]"
     style="box-shadow: rgba(0, 0, 0, 0.024) -1px 0px 0px 0px inset"
   >
     <div v-if="!isSkeleton" class="flex flex-col">

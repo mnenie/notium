@@ -5,7 +5,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <button :class="['btn-bubble-menu', props.isActive ? ' text-blue-600' : 'text-zinc-700']">
+  <button :class="['btn-bubble-menu', props.isActive ? ' text-blue-600 dark:text-zinc-100' : 'text-zinc-700 dark:text-zinc-500']">
     <slot />
   </button>
 </template>
@@ -22,5 +22,6 @@ const props = defineProps<{
 }
 .btn-bubble-menu:hover {
   background: rgba(228, 228, 231, 0.5);
+  @apply dark:bg-neutral-700/80
 }
 </style>

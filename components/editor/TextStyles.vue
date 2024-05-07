@@ -9,7 +9,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="flex h-full items-center border-r border-r-zinc-200/70">
+  <div class="flex h-full items-center border-r border-r-zinc-200/70 dark:border-r-neutral-700/80">
     <MenuButton
       :is-active="props.editor!.isActive('bold')"
       @click="props.editor!.chain().focus().toggleBold().run()"
