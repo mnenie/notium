@@ -15,7 +15,7 @@ const model = ref('');
 const messages = ref<ChatCompletionRequestMessage[]>([]);
 
 const { notes } = storeToRefs(useNotesStore());
-const { usePostConversations } = useConversation(notes, model);
+const { usePostConversations, isPending } = useConversation(notes, model);
 
 const handleSubmit = async () => {
   const userMessage: { role: 'user'; text: string } = { role: 'user', text: model.value };
@@ -28,7 +28,7 @@ const handleSubmit = async () => {
 
 <template>
   <div class="transition-width h-full overflow-hidden relative w-full flex-col">
-    <AiContent :messages="messages" />
+    <AiContent :messages="messages" :is-pending="isPending" />
     <AiMessage v-model="model" @on-submit="handleSubmit" />
   </div>
 </template>

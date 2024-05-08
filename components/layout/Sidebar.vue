@@ -31,7 +31,10 @@ onMounted(async () => {
       <div class="space-y-px">
         <MenuItem :menu-items="props.navItems" />
       </div>
-      <ProvidersVideoPlayer />
+      <div class="space-y-1 mt-5">
+        <MenuBot />
+        <ProvidersVideoPlayer />
+      </div>
     </div>
     <LayoutSkeletonSidebar v-else />
     <MenuAccount />

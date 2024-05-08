@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import { Sparkle } from 'lucide-vue-next';
+import { Sparkle, Loader2 } from 'lucide-vue-next';
 
 const editor = inject(EditorKey);
 
-const { onAutoCompletion } = useEditorCompletion(editor!.selectedText, editor!.content);
+const { onAutoCompletion, isPending } = useEditorCompletion(editor!.selectedText, editor!.content);
 </script>
 
 <template>
   <button
     @click="onAutoCompletion"
-    class="btn_ai gap-1 border-r border-r-zinc-200/70 text-yellow-600 dark:border-r-neutral-700/80 dark:text-yellow-500"
+    class="btn_ai gap-1 border-r border-r-zinc-200/70 text-yellow-600 dark:border-r-neutral-700/80 dark:text-yellow-500 disabled:pointer-events-none disabled:opacity-70"
+    :disabled="isPending"
   >
     <Sparkle :size="14" />
     <span class="text-sm font-medium">Ask AI</span>
+    <Loader2 v-if="isPending" class="w-4 h-4 ml-2 animate-spin" />
   </button>
 </template>
 

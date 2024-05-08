@@ -51,7 +51,7 @@ export default defineEventHandler(async (event) => {
   const dists = docs_embedding.map((doc_embedding) => cosineDistance(query_embedding, doc_embedding));
 
   const most_similar_index = dists.indexOf(Math.min(...dists));
-  const most_similar_note = notes[most_similar_index];
+  const most_similar_note = notes[most_similar_index] as Note;
 
   return {
     dists: dists,

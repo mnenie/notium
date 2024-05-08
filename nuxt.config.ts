@@ -19,7 +19,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
-      API_BASE_URL: process.env.API_BASE_URL
+      API_BASE_URL: process.env.API_BASE_URL,
+      BOT_URL: process.env.BOT_URL
     },
     YANDEX_API_KEY: process.env.YANDEX_API_KEY,
     YANDEX_FOLDER_ID: process.env.YANDEX_FOLDER_ID,

@@ -30,22 +30,30 @@ const { store } = useColorMode();
 
 <template>
   <div>
-    <UiButton @click="toggleVideo" variant="ghost" class="mt-4 h-8 w-full justify-start">
-      <MonitorPlay class="mr-2 h-[16px] w-[16px]" :color="store === 'light' ? 'rgb(82 82 91 / 0.9)' : 'rgb(113 113 122)'" />
-      <span class="text-[14px] text-zinc-600 xl:text-[13px] 2xl:text-[14px] dark:text-zinc-300">{{
-        isVideoActive ? $t("active") : $t('non-active')
-      }}</span>
+    <UiButton @click="toggleVideo" variant="ghost" class="h-8 w-full justify-start">
+      <MonitorPlay
+        class="mr-2 h-[16px] w-[16px]"
+        :color="store === 'light' ? 'rgb(82 82 91 / 0.9)' : 'rgb(113 113 122)'"
+      />
+      <span class="text-[14px] text-zinc-600 dark:text-zinc-300 xl:text-[13px] 2xl:text-[14px]">
+        {{ isVideoActive ? $t('active') : $t('non-active') }}
+      </span>
     </UiButton>
     <media-player
       v-if="isVideoActive"
-      class="fixed top-10 right-10 aspect-video w-full overflow-hidden rounded-md bg-slate-900 font-sans text-white data-[focus]:ring-4"
+      class="fixed right-10 top-10 aspect-video w-full overflow-hidden rounded-md bg-slate-900 font-sans text-white data-[focus]:ring-4"
       title="Notium Story"
       src="/video/notium1.mp4"
       crossOrigin
       playsInline
       autoplay
       @provider-change="onProviderChange"
-      style="position: fixed !important; width: 300px !important; top: 40px !important; right: 40px !important;"
+      style="
+        position: fixed !important;
+        width: 300px !important;
+        top: 40px !important;
+        right: 40px !important;
+      "
       ref="$player"
     >
       <media-provider>

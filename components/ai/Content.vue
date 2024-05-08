@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils';
 import { marked } from 'marked';
+import { useAuthStore } from '~/store/auth.store';
 
 const props = defineProps<{
   messages: ChatCompletionRequestMessage[];
+  isPending: boolean;
 }>();
+
+const authStore = useAuthStore();
+const { user } = storeToRefs(authStore);
 
 const markedMessagesToHtml = computed(() => {
   return props.messages.map((message) => {
@@ -25,17 +30,21 @@ const markedMessagesToHtml = computed(() => {
           :key="index"
           :class="cn('flex items-center gap-4', message.role === 'user' ? 'flex-row-reverse' : '')"
         >
-          <UiAvatar
-            size="sm"
-            :class="
-              cn(
-                'inline-flex h-8 w-8 shrink-0 select-none items-center justify-center overflow-hidden bg-zinc-100 font-normal text-zinc-950 dark:bg-zinc-800 dark:text-zinc-50'
-              )
-            "
-          >
-            <UiAvatarFallback>{{ message && message.role === 'user' ? '1a' : 'ai' }}</UiAvatarFallback>
-          </UiAvatar>
-          <div class="text-[14px] dark:text-zinc-200" v-html="message ? message.text : ''"></div>
+          <AiAvatar>
+            <UiAvatarFallback>
+              {{ message && user && message.role === 'user' ? user.email.slice(0, 2) : 'ai' }}
+            </UiAvatarFallback>
+          </AiAvatar>
+          <div class="text-[14px] dark:text-zinc-200" v-html="message && message.text"></div>
+        </div>
+        <div v-if="props.isPending" class="flex items-center gap-2">
+          <AiAvatar>
+            <UiAvatarFallback> ai </UiAvatarFallback>
+          </AiAvatar>
+          <div class="flex items-center gap-2 text-[14px] dark:text-zinc-200">
+            <span>is thinking</span>
+            <div class="inline-flex h-1.5 w-1.5 animate-ping rounded-full bg-zinc-200" />
+          </div>
         </div>
       </div>
     </div>
