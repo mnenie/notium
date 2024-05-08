@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { redirect } from '~/helpers';
+import { redirect } from '~/helpers';
 import { TriangleAlert, GithubIcon } from 'lucide-vue-next';
 
 const mode = useColorMode();

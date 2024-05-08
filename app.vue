@@ -11,5 +11,7 @@ const { width } = useWindowSize()
     <NuxtPage :keepalive="{ include: cacheList, max: 20 }" />
     <Toaster />
   </NuxtLayout>
-  <DeviceNotAvailable v-else />
+  <ClientOnly v-else>
+    <DeviceNotAvailable />
+  </ClientOnly>
 </template>
