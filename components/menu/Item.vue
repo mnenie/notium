@@ -71,7 +71,7 @@ onMounted(() => {
           </div>
         </div>
 
-        <span class="text-[14px] text-zinc-600 dark:text-zinc-300 xl:text-[13px] 2xl:text-[14px]">{{
+        <span class="text-[14px] text-zinc-600 dark:text-zinc-300 md:text-[13px] 2xl:text-[14px]">{{
           $t(item.title)
         }}</span>
       </UiButton>

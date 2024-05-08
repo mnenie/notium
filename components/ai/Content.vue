@@ -23,7 +23,7 @@ const markedMessagesToHtml = computed(() => {
 
 <template>
   <div class="h-full">
-    <div class="flex h-[93%] flex-1 flex-col-reverse overflow-y-auto px-64 pb-1">
+    <div class="content flex h-[93%] flex-1 flex-col-reverse overflow-y-auto px-64 pb-1">
       <div class="mb-6 flex h-full flex-col-reverse gap-5">
         <div
           v-for="(message, index) in markedMessagesToHtml"
@@ -50,3 +50,16 @@ const markedMessagesToHtml = computed(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+@media screen and (max-width: 1330px) {
+  .content {
+    @apply px-44;
+  }
+}
+@media screen and (max-width: 1260px) {
+  .content {
+    @apply px-32;
+  }
+}
+</style>

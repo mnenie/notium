@@ -12,7 +12,7 @@ definePageMeta({
 
 <template>
   <div>
-    <div class="relative z-10 mb-28">
+    <div class="relative z-10 mb-28 overflow-x-hidden">
       <WelcomeAbout v-motion-slide-visible-top />
       <WelcomeWrite v-motion-slide-visible-left />
       <WelcomeRead v-motion-slide-visible-right />

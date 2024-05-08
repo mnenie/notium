@@ -6,6 +6,18 @@
   @apply relative min-h-[40px] px-72 pt-36 focus:!outline-0; 
 }
 
+@media screen and (max-width: 1330px) {
+  .ProseMirror {
+    @apply px-44
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .ProseMirror {
+    @apply px-20
+  }
+}
+
 .editor-notium {
   @apply flex flex-col space-y-4;
 }
