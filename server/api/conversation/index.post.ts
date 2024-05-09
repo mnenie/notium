@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
   const token = await getIamToken(config);
 
-  const similarityThreshold = 0.6;
+  const similarityThreshold = 0.7;
   if (dists[most_similar_index] < similarityThreshold) {
     const response_completion = await fetch(
       'https://llm.api.cloud.yandex.net/foundationModels/v1/completion',
@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
           messages: [
             {
               role: 'system',
-              text: `Ты умное приложение для заметок для помощи людям найти подходящую заметку из существующих. Выводи всегда типо: У вас есть такая заметка с названием: ${most_similar_note_title} и так же отвечай на поставленный вопрос, основываясь на содержании заметки - ${most_similar_note_text}. Есть ли у вас еще вопросы?, ну и представь пользователю возможно как бы ты исправил содержимое заметки на 1-2 предложения. в конце пиши: Чтобы ознакомиться подробнее, перейдите к этой заметке. Добавь в конце сслку на заметку: Ссылка на заметку - http://localhost:3000/home/notes/${most_similar_note_id}.`
+              text: `Ты умное приложение для заметок для помощи людям найти подходящую заметку из существующих. Выводи всегда типо: У вас есть такая заметка с названием: ${most_similar_note_title} и так же отвечай на поставленный вопрос, основываясь на содержании заметки - ${most_similar_note_text} кратко. Есть ли у вас еще вопросы?, ну и представь пользователю возможно как бы ты исправил содержимое заметки на 1-2 предложения. в конце пиши: Чтобы ознакомиться подробнее, перейдите к этой заметке. Добавь в конце сслку на заметку: Ссылка на заметку - https://notium.vercel.app/home/notes/${most_similar_note_id}.`
             },
             {
               role: 'user',

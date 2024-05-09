@@ -41,7 +41,7 @@ const { store } = useColorMode();
     </UiButton>
     <media-player
       v-if="isVideoActive"
-      class="fixed right-10 top-10 aspect-video w-full overflow-hidden rounded-md bg-slate-900 font-sans text-white data-[focus]:ring-4"
+      class="fixed right-10 top-10 aspect-video w-full overflow-hidden rounded-md bg-zinc-200 dark:bg-neutral-800 font-sans text-white data-[focus]:ring-4"
       title="Notium Story"
       src="/video/notium1.mp4"
       crossOrigin

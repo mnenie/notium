@@ -35,7 +35,7 @@ const mode = useColorMode();
     </div>
     <img
       class="rounded-[0.5rem] border shadow dark:border-zinc-600"
-      :src="mode == 'light' ? '/img/about/light-main.png' : '/img/about/dark-main.png'"
+      :src="mode == 'light' ? '/img/about/main-light.png' : '/img/about/main-dark.png'"
     />
   </section>
 </template>

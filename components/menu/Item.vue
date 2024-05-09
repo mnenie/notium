@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { File, BookText } from 'lucide-vue-next';
+import { File } from 'lucide-vue-next';
 import { cn } from '~/lib/utils';
 import { useNotesStore } from '~/store/notes.store';
 

@@ -12,12 +12,20 @@ definePageMeta({
 
 <template>
   <div>
-    <div class="relative z-10 mb-28 overflow-x-hidden">
+    <div class="welcome relative z-10 mb-28">
       <WelcomeAbout v-motion-slide-visible-top />
       <WelcomeWrite v-motion-slide-visible-left />
       <WelcomeRead v-motion-slide-visible-right />
-      <WelcomePriorities v-motion-slide-visible-left />
+      <WelcomeSearch v-motion-slide-visible-left />
       <WelcomeAi v-motion-slide-visible-bottom />
     </div>
   </div>
 </template>
+
+<style scoped>
+@media screen and (max-width: 1370px) {
+  .welcome {
+    @apply overflow-x-hidden;
+  }
+}
+</style>
