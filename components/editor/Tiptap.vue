@@ -41,7 +41,7 @@ const editor = useEditor({
     StarterKit,
     Placeholder.configure({
       placeholder: () => {
-        return `Write something, or press 'space' for AI, '/' for commands…`;
+        return `Write something, or press 'Ask AI' in menu, highlight for commands…`;
       }
     }),
     Focus.configure({

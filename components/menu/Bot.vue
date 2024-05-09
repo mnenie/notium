@@ -20,7 +20,7 @@ const { store } = useColorMode();
       {{ $t('telegram') }}
     </span>
     <div
-      class="absolute left-[26px] top-5 flex h-1.5 w-1.5 items-center justify-center rounded-full bg-[#3ca1eb]/80"
+      class="absolute left-[26px] top-5 flex h-1.5 w-1.5 items-center justify-center rounded-full bg-[#3ca1eb]/90"
     ></div>
   </UiButton>
 </template>
