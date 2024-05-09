@@ -7,7 +7,7 @@ const mode = useColorMode();
 <template>
   <div class="flex h-dvh w-full flex-col items-center justify-center px-3 text-center">
     <TriangleAlert
-      class="mb-2 h-[180px] w-[180px]"
+      class="mb-1 h-[180px] w-[180px] -mt-16"
       :color="mode === 'light' ? 'rgb(39 39 42)' : 'rgb(212 212 216)'"
       :stroke-width="1"
     />
@@ -15,7 +15,7 @@ const mode = useColorMode();
       Notium is not available for your device type
     </h2>
     <p class="mb-4 text-sm text-[#72717a] dark:text-zinc-500">
-      Please go to the official GitHub repository for more information or contact with me by telegram
+      Please go to the official GitHub repository for more information or contact with us by telegram
     </p>
     <div class="flex items-center gap-4">
       <UiButton @click="redirect('https://github.com/mnenie/Notium')" variant="outline">
