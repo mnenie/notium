@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Notium - cloud app of your notes',
+  title: 'Notium - smart cloud app for your notes',
   description:
     'Notium is a cloud app allowing users to create and store notes based on their priorities, also using the built-in AI, assistant NotiumAI'
 });

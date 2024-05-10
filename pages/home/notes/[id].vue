@@ -4,7 +4,7 @@ import { useNotesStore } from '~/store/notes.store';
 import { EditorKey } from '~/utils/symbols';
 
 useSeoMeta({
-  title: 'Notium - cloud app of your notes'
+  title: 'Notium - smart cloud app for your notes'
 });
 definePageMeta({
   middleware: 'auth'

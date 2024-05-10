@@ -36,5 +36,38 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [vidstack({ include: /player\// })]
-  }
+  },
+  //seo
+  app: {
+    head: {
+      title: 'Notium',
+      meta: [
+        { charset: 'utf-8' },
+        {
+          name: 'title',
+          content: 'Notium - smart cloud app for your notes'
+        },
+        {
+          name: 'description',
+          content:
+            'Notium is a cloud app allowing users to create and store notes based on their priorities, also using the built-in AI, assistant NotiumAI'
+        },
+        { name: 'keywords', content: 'Notium, AI, Notes, Thoughts, Future' },
+
+        //open graph
+        { property: 'og:site:name', content: 'Notium' },
+        { property: 'og:type', content: 'website' },
+        {
+          property: 'og:title',
+          content: 'Notium - smart cloud app for your notes'
+        },
+        {
+          property: 'og:description',
+          content:
+            'Notium is a cloud app allowing users to create and store notes based on their priorities, also using the built-in AI, assistant NotiumAI'
+        },
+        { property: 'og:image', content: './public/img/logo_white.svg' }
+      ]
+    }
+  },
 });
