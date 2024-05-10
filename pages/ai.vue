@@ -14,7 +14,9 @@ const model = ref('');
 
 const messages = ref<ChatCompletionRequestMessage[]>([]);
 
-const { notes } = storeToRefs(useNotesStore());
+const notesStore = useNotesStore()
+
+const { notes } = storeToRefs(notesStore);
 const { usePostConversations, isPending } = useConversation(notes, model);
 
 const handleSubmit = async () => {
@@ -24,6 +26,10 @@ const handleSubmit = async () => {
   messages.value.push(response);
   model.value = '';
 };
+
+onMounted(async () => {
+  await notesStore.getNotes();
+})
 </script>
 
 <template>
