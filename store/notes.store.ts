@@ -32,6 +32,7 @@ export const useNotesStore = defineStore('notes', () => {
     try {
       const response = await postNoteToNotes({ note_data: defaultNote.value, priority: ['none'] });
       notes.value.push(response.data);
+      navigateTo(localPath(NOTES_ROUTE + '/' + response.data._id));
       const childrens = menuItems.value.find((item) => item.id === '1');
       if (childrens && childrens.children) {
         childrens.children!.push({
@@ -45,7 +46,6 @@ export const useNotesStore = defineStore('notes', () => {
           item.isArrowActive = true;
         }
       });
-      navigateTo(localPath(NOTES_ROUTE + '/' + response.data._id));
     } catch (err) {
       console.log(err);
     }

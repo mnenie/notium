@@ -40,7 +40,7 @@ const markedMessagesToHtml = computed(() => {
             v-html="message && message.text"
           />
         </div>
-        <div v-if="props.isPending" class="flex items-center gap-2">
+        <!-- <div v-if="props.isPending" class="flex items-center gap-2">
           <AiAvatar>
             <UiAvatarFallback> ai </UiAvatarFallback>
           </AiAvatar>
@@ -48,7 +48,7 @@ const markedMessagesToHtml = computed(() => {
             <span>is thinking</span>
             <div class="inline-flex h-1.5 w-1.5 animate-ping rounded-full bg-zinc-200" />
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

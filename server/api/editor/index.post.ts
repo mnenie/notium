@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
       completionOptions: {
         stream: false,
         temperature: 0.2,
-        maxTokens: '8000'
+        maxTokens: 8000
       },
       messages: [
         {
