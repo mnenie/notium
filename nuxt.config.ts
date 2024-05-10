@@ -40,7 +40,7 @@ export default defineNuxtConfig({
   //seo
   app: {
     head: {
-      title: 'Notium',
+      title: 'Notium - smart cloud app for your notes',
       meta: [
         { charset: 'utf-8' },
         {
@@ -57,6 +57,7 @@ export default defineNuxtConfig({
         //open graph
         { property: 'og:site:name', content: 'Notium' },
         { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://notium.vercel.app/' },
         {
           property: 'og:title',
           content: 'Notium - smart cloud app for your notes'
@@ -66,7 +67,7 @@ export default defineNuxtConfig({
           content:
             'Notium is a cloud app allowing users to create and store notes based on their priorities, also using the built-in AI, assistant NotiumAI'
         },
-        { property: 'og:image', content: './public/img/logo_white.svg' }
+        { property: 'og:image', content: 'https://notium.vercel.app/img/logo.svg' }
       ]
     }
   },
