@@ -9,8 +9,8 @@
 <img src="https://github.com/devicons/devicon/blob/master/icons/typescript/typescript-original.svg" title="ts" alt="ts" width="40" height="40"/>&nbsp;
 <img src="https://github.com/devicons/devicon/blob/master/icons/tailwindcss/tailwindcss-original.svg" title="tailwind" alt="tailwind" width="40" height="40"/>&nbsp;
 <img src="/public/img/shadcn-logo.png" title="shadcn" alt="shadcn" width="40" height="40"/>&nbsp;
-<img src="/public/img/yandex-gpt.png" title="yandex-gpt" alt="yandex-gpt" width="44" height="44"/>&nbsp;
-<img src="https://seeklogo.com/images/V/vueuse-logo-C7294BFD15-seeklogo.com.png" title="vue use" alt="vue use" width="30" height="35"/>&nbsp;
+<img src="/public/icons/yandex.png" title="yandex-gpt" alt="yandex-gpt" width="34" height="34"/>&nbsp;
+<img src="https://seeklogo.com/images/V/vueuse-logo-C7294BFD15-seeklogo.com.png" title="vue use" alt="vue use" width="30" height="33"/>&nbsp;
 <img src="https://github.com/devicons/devicon/blob/master/icons/vitest/vitest-original.svg" title="vitest" alt="vitest" width="40" height="40"/>&nbsp;&nbsp;
 <img src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original-wordmark.svg" title="docker" alt="docker" width="44" height="44"/>&nbsp;
 
