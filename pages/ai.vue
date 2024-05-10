@@ -3,8 +3,7 @@ useSeoMeta({
   title: 'Notium - smart cloud app for your notes'
 });
 definePageMeta({
-  middleware: 'auth',
-  keepalive: true
+  middleware: 'auth'
 });
 
 import { useNotesStore } from '~/store/notes.store';

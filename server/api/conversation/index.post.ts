@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
   const token = await getIamToken(config);
 
-  const similarityThreshold = 0.7;
+  const similarityThreshold = 0.8;
   if (dists[most_similar_index] < similarityThreshold) {
     const response_completion = await fetch(
       'https://llm.api.cloud.yandex.net/foundationModels/v1/completion',
@@ -21,8 +21,8 @@ export default defineEventHandler(async (event) => {
         body: JSON.stringify({
           modelUri: `gpt://${config.YANDEX_FOLDER_ID}/yandexgpt`,
           completionOptions: {
-            temperature: 0.2,
-            maxTokens: '8000'
+            temperature: 0.1,
+            maxTokens: 8000
           },
           messages: [
             {
