@@ -1,9 +1,7 @@
 export default function useEmbedding(notes: Ref<Note[]>, text: Ref<string>) {
-  const isPending = ref<boolean>(false)
 
   const usePostEmbedding = async () => {
     try {
-      isPending.value = true;
       const data = await $fetch('/api/embedding', {
         method: 'POST',
         body: {
@@ -14,12 +12,10 @@ export default function useEmbedding(notes: Ref<Note[]>, text: Ref<string>) {
       return data;
     } catch (e) {
       console.log(e);
-    } finally{
-      isPending.value = false;
     }
   };
 
   return {
-    usePostEmbedding, isPending
+    usePostEmbedding
   };
 }

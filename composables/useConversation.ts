@@ -2,13 +2,12 @@ import helperHtmlToText from '~/helpers/helperHtmlToText';
 import useEmbedding from './useEmbedding';
 
 export default function useConversation(notes: Ref<Note[]>, text: Ref<string>) {
-  const { usePostEmbedding, isPending } = useEmbedding(notes, text);
+  const { usePostEmbedding } = useEmbedding(notes, text);
   const { htmlH1ToText } = helperHtmlToText();
 
   const usePostConversations = async () => {
     const embeddings = await usePostEmbedding();
     try {
-      isPending.value = true;
       const data = await $fetch('/api/conversation', {
         method: 'POST',
         body: {
@@ -23,13 +22,10 @@ export default function useConversation(notes: Ref<Note[]>, text: Ref<string>) {
       return data;
     } catch (e) {
       console.log(e);
-    } finally {
-      isPending.value = false;
     }
   };
 
   return {
-    usePostConversations,
-    isPending
+    usePostConversations
   };
 }
