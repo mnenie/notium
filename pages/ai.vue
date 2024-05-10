@@ -33,7 +33,7 @@ const handleSubmit = async () => {
   }
 };
 
-onMounted(async () => {
+onActivated(async () => {
   await notesStore.getNotes();
 });
 </script>

@@ -69,7 +69,6 @@ const colorStar = computed(() => {
 const toggleFavorite = async () => {
   if (route.path !== localPath(ABOUT_ROUTE)) {
     note.value.favorite = !note.value.favorite;
-    console.log(isStar.value)
     await notesStore.toggleFavoiteNote(note.value.favorite);
   } else {
     toast.error(t('toasts.warning'), {
