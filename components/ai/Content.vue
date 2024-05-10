@@ -10,8 +10,10 @@ const props = defineProps<{
 
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
+const container = ref<HTMLElement | null>(null);
 
 const markedMessagesToHtml = computed(() => {
+  scrollToBottom();
   return props.messages.map((message) => {
     return {
       ...message,
@@ -19,16 +21,37 @@ const markedMessagesToHtml = computed(() => {
     };
   });
 });
+
+const scrollToBottom = async () => {
+  await nextTick(() => {
+    if (container.value) {
+      container.value.scrollTop = container.value.scrollHeight;
+    }
+  });
+};
+
+watch(
+  () => props.messages,
+  async () => {
+    await scrollToBottom();
+  }
+);
 </script>
 
 <template>
   <div class="h-full">
-    <div class="content flex h-[92.5%] flex-1 flex-col-reverse overflow-y-auto px-64 pb-1">
-      <div class="mb-6 flex h-full flex-col-reverse gap-8">
+    <div ref="container" class="content relative flex h-[92.5%] flex-1 flex-col overflow-y-auto px-64 pt-16">
+      <div class="flex h-full flex-col gap-8">
         <div
           v-for="(message, index) in markedMessagesToHtml"
           :key="index"
-          :class="cn('flex items-center gap-4', message.role === 'user' ? 'flex-row-reverse' : '')"
+          :class="
+            cn(
+              'flex items-center gap-4',
+              message.role === 'user' ? 'flex-row-reverse' : '',
+              index === markedMessagesToHtml.length - 1 && message.role === 'assistant' && 'pb-10'
+            )
+          "
         >
           <AiAvatar>
             <UiAvatarFallback>
@@ -40,7 +63,7 @@ const markedMessagesToHtml = computed(() => {
             v-html="message && message.text"
           />
         </div>
-        <div v-if="props.isPending" class="flex items-center gap-2">
+        <div v-if="props.isPending" class="flex items-center gap-2 pb-10">
           <AiAvatar>
             <UiAvatarFallback> ai </UiAvatarFallback>
           </AiAvatar>
