@@ -98,8 +98,9 @@ const onSubmit = handleSubmit(async (values) => {
                   : navigateTo(localPath(LOGIN_ROUTE))
               "
               class="cursor-pointer underline underline-offset-4 hover:text-zinc-900 dark:hover:text-zinc-300/80"
-              >{{ $route.path === localPath(LOGIN_ROUTE) ? `Sign Up Now` : 'Sign In Now' }}</span
             >
+              {{ $route.path === localPath(LOGIN_ROUTE) ? `Sign Up Now` : 'Sign In Now' }}
+            </span>
           </p>
         </div>
       </div>

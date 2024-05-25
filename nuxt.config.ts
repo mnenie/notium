@@ -2,7 +2,13 @@ import i18nConfig from './i18n.config';
 import { vite as vidstack } from 'vidstack/plugins';
 
 export default defineNuxtConfig({
-  devtools: { enabled: false },
+  devtools: {
+    enabled: true,
+
+    timeline: {
+      enabled: true,
+    },
+  },
   modules: [
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
