@@ -20,7 +20,7 @@ ___About:___
 Notium is a cloud app allowing users to create and store notes based on their priorities, also using the built-in AI, assistant NotiumAI
 
 
-<img src="/public/img/about/main-light.png" title="notium" alt="notium" />
+<img src="/public/img/about/write-light.png" title="notium" alt="notium" />
 </div>
 
 **Notium available at the link:** https://notium.vercel.app/
