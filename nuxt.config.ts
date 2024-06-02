@@ -3,11 +3,7 @@ import { vite as vidstack } from 'vidstack/plugins';
 
 export default defineNuxtConfig({
   devtools: {
-    enabled: true,
-
-    timeline: {
-      enabled: true,
-    },
+    enabled: true
   },
   modules: [
     '@nuxtjs/tailwindcss',

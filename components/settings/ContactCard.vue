@@ -3,7 +3,7 @@ const props = defineProps<{
   cards: ContactCard[];
 }>();
 
-const {locale} = useI18n()
+const { locale } = useI18n();
 </script>
 
 <template>
@@ -19,13 +19,15 @@ const {locale} = useI18n()
         </UiCardDescription>
       </div>
     </UiCardHeader>
-    <UiCardContent class="pl-4 pr-4 pb-1">
+    <UiCardContent class="pb-1 pl-4 pr-4">
       <div class="flex items-center space-x-4 text-xs text-zinc-500">
-        {{ locale == 'en-US' ? card.description : card.descriptionRu }}
+        {{ locale == 'en-US' || locale == 'zh-CN' ? card.description : card.descriptionRu }}
       </div>
     </UiCardContent>
-    <UiCardFooter class="pl-4 pr-4 pt-3 pb-4">
-      <a target="_blank" :href="card.url" class="text-xs text-blue-500 hover:text-blue-600">{{ $t(`settings_page.contacts.redirect`) }}</a>
+    <UiCardFooter class="pb-4 pl-4 pr-4 pt-3">
+      <a target="_blank" :href="card.url" class="text-xs text-blue-500 hover:text-blue-600">{{
+        $t(`settings_page.contacts.redirect`)
+      }}</a>
     </UiCardFooter>
   </UiCard>
 </template>

@@ -1,0 +1,79 @@
+{
+  "sidebar_title": "工作区",
+  "non-active": "Notium 预览",
+  "active": "关闭预览",
+  "Notes": "笔记",
+  "Favorites": "收藏",
+  "AI asistant": "AI 助手",
+  "Settings": "设置",
+  "About.file.txt": "关于.file.txt",
+  "telegram": "电报机器人",
+  "settings_page": {
+    "contacts": {
+      "title": "联系方式",
+      "description": "关注我们的社交媒体和 GitHub，随时了解关于我们 Notium 的最新动态和新闻！",
+      "redirect": "重定向",
+      "card": {
+        "Alex Peshkov": "Alex Peshkov",
+        "Airat Bagautdinov": "Airat Bagautdinov"
+      }
+    },
+    "appearence": {
+      "title": "外观",
+      "description": "自定义应用程序的外观。自动在主题之间切换。语言选择。",
+      "theme": {
+        "title": "主题",
+        "description": "选择 Notium 的主题。",
+        "light": "浅色",
+        "dark": "深色",
+        "system": "系统"
+      },
+      "update": "更新偏好"
+    }
+  },
+  "top_menu": {
+    "btns": {
+      "rerdirect_notes": "转到笔记",
+      "favorite": "转到笔记",
+      "update": "更新",
+      "note": "添加笔记",
+      "filter": "筛选笔记...",
+      "search": "搜索"
+    },
+    "priority": {
+      "title": "优先级",
+      "filter": "优先级",
+      "low": "低",
+      "medium": "中",
+      "high": "高",
+      "none": "无",
+      "all": "所有笔记"
+    }
+  },
+  "account": {
+    "welcome": "转到欢迎页面",
+    "logout": "登出"
+  },
+  "notes_page_null": {
+    "title": "你没有任何笔记",
+    "description": "添加新笔记到你的收藏",
+    "btn": "添加新笔记"
+  },
+  "favorite_notes_page_null": {
+    "title": "你没有任何收藏笔记",
+    "description": "打开你的笔记并将新笔记添加到你的收藏中",
+    "btn": "转到笔记"
+  },
+  "ai": {
+    "placeholder": "告诉 NotiumAI 一些关于你的事情",
+    "description": "Notium AI - 你的 AI 助手。一键记住你的想法。"
+  },
+  "toasts": {
+    "update": "你的笔记已成功更新！",
+    "delete": "你的笔记已被删除！",
+    "update_about": "你不能更改关于.text.txt的笔记",
+    "delete_about": "你不能删除关于.text.txt的笔记",
+    "favorite_about": "你不能将关于.text.txt的笔记添加到收藏中",
+    "warning": "警告"
+  }
+}

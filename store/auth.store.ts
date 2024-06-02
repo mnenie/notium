@@ -9,10 +9,7 @@ export const useAuthStore = defineStore('auth', () => {
   const error = ref('');
   const localPath = useLocalePath();
 
-  const { onFirebaseLogin, onFirebaseRegistration, onGithubLogin, getCurrentFirebaseUser, onLogout } =
-    useFirebaseAuth();
-
-  const { onLogin, onRegistration, getUser } = useUserAuth();
+  const { onLogin, onRegistration, getUser, onGithubLogin, oAuthLogin } = useUserAuth();
 
   const login = async (userInfo: { email: string; password: string }) => {
     isLoading.value = true;
@@ -58,13 +55,13 @@ export const useAuthStore = defineStore('auth', () => {
     isLoading.value = true;
     try {
       const response = await onGithubLogin();
-      user.value = {
-        _id: response?.user.uid!,
+      const creds = await oAuthLogin({
+        id: response?.user.uid!,
         email: response?.user.email!,
         photoUrl: response?.user.photoURL!
-      };
-      //@ts-ignore
-      token.value = response?.user.accessToken;
+      })
+      user.value = creds.data;
+      token.value = creds.data.token;
       if (token.value) {
         navigateTo(ABOUT_ROUTE);
       }
@@ -72,21 +69,15 @@ export const useAuthStore = defineStore('auth', () => {
       throw new Error(err);
     } finally {
       isLoading.value = false;
-      await navigateTo(ABOUT_ROUTE);
     }
   };
 
   const logout = async () => {
-    try {
-      await onLogout();
-      user.value = null;
-      token.value = '';
-      const uid = useCookie('uid');
-      uid.value = null;
-      await navigateTo(localPath(HOME_ROUTE));
-    } catch (e) {
-      console.log(e);
-    }
+    user.value = null;
+    token.value = '';
+    const uid = useCookie('uid');
+    uid.value = null;
+    await navigateTo(localPath(HOME_ROUTE));
   };
 
   const getCurrentUser = async () => {
