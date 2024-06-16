@@ -51,6 +51,6 @@ describe('page ai tests', () => {
         ...global_components(['AiContent', 'AiMessage'])
       }
     });
-    expect(seoMeta).toBeCalledWith({ title: 'Notium - cloud app of your notes' });
+    expect(seoMeta).toBeCalledWith({ title: 'Notium - smart cloud app for your notes' });
   });
 });
